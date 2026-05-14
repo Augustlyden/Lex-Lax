@@ -26,16 +26,19 @@ export const getUserById = async (req, res) => {
 
 export const createUser = async (req, res) => {
   try {
-    const { username } = req.body;
+    const { username, profileImg } = req.body;
 
-    if (!username) {
-      return res.status(400).json({ success: false, error: 'Username required' });
+    if (!username || !profileImg) {
+      return res.status(400).json({ success: false, error: 'Username and profile image are required' });
     }
 
-    const newUser = await User.create(username);
+    const existingUser = await User.findByUsername(username);
+    if (existingUser) {
+      return res.status(409).json({ success: false, error: 'Username already exists' });
+    }
 
+    const newUser = await User.create(username, profileImg);
     res.status(201).json({ success: true, data: newUser });
-
   } catch (error) {
     console.error('createUser failed', error);
     res.status(500).json({ success: false, error: 'Failed to create user' });
@@ -47,7 +50,12 @@ export const updateUser = async (req, res) => {
     const { username, profileImg } = req.body;
 
     if (!username || !profileImg) {
-      return res.status(400).json({ success: false, error: 'Username and profile image are required'})
+      return res.status(400).json({ success: false, error: 'Username and profile image are required' })
+    }
+
+    const existingUser = await User.findByUsername(username);
+    if (existingUser && existingUser.id !== req.params.id) {
+      return res.status(409).json({ success: false, error: 'Username already exists' })
     }
 
     const user = await User.update(req.params.id, username, profileImg);
