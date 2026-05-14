@@ -12,6 +12,8 @@ app.use(cors({ origin: 'http://localhost:5173' }));
 
 app.use(express.json());
 
+app.use('/api/users', userRoutes);
+
 app.get('/api/health', (req, res) => {
   res.json({ success: true, message: 'Server is running' });
 });
