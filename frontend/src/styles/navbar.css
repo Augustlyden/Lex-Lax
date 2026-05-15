@@ -1,21 +1,23 @@
 h1 {
     font-size: 40px;
-    color: var(--text-color-dark);
+    color: var(--secondary-color);
 }
 a {
   text-decoration: none;
   color: inherit;
   font-weight: 600;
   font-size: 22px;
-      color: var(--text-color-dark);
+  color: var(--secondary-color);
 }
 
 .nav-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--primary-color);
-    min-height: 80px;
+    background-color: var(--navbar-bg);
+    height: 80px;
+    background: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     
 }
 .nav-content {
@@ -67,5 +69,20 @@ transform: translateX(-50%);
 .nav-profile a:hover {
    transform: scale(1.5);
    transition: transform 0.2s ease;
+}
+
+.hamburger {
+    display: none;
+    font-size: 2rem;
+    margin-right: 2rem;
+    cursor: pointer;
+    color: var(--secondary-color);
+}
+
+@media (max-width: 768px) {
+    .hamburger {
+        display:block
+    }
+
 }
 

@@ -1,6 +1,9 @@
 import "../styles/navbar.css"
 
+
 export default function Navbar() {
+
+ 
 
     return (
         <header>
@@ -14,16 +17,18 @@ export default function Navbar() {
         </div>
 
            <div className = "nav-links">
-           <a href="/">Home</a>
-             <a href="/">Support</a>
-             <a href="/">Contact</a>
+           <a href="/">Hem</a>
+             <a href="/">Statistik</a>
+             <a href="/">Profil</a>
             </div>
 
+            <div className="hamburger">☰</div>
+
            <div className = "nav-profile">
-                 <a href="/"> ⭐️</a>
              <a href="/profile">👤</a>
            </div>
      </div>
+
    </div>
      </nav>
     </header>

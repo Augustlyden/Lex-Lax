@@ -5,7 +5,7 @@ export default function Footer() {
          <footer className="footer">
       <div className="footer-content">
         <p>© 2026 Lex Läx</p>
-           By August, Sara, Emily & Kareem
+           Av August, Sara, Emily & Kareem
         <div className="footer-links">
            </div>
       </div>
