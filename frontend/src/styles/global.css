@@ -11,8 +11,23 @@ font-family: "Comic Relief", system-ui;
 }
 
 :root {
-    --primary-color: #F5F7FF;
-    --secondary-color: #FAFAFF;
-    --text-color-dark: #5B5CEB;
+    --primary-color: #00B4D8;
+    --secondary-color: #00829D;
+
+    --text-color-dark: #1F2937;
     --text-color-light: #8B8CF8;
+
+    --navbar-bg: #FFFFFF;
+    --navbar-text: #00B4D8;
+
+    --primary-color-glosor: #9B4C9C;
+    --secondary-color-glosor: #8B8CF8;
+    
+    --primary-color-math: #6DC8D7;
+    
+    --color-reward: #15F1B5;
+    --color-delete: #D8003B;
+
+
 }
+
