@@ -7,15 +7,21 @@ export default function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false)
 
     return (
-        <header>
-    <nav>
+    <header>
+      <nav>
         
-      <div className = "nav-container">
-       <div className = "nav-content">
+        <div className = "nav-container">
+          <div className = "nav-content">
 
-        <div className = "nav-logo">
-            <h1>LEX LÄX</h1>
-        </div>
+            <div className = "nav-logo">
+              <h1>LEX LÄX</h1>
+            </div>
+
+            <div className = "nav-links">
+              <a href="/">Home</a>
+              <a href="/">Support</a>
+              <a href="/">Contact</a>
+            </div>
 
            <div className={`nav-links ${menuOpen ? "active" : ""}`}>
            <a href="/">Hem</a>
