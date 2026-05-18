@@ -1,6 +1,10 @@
 import "../styles/navbar.css"
+import {useState} from "react"
 
 export default function Navbar() {
+
+ 
+    const [menuOpen, setMenuOpen] = useState(false)
 
     return (
     <header>
@@ -19,15 +23,27 @@ export default function Navbar() {
               <a href="/">Contact</a>
             </div>
 
-            <div className = "nav-profile">
-              <a href="/"> ⭐️</a>
-              <a href="/profile">👤</a>
+           <div className={`nav-links ${menuOpen ? "active" : ""}`}>
+           <a href="/">Hem</a>
+             <a href="/">Statistik</a>
+             <a href="/">Profil</a>
             </div>
 
-          </div>
-        </div>
-        
-      </nav>
+            
+     
+
+           <div className = "nav-profile">
+             <a href="/profile">🧒🏻</a>
+           </div>
+                  <div
+            className="hamburger"
+            onClick={() => setMenuOpen(!menuOpen)}
+            > ☰
+           </div>
+     </div>
+
+   </div>
+     </nav>
     </header>
     )
 }
