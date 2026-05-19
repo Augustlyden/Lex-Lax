@@ -22,12 +22,14 @@ font-family: "Comic Relief", system-ui;
     --navbar-bg: #FFFFFF;
     --navbar-text: #00B4D8;
 
-    --primary-color-glosor: #9B4C9C;
-    --secondary-color-glosor: #8B8CF8;
+    --primary-color-glosor: #AF651C;
+    --secondary-color-glosor: #FFEDE3;
+
+    --vocabulary-light: #D8B1D9;
     
     --primary-color-maths: #6DC8D7;
 
-    --primary-color-watch: #AF651C;
+    --primary-color-watch: #9B4C9C;
 
     --primary-color-swedish: #004A75;
     

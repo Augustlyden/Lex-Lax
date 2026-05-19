@@ -4,6 +4,7 @@ import Navbar from './components/Navbar'
 import './App.css'
 import LoginPage from "./pages/LoginPage"
 import DashboardPage from "./pages/DashboardPage"
+import VocabularyPage from './pages/VocabularyPage'
 
 function App() {
   return (
@@ -11,8 +12,7 @@ function App() {
     <Navbar />
 
     <main>
-    <DashboardPage />
-   
+    <VocabularyPage/>
     </main>
 
     <Footer />

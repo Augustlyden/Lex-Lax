@@ -1,0 +1,19 @@
+import "../styles/vocabularyPage.css"
+import CreateWordList from "../components/CreateWordList"
+
+
+function VocabularyPage() {
+
+
+        return (
+  <div className="vocabulary-page-container">
+     < CreateWordList />
+  </div>
+);
+    
+
+
+
+}
+
+export default VocabularyPage
