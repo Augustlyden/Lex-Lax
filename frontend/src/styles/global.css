@@ -22,13 +22,14 @@
     /* Base colors */
     --text-color-btn: #FFFFFF;
     --color-bg: #fefefe;
+    --color-bg-gradient: radial-gradient(circle at top left, rgba(155, 76, 156, 0.18), transparent 35%), radial-gradient(circle at top right, rgba(109, 200, 215, 0.16), transparent 35%), radial-gradient(circle at bottom left, rgba(240, 90, 40, 0.14), transparent 30%), radial-gradient(circle at bottom right, rgba(255, 182, 0, 0.14), transparent 30%), var(--color-bg); 
     --color-neutral-light: #EFF1F3;
     --color-neutral-light-hover: #E0E3E4;
     --color-neutral-light-active: #C4C7C9;
     --text-color-light: #8E9193;
     --text-color-dark: #1F2937;
 
-/* Subject colors */
+/* Subject colors, för större element rekomenderas det att använda gradienter */
     --subject-1: #9B4C9C;
     --subject-1-gradient: linear-gradient(180deg, #C85FD6 0%, #9B4C9C 55%, #7D3F7E 100%);
     --subject-2: #6DC8D7;
@@ -76,8 +77,9 @@
 
 body {
     font-family: var(--font-base);
-    background-color: var(--color-bg);
     color: var(--text-color-dark);
+    background: var(--color-bg-gradient);
+    background-attachment: fixed;
 }
 
 h1 {
