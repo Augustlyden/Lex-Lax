@@ -3,9 +3,7 @@ import {useState} from "react"
 
 function CreateWordList() {
  
-    const [words, setWords] = useState([
-       { word: "", translation: "" }
-       ]);
+    const [words, setWords] = useState([{ word: "", translation: "" }]);
     const [languageTo, setLanguageTo] = useState("Engelska");
     const [title, setTitle] = useState( `${languageTo} - ${getCurrentWeek()}`);
    
@@ -29,13 +27,30 @@ function handleTitle(e) {
     setTitle(e.target.value);
     console.log("Title:", e.target.value)
 }
-function handleSubmit() {}
+
+
+// WORDLIST FORM -> Skickar Array med objekt samt filtrerar ut tomma fält
+function handleSubmit(e) {
+  e.preventDefault();
+  const filteredWords = words.filter(
+    (item) =>
+      item.word.trim() !== "" &&
+      item.translation.trim() !== ""
+  );
+  const wordListData = {
+    title,
+    target_language: languageTo,
+    words: filteredWords,
+  };
+
+  console.log(wordListData);
+}
 
   return (
         <div className="word-list-wrapper">
+      
       <h1>Skriv in veckans glosor!</h1>
 
-      
       <form onSubmit={handleSubmit}>
       <div className="word-list-container">
 
@@ -60,6 +75,7 @@ function handleSubmit() {}
              <option value="Franska">Franska</option>
              </select>
              </div>
+             
              <span className="arrow"></span>
 
              <div className="translation-box">

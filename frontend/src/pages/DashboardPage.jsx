@@ -3,7 +3,9 @@ import { MdCalculate } from "react-icons/md";
 import { FaBook } from "react-icons/fa";
 import { IoTime } from "react-icons/io5";
 import { PiPencilSimpleFill } from "react-icons/pi";
-
+import languageIcon from "../assets/subjects/language-icon.webp";
+import mathIcon from "../assets/subjects/math-icon.webp";
+import swedishIcon from "../assets/subjects/swedish-icon.webp";
 function DashboardPage() {
  
     return (
@@ -26,17 +28,17 @@ function DashboardPage() {
            </div>
                 <div className = "subject-container">
                     
-                   
+                        
                    <div className = "subject-card border-math">
                     <div className="subject-icon-wrapper maths">
-                      <MdCalculate className="subject-icon" />
+                      <img src={mathIcon} className = "subject-icon" alt="Math icon" />
                          </div>
                         <h2>MATEMATIK</h2>
                         <p>Du har 5 uppgifter kvar att slutföra.</p>
                     </div>
                        <div className = "subject-card border-glosor">
                     <div className="subject-icon-wrapper glosor">
-                        <FaBook className="subject-icon" />
+                        <img src={languageIcon} className = "subject-icon" alt="Language icon" />
                          </div>
                         <h2>GLOSOR</h2>
                         <p>Du har 5 uppgifter kvar att slutföra.</p>
@@ -50,7 +52,7 @@ function DashboardPage() {
                     </div>
                        <div className = "subject-card border-swedish">
                     <div className="subject-icon-wrapper swedish">
-                       <PiPencilSimpleFill  className="subject-icon" />
+                          <img src={swedishIcon} className = "subject-icon" alt="Language icon" />
                          </div>
                         <h2>SVENSKA</h2>
                         <p>Du har 5 uppgifter kvar att slutföra.</p>
