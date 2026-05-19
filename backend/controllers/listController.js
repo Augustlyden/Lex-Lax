@@ -2,7 +2,13 @@ import List from '../models/listModel.js';
 
 export const getAllLists = async (req, res) => {
   try {
-    const lists = await List.findAll();
+    const { subjectId } = req.query;
+
+    if (!subjectId) {
+      return res.status(400).json({ success: false, error: 'Ämnes-ID saknas i anropet' })
+    }
+    
+    const lists = await List.findAll(subjectId);
     res.json({ success: true, data: lists });
   } catch (error) {
     console.error('getAllLists failed:', error);

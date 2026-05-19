@@ -1,7 +1,7 @@
 import db from '../config/database.js'
 
 class List {
-  static async findAll() {
+  static async findAll(subjectId) {
     const result = await db.query(`
       SELECT 
         lists.id,
@@ -14,8 +14,10 @@ class List {
       FROM lists
       JOIN users ON lists.user_id = users.id
       JOIN subjects ON lists.subject_id = subjects.id
-      ORDER BY lists.target_language DESC;
-    `);
+      WHERE lists.subject_id = $1
+      ORDER BY lists.title DESC;
+      `, [subjectId]
+    );
     return result.rows;
   }
 
