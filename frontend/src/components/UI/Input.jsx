@@ -1,5 +1,4 @@
 import React from 'react'
-import "../../styles/ui.css"
 
 const Input = ({ placeholder }) => {
   return (
