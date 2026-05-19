@@ -75,7 +75,7 @@ export const deleteUser = async (req, res) => {
     const deleted = await User.delete(req.params.id);
 
     if (!deleted) {
-      return res.status(404).json({ succes: false, error: 'Användare hittades ej' });
+      return res.status(404).json({ success: false, error: 'Användare hittades ej' });
     }
 
     res.json({ success: true, message: 'Användare raderad' });

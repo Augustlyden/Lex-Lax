@@ -8,6 +8,7 @@ class List {
         lists.title,
         lists.target_language,
         lists.created_at,
+        lists.user_id,
         users.username AS creator,
         subjects.subject_name AS subject
       FROM lists
@@ -25,6 +26,7 @@ class List {
         lists.title,
         lists.target_language,
         lists.created_at,
+        lists.user_id
         users.username AS creator,
         subjects.subject_name AS subject
       FROM lists
@@ -36,9 +38,9 @@ class List {
     return result.rows[0];
   }
 
-  static async findByTitle(title) {
+  static async findByTitle(title, id) {
     const result = await db.query(
-      'SELECT * FROM lists WHERE title = $1;', [title]
+      'SELECT * FROM lists WHERE title = $1 AND user_id = $2;', [title, id]
     );
     return result.rows[0];
   }
@@ -73,3 +75,5 @@ class List {
     return result.rowCount > 0;
   }
 }
+
+export default List;
