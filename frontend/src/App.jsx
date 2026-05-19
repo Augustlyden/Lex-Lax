@@ -11,7 +11,7 @@ function App() {
     <Navbar />
 
     <main>
-    <DashboardPage />
+    <LoginPage />
    
     </main>
 
