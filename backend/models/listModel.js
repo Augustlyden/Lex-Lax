@@ -40,9 +40,10 @@ class List {
     return result.rows[0];
   }
 
-  static async findByTitle(title, id) {
+  static async findByTitle(title, userId, subjectId) {
     const result = await db.query(
-      'SELECT * FROM lists WHERE title = $1 AND user_id = $2;', [title, id]
+      'SELECT * FROM lists WHERE title = $1 AND user_id = $2 AND subject_id = $3;', 
+      [title, userId, subjectId]
     );
     return result.rows[0];
   }

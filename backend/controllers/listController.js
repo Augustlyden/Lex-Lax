@@ -37,7 +37,7 @@ export const createList = async (req, res) => {
       return res.status(400).json({ success: false, error: 'Titel och språk behövs' });
     }
 
-    const existingTitle = await List.findByTitle(title, userId);
+    const existingTitle = await List.findByTitle(title, userId, subjectId);
     if (existingTitle) {
       return res.status(409).json({ success: false, error: 'Titeln finns redan'});
     }
@@ -63,9 +63,9 @@ export const updateList = async (req, res) => {
       return res.status(404).json({ success: false, error: 'Listan hittades ej'});
     }
 
-    const existingTitle = await List.findByTitle(title, currentList.user_id);
+    const existingTitle = await List.findByTitle(title, currentList.user_id, currentList.subject_id);
     if (existingTitle && existingTitle.id !== req.params.id) {
-      return res.status(409).json({ success: false, error: 'Titeln finns redan' });
+      return res.status(409).json({ success: false, error: 'Titeln finns redan i detta ämne' });
     }
 
     const list = await List.update(title, targetLanguage, req.params.id);
