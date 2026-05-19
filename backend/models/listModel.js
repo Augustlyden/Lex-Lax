@@ -26,7 +26,7 @@ class List {
         lists.title,
         lists.target_language,
         lists.created_at,
-        lists.user_id
+        lists.user_id,
         users.username AS creator,
         subjects.subject_name AS subject
       FROM lists
