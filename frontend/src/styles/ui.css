@@ -1,0 +1,14 @@
+input {
+  padding: 10px;
+  border-radius: 12px;
+  outline: none;
+  border: 2px solid var(--secondary-color);
+}
+
+input:focus {
+  border-color: var(--primary-color);
+}
+
+input:placeholder {
+    color: var(--text-color-light);
+}
