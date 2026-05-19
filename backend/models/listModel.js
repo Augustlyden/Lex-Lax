@@ -1,7 +1,7 @@
 import db from '../config/database.js'
 
 class List {
-  static async findAll(subjectId) {
+  static async findAll(subjectId, userId) {
     const result = await db.query(`
       SELECT 
         lists.id,
@@ -14,9 +14,9 @@ class List {
       FROM lists
       JOIN users ON lists.user_id = users.id
       JOIN subjects ON lists.subject_id = subjects.id
-      WHERE lists.subject_id = $1
+      WHERE lists.subject_id = $1 AND lists.user_id = $2
       ORDER BY lists.title DESC;
-      `, [subjectId]
+      `, [subjectId, userId]
     );
     return result.rows;
   }

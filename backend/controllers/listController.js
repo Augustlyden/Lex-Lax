@@ -2,13 +2,13 @@ import List from '../models/listModel.js';
 
 export const getAllLists = async (req, res) => {
   try {
-    const { subjectId } = req.query;
+    const { subjectId, userId } = req.query;
 
-    if (!subjectId) {
-      return res.status(400).json({ success: false, error: 'Ämnes-ID saknas i anropet' })
+    if (!subjectId || !userId) {
+      return res.status(400).json({ success: false, error: 'Både ämnes-ID och användar-ID krävs för att hämta listor' })
     }
-    
-    const lists = await List.findAll(subjectId);
+
+    const lists = await List.findAll(subjectId, userId);
     res.json({ success: true, data: lists });
   } catch (error) {
     console.error('getAllLists failed:', error);
