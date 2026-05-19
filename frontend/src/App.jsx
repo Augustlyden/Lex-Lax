@@ -12,7 +12,8 @@ function App() {
     <Navbar />
 
     <main>
-    <VocabularyPage/>
+    <LoginPage />
+   
     </main>
 
     <Footer />
