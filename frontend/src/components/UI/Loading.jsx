@@ -1,5 +1,6 @@
 import React from 'react'
 import pencilLoader from '../../assets/pencil-animated.png'
+import '../../styles/loading.css'
 
 
 const Loading = () => {
