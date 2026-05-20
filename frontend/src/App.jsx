@@ -12,7 +12,7 @@ function App() {
     <Navbar />
 
     <main>
-    <VocabularyPage/>
+    < VocabularyPage />
    
     </main>
 

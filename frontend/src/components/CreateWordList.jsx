@@ -43,6 +43,8 @@ function handleSubmit(e) {
     words: filteredWords,
   };
 
+  //TILL SENARE: Skicka in handleSubmit data till lists & questions i databasen.
+
   console.log(wordListData);
 }
 
