@@ -3,8 +3,7 @@ import Footer from './components/Footer'
 import Navbar from './components/Navbar'
 import './App.css'
 import LoginPage from "./pages/LoginPage"
-import { useAppContext } from './provider/ContextProvider.jsx';
-import Loading from './components/ui/Loading';
+import DashboardPage from "./pages/DashboardPage"
 
 function App() {
 
@@ -15,8 +14,8 @@ function App() {
     <Navbar />
 
     <main>
-  
-      <LoginPage />
+    <LoginPage />
+   
     </main>
 
     <Footer />
