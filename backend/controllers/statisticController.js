@@ -30,10 +30,31 @@ export const upsertStats = async (req, res) => {
       });
     }
 
+    await Statistic.createHistory(userId, listId, correctCount, wrongCount);
+
     const updatedStats = await Statistic.upsert(userId, listId, correctCount, wrongCount);
     res.status(200).json({ success: true, data: updatedStats });
   } catch (error) {
     console.error('upsertStats failed:', error);
     res.status(500).json({ success: false, error: 'Misslyckades att uppdatera statistik' });
+  }
+}
+
+export const getHistoryByListId = async (req, res) => {
+  try {
+    const { userId, listId } = req.query;
+
+    if (!userId || !listId) {
+      return res.status(400).json({ 
+        success: false, 
+        error: 'Både användar-ID och list-ID behövs' 
+      });
+    }
+
+    const history = await Statistic.findByListId(userId, listId);
+    res.json({ success: true, data: history });
+  } catch (error) {
+    console.error('getHistoryByListId failed:', error);
+    res.status(500).json({ success: false, error: 'Misslyckades att hämta historik' });
   }
 }
