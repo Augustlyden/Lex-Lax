@@ -2,14 +2,14 @@ import express from 'express';
 import { 
   createQuestions, 
   deleteQuestion, 
-  GetQuestionsByList, 
+  getQuestionsByList, 
   updateQuestion 
 } from '../controllers/questionController.js';
 
 
 const router = express.Router();
 
-router.get('/', GetQuestionsByList);
+router.get('/', getQuestionsByList);
 router.post('/', createQuestions);
 router.put('/:id', updateQuestion);
 router.delete('/:id', deleteQuestion);

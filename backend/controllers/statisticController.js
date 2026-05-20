@@ -1,40 +1,28 @@
 import Statistic from "../models/statisticModel.js";
 
-export const getAllStats = async (req, res) => {
-  try {
-    const { userId } = req.query;
-
-    if (!userId) {
-      return res.status(400).json({
-        success: false, 
-        error: 'Välj användare för att se statistik' 
-      });
-    }
-
-    const stats = await Statistic.findAll(userId);
-    res.json({ success: true, data: stats });
-  } catch (error) {
-    console.error('getAllStats failed:', error);
-    res.status(500).json({ success: false, error: 'Misslyckades att hämta statistik' });
-  }
-}
-
-export const getStatsByList = async (req, res) => {
+export const getStats = async (req, res) => {
   try {
     const { userId, listId } = req.query;
 
-    if (!userId || !listId) {
+    if (!userId) {
       return res.status(400).json({
-        success: false, 
-        error: 'Användare och lista måste vara vald för att se statistik'
+        success: false,
+        error: 'Välj användare för att se statistik'
       });
     }
 
-    const stats = await Statistic.findByListId(userId, listId);
+    let stats;
+
+    if (listId) {
+      stats = await Statistic.findByListId(userId, listId);
+    } else {
+      stats = await Statistic.findAll(userId);
+    }
+
     res.json({ success: true, data: stats });
   } catch (error) {
-    console.error('getStatsByList failed:', error);
-    res.status(500).json({ success: false, error: 'Misslyckades att hämta statistik' });
+    console.error('getStats failed:', error);
+    res.status(500).json({ success: false, error: 'Misslyckades att hämta statistik'});
   }
 }
 
