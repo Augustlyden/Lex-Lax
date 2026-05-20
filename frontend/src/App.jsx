@@ -9,6 +9,9 @@ import DashboardPage from "./pages/DashboardPage"
 import VocabularyPage from './pages/VocabularyPage'
 
 function App() {
+
+  
+
   return (
   <>
     <Navbar />
