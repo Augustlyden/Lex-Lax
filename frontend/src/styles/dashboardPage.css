@@ -1,0 +1,127 @@
+.dashboard-page-container {
+     display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    height: 100vh;
+    background-color: #E8F2FF;
+}
+
+
+.dashboard-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 3rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.info-box-wrapper {
+    display: flex;
+    gap: 2rem;
+    padding: 2rem;
+    background-color: #B3EBFF;
+    border-radius: 50px;
+    border: 1px solid;
+    border-color: #01677D;
+}
+.image-content-left {
+    width: 140px;
+    height: 140px;
+    background-color: var(--secondary-color);
+    border-radius: 12px;
+    background-size: cover;
+    background-position: center;
+}
+.image-content-left img {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.subject-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    padding-top: 3rem;
+    border-radius: 12px;
+}
+.subject-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    
+    border-radius: 12px;
+    width: 250px;
+    border: 2px solid;
+    min-height: 180px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+.subject-card:hover {
+    transform: scale(1.05);
+}
+.subject-icon-wrapper {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.maths {
+     background-color: var(--primary-color-maths);
+}
+.glosor {
+     background-color: var(--primary-color-glosor);
+}
+.watch {
+     background-color: var(--primary-color-watch);
+}
+.swedish {
+     background-color: var(--primary-color-swedish);
+}
+.border-math {
+    border-color: var(--primary-color-maths);
+}
+.border-glosor {
+    border-color: var(--primary-color-glosor);
+}
+.border-watch {
+    border-color: var(--primary-color-watch);
+}
+.border-swedish {
+    border-color: var(--primary-color-swedish);
+}
+
+.subject-icon-wrapper img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+.subject-icon {
+    font-size: 3rem;
+}
+.progress-bar {
+    width: 100%;
+    height: 16px;
+    background-color: #dcdcdc;
+    border-radius: 999px;
+    overflow: hidden;
+    margin-top: 3rem;
+    
+}
+
+.progress-fill {
+    width: 65%;
+    height: 100%;
+    background-color: #00B4D8;
+    border-radius: 999px;
+}
+

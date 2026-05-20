@@ -3,6 +3,7 @@ import Footer from './components/Footer'
 import Navbar from './components/Navbar'
 import './App.css'
 import LoginPage from "./pages/LoginPage"
+import DashboardPage from "./pages/DashboardPage"
 
 function App() {
   return (
@@ -10,8 +11,8 @@ function App() {
     <Navbar />
 
     <main>
-  
-      <LoginPage />
+    <LoginPage />
+   
     </main>
 
     <Footer />

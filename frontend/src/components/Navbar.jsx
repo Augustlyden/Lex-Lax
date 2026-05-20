@@ -17,11 +17,6 @@ export default function Navbar() {
               <h1>LEX LÄX</h1>
             </div>
 
-            <div className = "nav-links">
-              <a href="/">Home</a>
-              <a href="/">Support</a>
-              <a href="/">Contact</a>
-            </div>
 
            <div className={`nav-links ${menuOpen ? "active" : ""}`}>
            <a href="/">Hem</a>

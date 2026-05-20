@@ -1,6 +1,6 @@
 import React from 'react'
-import '../styles/loading.css'
-import pencilLoader from '../assets/pencil-animated.png'
+import pencilLoader from '../../assets/pencil-animated.png'
+import '../../styles/loading.css'
 
 
 const Loading = () => {
@@ -11,6 +11,7 @@ const Loading = () => {
         className="pencil-loader" 
         alt="Laddar..." 
       />
+      <p>Laddar...</p>
     </div>
   )
 }
