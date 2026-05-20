@@ -27,7 +27,7 @@ class Statistic {
         us.last_practiced,
         lists.title AS title
       FROM user_statistics us
-      JOIN lists ON us.lists_id = lists.id
+      JOIN lists ON us.list_id = lists.id
       WHERE us.user_id = $1 AND us.list_id = $2;
       `, [userId, listId]
     );
