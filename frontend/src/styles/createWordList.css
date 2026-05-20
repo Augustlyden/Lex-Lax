@@ -8,13 +8,14 @@
     padding: 2rem;
     border-radius: var(--radius-soft);
     box-shadow: var(--shadow-soft);
+
 }
-.word-list-container {
+.create-word-list-container {
     display: flex;
     flex-direction: column;
     max-height: 600px;
-}
-.word-list-card {
+ }
+.create-word-list-card {
     display: flex;
     flex-direction: row;
     padding: 0.2rem;
@@ -23,7 +24,7 @@
     border-radius: 12px;
     gap: 1rem;
 }
-.word-list-header-container {
+.create-word-list-header-container {
     display: flex;
     flex-direction: row;
     padding: 1rem;
@@ -75,7 +76,7 @@
 }
 .word-list-wrapper {
     width: 100%;
-    max-width: 100%;
+    max-width: 80%;
 }
 
 .word-input {

@@ -1,6 +1,6 @@
 import { getCurrentWeek } from "../utils/getCurrentWeek";
 import {useState} from "react"
-import "../styles/wordList.css"
+import "../styles/createWordList.css"
 
 function CreateWordList({userId, subjectId}) {
  
@@ -57,7 +57,7 @@ function CreateWordList({userId, subjectId}) {
         <h1>Skriv in veckans glosor!</h1>
 
         <form onSubmit={handleSubmit}>
-        <div className="word-list-container">
+        <div className="create-word-list-container">
 
         <h2>Titel</h2>
               <input
@@ -94,7 +94,7 @@ function CreateWordList({userId, subjectId}) {
 
     {/* Map function to display word/translated dynamically*/} 
       {questions.map((item, index) => (
-    <div className="word-list-card" key={index}>
+    <div className="create-word-list-card" key={index}>
 
       <div className="word-left">
         <input

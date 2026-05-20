@@ -8,7 +8,7 @@ function VocabularyPage() {
 
         return (
   <div className="vocabulary-page-container">
-     < CreateWordList/>
+     < WordList/>
   </div>
 );
     

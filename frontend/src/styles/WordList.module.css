@@ -1,0 +1,51 @@
+.listContainer {
+display: flex;
+flex-direction: column;
+gap: 1rem;
+width: 85%;
+
+border-radius: var(--radius-soft);
+box-shadow: var(--box-shadow-glow);
+}
+.listHeaderContent {
+display: flex;
+flex-direction: column;
+width: 50%;
+padding: 1rem;
+}
+.listContent {
+display: flex;
+flex-direction: column;
+
+padding: 1rem;
+flex-wrap: wrap;
+gap: 0.5rem;
+}
+.listCard {
+display: flex;
+align-items: center;
+flex-direction: row;
+gap: 0.2rem;
+flex-wrap: wrap;
+border-radius: var(--radius-soft);
+background-color: var(--subject-1);
+box-shadow: var(--shadow-soft);
+padding: 0.2rem;
+    
+}
+.listTitle {
+  flex: 1;
+  min-width: 150px;
+}
+.listActions {
+
+}
+
+.inputLength {
+ 
+    width: 100%;
+
+}
+.secondary-btn.delete-list {
+    background: var(--color-delete);
+}
