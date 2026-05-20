@@ -1,11 +1,14 @@
 import Question from '../models/questionModel.js';
 
-export const GetQuestionsByList = async (req, res) => {
+export const getQuestionsByList = async (req, res) => {
   try {
     const { listId } = req.query;
 
     if (!listId) {
-      return res.status(400).json({ success: false, error: 'List-ID krävs för att visa listan' });
+      return res.status(400).json({ 
+        success: false, 
+        error: 'List-ID krävs för att visa listan' 
+      });
     }
 
     const questions = await Question.findByListId(listId);
@@ -21,7 +24,10 @@ export const createQuestions = async (req, res) => {
     const { listId, questions } = req.body;
 
     if (!listId || !questions || !Array.isArray(questions) || questions.length === 0) {
-      return res.status(400).json({ success: false, error: 'List-ID och en lista med frågor/ord behövs' });
+      return res.status(400).json({ 
+        success: false, 
+        error: 'List-ID och en lista med frågor/ord behövs' 
+      });
     }
 
     const newQuestions = await Question.create(listId, questions);
