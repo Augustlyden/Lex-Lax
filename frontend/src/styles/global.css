@@ -82,6 +82,15 @@ body {
     background-attachment: fixed;
 }
 
+main {
+  width: 100%;
+  max-width: 1000px;
+  min-height: 100vh;
+
+  margin: 0 auto;
+  padding: 3rem;
+}
+
 h1 {
   font-family: var(--font-display);
 }
