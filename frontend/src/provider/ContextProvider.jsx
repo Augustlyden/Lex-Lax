@@ -11,7 +11,7 @@ export const ContextProvider = ({ children }) => {
 
   const errorHandler = (error) => {
     setLoading(false);
-    setError(error.error);
+    setError(error?.error || 'Kunde inte ansluta till servern. Kontrollera din internetanslutning eller försök igen senare.');
   }
 
 //   USERS
