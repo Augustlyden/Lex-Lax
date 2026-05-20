@@ -1,0 +1,90 @@
+/* BUTTONS */
+
+.primary-btn,
+.secondary-btn,
+.flat-btn {
+  padding: 0.9rem 1.8rem;
+  border: none;
+  border-radius: var(--radius-round);
+
+  font-size: var(--btn-font-size);
+  font-weight: var(--btn-font-weight);
+  letter-spacing: var(--btn-letter-spacing);
+
+  cursor: pointer;
+
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    background 0.15s ease,
+    filter 0.15s ease;
+}
+
+/* PRIMARY BUTTON */
+.primary-btn {
+  background: var(--action-primary-color);
+  color: var(--text-color-btn);
+
+  box-shadow:
+    var(--box-shadow-glow),
+    var(--btn-depth);
+}
+/* SECONDARY BUTTON */
+.secondary-btn {
+  background: var(--text-color-btn);
+  color: var(--action-secondary-color);
+
+  box-shadow:
+    var(--box-shadow-glow),
+    var(--btn-depth);
+}
+
+.primary-btn:hover,
+.secondary-btn:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    var(--box-shadow-glow),
+    var(--btn-depth-hover);
+}
+
+.primary-btn:active,
+.secondary-btn:active {
+  transform: translateY(2px);
+
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.12),
+    var(--btn-depth-active);
+}
+
+.primary-btn:focus-visible,
+.secondary-btn:focus-visible {
+  outline: none;
+
+  box-shadow:
+    var(--box-shadow-glow),
+    var(--btn-depth),
+    var(--btn-focus-ring);
+}
+
+/* FLAT BUTTON */
+
+.flat-btn {
+  background: var(--color-neutral-light);
+  color: var(--text-color-dark);
+}
+
+.flat-btn:hover {
+  background: var(--color-neutral-light-hover);
+  transform: translateY(-1px);
+}
+
+.flat-btn:active {
+  background: var(--color-neutral-light-active);
+  transform: translateY(1px);
+}
+
+.flat-btn:focus-visible {
+  outline: none;
+  box-shadow: var(--btn-focus-ring);
+}

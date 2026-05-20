@@ -121,14 +121,15 @@ function CreateWordList({userId, subjectId}) {
   ))}
   </div>
 
-  <button type="button" className="primary-button wordlist-btn" onClick = {addWord}>
-    + Lägg till ord
-  </button>
-        <button 
+        <button type="button" className="secondary-btn margin-button" onClick = {addWord}>
+          + Lägg till ord
+      </button>
+       
+       <button 
         type = "submit"
-        className="primary-button wordlist-btn-save">
+        className="primary-btn">
             Spara glosor
-            </button>
+      </button>
         </div>
         </form>
         </div>

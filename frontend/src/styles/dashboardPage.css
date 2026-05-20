@@ -2,11 +2,7 @@
      display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100vh;
-    background-color: #E8F2FF;
 }
-
-
 .dashboard-content-wrapper {
     display: flex;
     flex-direction: column;
@@ -20,10 +16,11 @@
     display: flex;
     gap: 2rem;
     padding: 2rem;
-    background-color: #B3EBFF;
-    border-radius: 50px;
-    border: 1px solid;
-    border-color: #01677D;
+    background: var(--color-bg-gradient);
+    border-radius: var(--radius-soft);
+    border-color: var(--subject-2-gradient);
+    box-shadow: var(--box-shadow-glow);
+
 }
 .image-content-left {
     width: 140px;
@@ -37,15 +34,16 @@
     width: 140px;
     height: 140px;
     object-fit: cover;
-    border-radius: 12px;
+    border-radius: var(--radius-soft);
 }
 
 .subject-container {
     display: flex;
-    justify-content: space-between;
     gap: 2rem;
+    justify-content: space-between;
     padding-top: 3rem;
-    border-radius: 12px;
+    border-radius: var(--radius-soft);
+    flex-wrap: wrap;
 }
 .subject-card {
     display: flex;
@@ -53,9 +51,8 @@
     align-items: center;
     gap: 1rem;
     padding: 1rem;
-    
-    border-radius: 12px;
-    width: 250px;
+    border-radius: var(--radius-soft);
+    flex: 1;
     border: 2px solid;
     min-height: 180px;
     cursor: pointer;
@@ -67,34 +64,34 @@
 .subject-icon-wrapper {
     width: 90px;
     height: 90px;
-    border-radius: 50%;
+    border-radius: var(--radius-round);
     display: flex;
     align-items: center;
     justify-content: center;
 }
 .maths {
-     background-color: var(--primary-color-maths);
+     background-color: var(--subject-2);
 }
 .glosor {
-     background-color: var(--primary-color-glosor);
+     background-color: var(---subject-1);
 }
 .watch {
-     background-color: var(--primary-color-watch);
+     background-color: var(--subject-3);
 }
 .swedish {
-     background-color: var(--primary-color-swedish);
+     background-color: var(--subject-4);
 }
 .border-math {
-    border-color: var(--primary-color-maths);
+    border-color: var(--subject-2);
 }
 .border-glosor {
-    border-color: var(--primary-color-glosor);
+    border-color: var(--subject-1);
 }
 .border-watch {
-    border-color: var(--primary-color-watch);
+    border-color: var(--subject-3);
 }
 .border-swedish {
-    border-color: var(--primary-color-swedish);
+    border-color: var(--subject-4);
 }
 
 .subject-icon-wrapper img {
@@ -105,16 +102,14 @@
 }
 .subject-icon {
     font-size: 7rem;
-    height: 90px;
-    width: 90px;
+    height: 110px;
+    width: 110px;
     border-radius: 50%;
-    
- 
 }
 .progress-bar {
     width: 100%;
     height: 16px;
-    background-color: #dcdcdc;
+    background-color: var(--color-neutral-light-active);
     border-radius: 999px;
     overflow: hidden;
     margin-top: 3rem;
@@ -124,7 +119,7 @@
 .progress-fill {
     width: 65%;
     height: 100%;
-    background-color: #00B4D8;
+    background-color: var(--color-reward);
     border-radius: 999px;
 }
 

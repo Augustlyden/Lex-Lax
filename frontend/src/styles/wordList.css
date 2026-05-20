@@ -1,16 +1,16 @@
+.word-list-wrapper h1 {
+    color:  var( --subject-1);
+}
+
 .word-list-wrapper {
     display: flex;
-    margin-top: 1rem;
     flex-direction: column;
-    width: 900px;
-    max-width: 95vw;
-    padding: 1.5rem;
-    border-radius: 20px;
-    background-color: #FFDCC3;
+    padding: 2rem;
+    border-radius: var(--radius-soft);
+    box-shadow: var(--shadow-soft);
 }
 .word-list-container {
     display: flex;
-    width: 100%;
     flex-direction: column;
     max-height: 600px;
 }
@@ -28,59 +28,57 @@
     flex-direction: row;
     padding: 1rem;
     border: 1px solid;
+   
    }
 .word-left,
 .word-right {
     flex: 1;
 }
  .word-input {
-  width: 100%;
   padding: 8px 12px;
-  border: 2px solid #dcdcdc;
-  border-radius: 10px;
-  font-size: 16px;
-  background-color: white;
-  outline: none;
-    }
+}
  .word-from-to-card {
     display: flex;
     flex-direction: row;
     align-items: center;
     padding: 0.5rem;
-    justify-content: space-between;
-    border-radius: 12px;
+    border-radius: var(--radius-soft);
     gap: 1rem;
 }
 .word-input:focus {
-    border-color: #914D00;
-    
+    border-color: var(--subject-1);
 }
 .translation-box {
-    flex: 1;
+
 }
 .word-list-scroll-container {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
     border-radius: 16px;
-    height: 500px;
+    height: 250px;
     overflow-y: auto;
-    border: 1px solid #CE7D34;
     margin-bottom: 1rem;
     padding: 1rem;
-    background-color: rgba(255,255,255,0.3);
+   
 }
 .words-scroll-container::-webkit-scrollbar {
     width: 8px;
 }
 .words-scroll-container::-webkit-scrollbar-thumb {
-    background-color: #d4b2d4;
-    border-radius: 12px;
+    background-color: var(--subject-1);
+    border-radius: var(--radius-soft);
 }
-.wordlist-btn {
-    background-color: #914D00;
-    margin-bottom: 10px;
+.margin-button {
+    margin: 1rem;
+
 }
-.wordlist-btn-save {
-background-color: #914D00;
+.word-list-wrapper {
+    width: 100%;
+    max-width: 100%;
+}
+
+.word-input {
+    width: 100%;
+    min-width: 0;
 }

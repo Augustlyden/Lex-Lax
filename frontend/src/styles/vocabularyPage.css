@@ -1,11 +1,5 @@
-
-.vocabulary-page-container h1{
-color: var(--primary-color-glosor);
-}
 .vocabulary-page-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100vh;
-    background-color: var(--secondary-color-glosor);
-}
+  }

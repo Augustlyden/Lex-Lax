@@ -2,10 +2,11 @@ import "../styles/dashboardPage.css"
 import { MdCalculate } from "react-icons/md";
 import { FaBook } from "react-icons/fa";
 import { IoTime } from "react-icons/io5";
-import { PiPencilSimpleFill } from "react-icons/pi";
+
 import languageIcon from "../assets/subjects/language-icon.webp";
 import mathIcon from "../assets/subjects/math-icon.webp";
 import swedishIcon from "../assets/subjects/swedish-icon.webp";
+import stars from "../assets/ui/stars.webp";
 function DashboardPage() {
  
     return (
@@ -15,7 +16,7 @@ function DashboardPage() {
             <div className = "info-box-wrapper">
 
                 <div className = "image-content-left">
-                    <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?q=80&w=500&auto=format&fit=crop" alt="Dashboard Illustration" />
+                  <img src={stars} className = "subject-icon" alt="Math icon" />
                 </div>
 
                 <div className = "info-content-right">

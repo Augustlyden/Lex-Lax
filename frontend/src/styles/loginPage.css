@@ -3,16 +3,14 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    background-color: #E8F2FF;
+    height: 70vh;
 }
 .login-content-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 2rem;
-    border-radius: 1rem;
-}
+    }
 .login-user-content {
     display: flex;
     gap: 2rem;
@@ -31,7 +29,7 @@
     width: 140px;
     height: 140px;
     background-color: var(--secondary-color);
-    border-radius: 12px;
+    border-radius: var(--radius-soft);
     background-size: cover;
     background-position: center;
 }
