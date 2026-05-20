@@ -22,7 +22,7 @@ function App() {
     ) : currentUser ? (
       <h1>Välkommen {currentUser.username}!</h1>
     ) : (
-      <p>Error: {error}</p>
+      <p>{error}</p>
     )}
     {/* TILLFÄLLIGT FÖR ATT VISA HUR DET KAN FUNKA :D  */}
 

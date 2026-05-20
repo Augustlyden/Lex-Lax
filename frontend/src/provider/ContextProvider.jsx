@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import axiosConfig from "../api/axiosConfig";
+import { getUsers, getUserById } from "../api/userApi";
 
 const Context = createContext();
 
@@ -17,8 +17,8 @@ export const ContextProvider = ({ children }) => {
 //   USERS
   const fetchUsers = async () => {
     try {
-        const data = await axiosConfig.get('/users/');
-        setUsers(data.data.data);
+        const data = await getUsers();
+        setUsers(data);
         setLoading(false);
     } catch (error) {
         errorHandler(error);
@@ -26,8 +26,8 @@ export const ContextProvider = ({ children }) => {
 
   const fetchUsersById = async (id) => {
     try {
-        const data = await axiosConfig.get(`/users/${id}`);
-        setCurrentUser(data.data.data);
+        const data = await getUserById(id);
+        setCurrentUser(data);
         setLoading(false);
     } catch (error) {
         errorHandler(error);
