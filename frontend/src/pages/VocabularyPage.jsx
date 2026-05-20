@@ -1,5 +1,6 @@
 import "../styles/vocabularyPage.css"
 import CreateWordList from "../components/CreateWordList"
+import WordList from "../components/WordList";
 
 
 function VocabularyPage() {
@@ -7,7 +8,7 @@ function VocabularyPage() {
 
         return (
   <div className="vocabulary-page-container">
-     < CreateWordList />
+     < WordList />
   </div>
 );
     

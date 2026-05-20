@@ -1,0 +1,86 @@
+.word-list-wrapper {
+    display: flex;
+    margin-top: 1rem;
+    flex-direction: column;
+    width: 900px;
+    max-width: 95vw;
+    padding: 1.5rem;
+    border-radius: 20px;
+    background-color: #FFDCC3;
+}
+.word-list-container {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    max-height: 600px;
+}
+.word-list-card {
+    display: flex;
+    flex-direction: row;
+    padding: 0.2rem;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 12px;
+    gap: 1rem;
+}
+.word-list-header-container {
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+    border: 1px solid;
+   }
+.word-left,
+.word-right {
+    flex: 1;
+}
+ .word-input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 2px solid #dcdcdc;
+  border-radius: 10px;
+  font-size: 16px;
+  background-color: white;
+  outline: none;
+    }
+ .word-from-to-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0.5rem;
+    justify-content: space-between;
+    border-radius: 12px;
+    gap: 1rem;
+}
+.word-input:focus {
+    border-color: #914D00;
+    
+}
+.translation-box {
+    flex: 1;
+}
+.word-list-scroll-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    border-radius: 16px;
+    height: 500px;
+    overflow-y: auto;
+    border: 1px solid #CE7D34;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background-color: rgba(255,255,255,0.3);
+}
+.words-scroll-container::-webkit-scrollbar {
+    width: 8px;
+}
+.words-scroll-container::-webkit-scrollbar-thumb {
+    background-color: #d4b2d4;
+    border-radius: 12px;
+}
+.wordlist-btn {
+    background-color: #914D00;
+    margin-bottom: 10px;
+}
+.wordlist-btn-save {
+background-color: #914D00;
+}
