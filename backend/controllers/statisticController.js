@@ -2,7 +2,7 @@ import Statistic from "../models/statisticModel.js";
 
 export const getStats = async (req, res) => {
   try {
-    const { userId, listId } = req.query;
+    const { userId } = req.query;
 
     if (!userId) {
       return res.status(400).json({
@@ -11,14 +11,7 @@ export const getStats = async (req, res) => {
       });
     }
 
-    let stats;
-
-    if (listId) {
-      stats = await Statistic.findByListId(userId, listId);
-    } else {
-      stats = await Statistic.findAll(userId);
-    }
-
+    const stats = await Statistic.findAll(userId);
     res.json({ success: true, data: stats });
   } catch (error) {
     console.error('getStats failed:', error);

@@ -8,30 +8,17 @@ class Statistic {
         us.correct_answers,
         us.wrong_answers,
         us.last_practiced,
-        lists.title AS title
+        lists.title AS title,
+        lists.subject_id AS subject_id,
+        subjects.title AS subject_title
       FROM user_statistics us
       JOIN lists ON us.list_id = lists.id
+      JOIN subjects ON lists.subject_id = subjects.id
       WHERE us.user_id = $1
       ORDER BY us.last_practiced DESC;
       `, [userId]
     );
     return result.rows;
-  }
-
-  static async findByListId(userId, listId) {
-    const result = await db.query(`
-      SELECT
-        us.id,
-        us.correct_answers,
-        us.wrong_answers,
-        us.last_practiced,
-        lists.title AS title
-      FROM user_statistics us
-      JOIN lists ON us.list_id = lists.id
-      WHERE us.user_id = $1 AND us.list_id = $2;
-      `, [userId, listId]
-    );
-    return result.rows[0];
   }
 
   static async upsert(userId, listId, correctCount, wrongCount) {
