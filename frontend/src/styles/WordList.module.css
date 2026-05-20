@@ -3,9 +3,12 @@ display: flex;
 flex-direction: column;
 gap: 1rem;
 width: 85%;
-
 border-radius: var(--radius-soft);
 box-shadow: var(--box-shadow-glow);
+min-height: 600px;
+}
+.listContainer h1{
+  color: var(--subject-1)
 }
 .listHeaderContent {
 display: flex;
@@ -16,10 +19,10 @@ padding: 1rem;
 .listContent {
 display: flex;
 flex-direction: column;
-
 padding: 1rem;
-flex-wrap: wrap;
+
 gap: 0.5rem;
+width: 100%;
 }
 .listCard {
 display: flex;
@@ -28,24 +31,21 @@ flex-direction: row;
 gap: 0.2rem;
 flex-wrap: wrap;
 border-radius: var(--radius-soft);
-background-color: var(--subject-1);
 box-shadow: var(--shadow-soft);
 padding: 0.2rem;
     
 }
 .listTitle {
-  flex: 1;
+ flex: 1;
   min-width: 150px;
+  
 }
 .listActions {
+ flex: 1;
+  gap: 0.5rem;
 
 }
 
-.inputLength {
- 
-    width: 100%;
-
-}
 .secondary-btn.delete-list {
     background: var(--color-delete);
 }

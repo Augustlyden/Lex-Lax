@@ -2,7 +2,7 @@ import styles from "../styles/WordList.module.css";
 import { useEffect, useState } from "react";
 import Loading from "../components/UI/Loading"
 
-//Använda senare: `http://localhost:3000/api/lists?subjectId=${subjectId}&userId=${userId}`
+//Använd senare: `http://localhost:3000/api/lists?subjectId=${subjectId}&userId=${userId}`
 function WordList({userId, subjectId}) {
 
   const [lists, setLists] = useState([]);
