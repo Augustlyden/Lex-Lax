@@ -19,12 +19,12 @@ class Question {
     return result.rows;
   }
 
-  static async create(listId, array) {
+  static async create(listId, questions) {
     const values = [];
     const valuePlaceholder = [];
     let counter = 1;
 
-    for (const item of array) {
+    for (const item of questions) {
       values.push(item.question, item.answer, listId);
       valuePlaceholder.push(`($${counter}, $${counter + 1}, $${counter + 2})`);
       counter += 3;
@@ -58,3 +58,5 @@ class Question {
     return result.rowCount > 0;
   }
 }
+
+export default Question;
