@@ -4,6 +4,8 @@ export const getQuestionsByList = async (req, res) => {
   try {
     const { listId } = req.query;
 
+    console.log('Received listId:', listId);
+
     if (!listId) {
       return res.status(400).json({ 
         success: false, 
