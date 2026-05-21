@@ -1,13 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getAvatars } from "../api/avatarApi";
 import "../styles/addUser.css";
+
 
 function AddUser() {
 
     const [step, setStep] = useState(1);
-
     const [name, setName] = useState("");
-
     const [selectedAvatar, setSelectedAvatar] = useState("");
+    const [avatars, setAvatars] = useState([]);
+
+    useEffect(() => {
+        const fetchAvatars = async () => {
+            const avatarData = await getAvatars();
+            setAvatars(avatarData);
+        };
+
+        fetchAvatars();
+    }, []);
 
     const handleNext = () => {
         if (step === 1 && name.trim() === "") {
@@ -22,9 +32,10 @@ function AddUser() {
             return;
         }
 
-        /* Plats förSupabase-kod */
+        setStep(step + 1);
 
         console.log("Användare skapad:", { name, selectedAvatar });
+    };
 
         return (
             <main className="add-user-container">
@@ -40,7 +51,7 @@ function AddUser() {
                             placeholder="Skriv användarens namn..."
                         />
 
-                    <button className="btn-primary" onClick={handleNext}>Välj avatar</button>
+                    <button type="button" className="primary-btn" onClick={handleNext}>Nästa</button>
                     </div>
                 )}
                 {step === 2 && (
@@ -48,12 +59,18 @@ function AddUser() {
                         <h2>Välj en avatar</h2>
                         <div className="avatar-grid">
                             {avatars.map((avatar) => (
+                                <img
+                                    key={avatar.id}
+                                    src={avatar.image_url}
+                                    alt={avatar.name}
+                                    className={`avatar ${selectedAvatar === avatar.id ? "selected" : ""}`}
+                                    onClick={() => setSelectedAvatar(avatar.id)}
+                                />
                             ))}
 
                         </div>
+                        <button className="primary-btn" onClick={handleNext}>Skapa användare</button>
                     </div>
-
-                    <button className="btn-primary" onClick={handleNext}>Skapa användare</button>
                 )}
 
             </main>
