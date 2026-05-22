@@ -20,7 +20,11 @@ function AddUser() {
         fetchAvatars();
     }, []);
 
- const handleNext = () => {
+    const formatName = (name) => {
+        return name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
+    };
+
+    const handleNext = () => {
   if (name.trim() === "") {
     setErrorMessage("Du måste fylla i ditt namn.");
     return;
@@ -38,11 +42,20 @@ const handleCreateUser = () => {
 
   setErrorMessage("");
   console.log("Användare skapad:", { name, selectedAvatar });
+
+    setStep(3);
+};
+
+const handleAddAnotherUser = () => {
+    setName("");
+    setSelectedAvatar("");
+    setErrorMessage("");
+    setStep(1);
 };
 
         return (
             <div className="add-user-container">
-                <h1>Skapa en användare</h1>
+                <h1>Skapa en profil</h1>
                 {step === 1 && (
                     <div className="step">
                         <h2>Vad heter användaren?</h2>
@@ -65,12 +78,11 @@ const handleCreateUser = () => {
     )}
     {step === 2 && (
         <div className="step">
-            <h2>Välj en avatar till {name.charAt(0).toUpperCase() + name.slice(1).toLowerCase()}</h2>
+            <h2>Välj en avatar till {formatName(name)}</h2>
             <div className="avatar-grid">
                 {avatars.map((avatar) => (
                     <div className="avatar-card">
                     <img
-                        className="avatar"
                         key={avatar.id}
                         src={avatar.image_url}
                         alt={avatar.name}
@@ -86,21 +98,23 @@ const handleCreateUser = () => {
     {errorMessage}
     </p>
     )}
-                        <button className="primary-btn" onClick={handleCreateUser}>Skapa användare</button>
-                    </div>
-                )}
-                {step === 3 && (
-                    <div className="step">
-                        <h2>Användare skapad!</h2>
-                        <img src={avatars.find((avatar) => avatar.id === selectedAvatar)?.image_url} alt="Vald avatar" className="selected-avatar" />
-                        <p>Namn: {name.charAt(0).toUpperCase() + name.slice(1).toLowerCase()}</p>
-                        <button className="flat-btn" onClick={() => setStep(1)}>Redigera användare</button>
-                        <button className="secondary-btn" onClick={() => setStep(1)}>Skapa ytterligare en användare</button>
-                        <button className="primary-btn" onClick={() => console.log("Gå till startsidan")}>Gå till {name.charAt(0).toUpperCase() + name.slice(1).toLowerCase()}s startsida</button>
-                    </div>
-                )}
+                    <button className="primary-btn" onClick={handleCreateUser}>Skapa användare</button>
+                </div>
+            )}
+            {step === 3 && (
+                <div className="step">
+                    <h2>Användare skapad!</h2>
+                    <img src={avatars.find((avatar) => avatar.id === selectedAvatar)?.image_url} alt="Vald avatar" className="created-avatar" />
+                    <h2 className="User-name">{formatName(name)}</h2>
+                    <div className="button-group">
+                    <button className="flat-btn" onClick={() => setStep(1)}>Redigera</button>
+                    <button className="secondary-btn" onClick={handleAddAnotherUser}>Skapa en till användare</button>
+                    <button className="primary-btn" onClick={() => console.log("Gå till startsidan")}>{formatName(name)}s startsida</button>
+                </div>
+                </div>
+            )}
 
-            </div>
+        </div>
         );
     }
 
