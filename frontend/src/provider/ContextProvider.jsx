@@ -77,7 +77,7 @@ export const ContextProvider = ({ children }) => {
     errorHandler(null);
     setLoading(true);
     try {
-      const data = await deleteApiUser(id);
+      await deleteApiUser(id);
       if (currentUser?.id === id) {
         setCurrentUser(null);
       }
@@ -90,8 +90,7 @@ export const ContextProvider = ({ children }) => {
 
   useEffect(() => {
     fetchUsers();
-    // TILLFÄLLIGT HÅRDKODAT ID 
-    fetchUsersById(8);
+    fetchUsersById();
   }, []);
 
   return (
