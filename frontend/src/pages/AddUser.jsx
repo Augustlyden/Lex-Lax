@@ -1,24 +1,48 @@
 import { useEffect, useState } from "react";
 import { getAvatars } from "../api/avatarApi";
+import { useAppContext } from "../provider/ContextProvider";
+import Loading from "../components/UI/Loading";
 import "../styles/addUser.css";
+import NameStep from "../components/AddUser/NameStep";
+import AvatarStep from "../components/AddUser/AvatarStep";
+import ConfirmationStep from "../components/AddUser/ConfirmationStep";
 
 
 function AddUser() {
-
+    
     const [step, setStep] = useState(1);
     const [name, setName] = useState("");
     const [selectedAvatar, setSelectedAvatar] = useState("");
     const [avatars, setAvatars] = useState([]);
     const [errorMessage, setErrorMessage] = useState("");
+    const [loading, setLoading] = useState(true);
+    
+    const [createdUser, setCreatedUser] = useState(null);
+    const { createUser, updateUser, deleteUser} = useAppContext();
+
 
     useEffect(() => {
+        const handleDeleteUser = async () => {
+            const confirmDelete = window.confirm("Är du säker på att du vill ta bort den skapade användaren?  Allt på din profil kommer att raderas.");
+           
+            if (!confirmDelete) {
+                return;
+         
+                await deleteUser(createdUser.id);
+                setCreatedUser(null);
+                window.alert("Användaren har tagits bort.");
+                window.location.href = "/login";
+            }
+        };
+
         const fetchAvatars = async () => {
             const avatarData = await getAvatars();
-            setAvatars(avatarData);
+            setAvatars(avatarData || []);
+            setLoading(false);
         };
 
         fetchAvatars();
-    }, []);
+    }, []); 
 
     const formatName = (name) => {
         return name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
@@ -34,85 +58,73 @@ function AddUser() {
   setStep(2);
 };
 
-const handleCreateUser = () => {
+const handleCreateUser = async () => {
   if (selectedAvatar === "") {
     setErrorMessage("Du måste välja en avatar!");
     return;
   }
 
   setErrorMessage("");
-  console.log("Användare skapad:", { name, selectedAvatar });
 
-    setStep(3);
+  const formattedName = formatName(name);
+
+  if (createdUser) {
+    await updateUser(createdUser.id, formattedName, selectedAvatar);
+
+    setCreatedUser({
+      ...createdUser,
+      name: formattedName,
+      selectedAvatar,
+    });
+  } else {
+    const newUser = await createUser(formattedName, selectedAvatar);
+
+    setCreatedUser(newUser);
+  }
+
+  setStep(3);
 };
-
 const handleAddAnotherUser = () => {
-    setName("");
-    setSelectedAvatar("");
-    setErrorMessage("");
-    setStep(1);
+  setName("");
+  setSelectedAvatar("");
+  setErrorMessage("");
+  setCreatedUser(null);
+  setStep(1);
 };
 
-        return (
-            <div className="add-user-container">
-                <h1>Skapa en profil</h1>
-                {step === 1 && (
-                    <div className="step">
-                        <h2>Vad heter användaren?</h2>
-                        <label htmlFor="name">Namn:</label>
-                        <input
-                            type="text"
-                            id="name"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                            placeholder="Skriv användarens namn..."
-                            />
+if (loading) {
+    return <Loading />;
+}
 
-                    {errorMessage && (
-    <p className="error-message">
-    {errorMessage}
-    </p>
-    )}
-        <button type="button" className="primary-btn" onClick={handleNext}>Nästa</button>
-        </div>
-    )}
-    {step === 2 && (
-        <div className="step">
-            <h2>Välj en avatar till {formatName(name)}</h2>
-            <div className="avatar-grid">
-                {avatars.map((avatar) => (
-                    <div className="avatar-card">
-                    <img
-                        key={avatar.id}
-                        src={avatar.image_url}
-                        alt={avatar.name}
-                        className={`avatar ${selectedAvatar === avatar.id ? "selected" : ""}`}
-                        onClick={() => setSelectedAvatar(avatar.id)}
-                    />
-                    </div>
-                ))}
+return (
+    <div className="add-user-container">
+        <h1>Skapa en profil</h1>
+        {step === 1 && (
+            <NameStep name={name} setName={setName} errorMessage={errorMessage} handleNext={handleNext} />  
+        )}
 
-            </div>
-            {errorMessage && (
-    <p className="error-message">
-    {errorMessage}
-    </p>
+     {step === 2 && (
+ <AvatarStep
+  name={formatName(name)}
+  avatars={avatars}
+  selectedAvatar={selectedAvatar}
+  setSelectedAvatar={setSelectedAvatar}
+  errorMessage={errorMessage}
+  handleCreateUser={handleCreateUser}
+  isEditing={!!createdUser}
+/>
+      )}
+
+    {step === 3 && (
+       <ConfirmationStep
+          name={formatName(name)}
+          avatars={avatars}
+          selectedAvatar={selectedAvatar}
+          setStep={setStep}
+          handleAddAnotherUser={handleAddAnotherUser}
+          handleDeleteUser={handleDeleteUser}
+        />
     )}
-                    <button className="primary-btn" onClick={handleCreateUser}>Skapa användare</button>
-                </div>
-            )}
-            {step === 3 && (
-                <div className="step">
-                    <h2>Användare skapad!</h2>
-                    <img src={avatars.find((avatar) => avatar.id === selectedAvatar)?.image_url} alt="Vald avatar" className="created-avatar" />
-                    <h2 className="User-name">{formatName(name)}</h2>
-                    <div className="button-group">
-                    <button className="flat-btn" onClick={() => setStep(1)}>Redigera</button>
-                    <button className="secondary-btn" onClick={handleAddAnotherUser}>Skapa en till användare</button>
-                    <button className="primary-btn" onClick={() => console.log("Gå till startsidan")}>{formatName(name)}s startsida</button>
-                </div>
-                </div>
-            )}
 
         </div>
         );

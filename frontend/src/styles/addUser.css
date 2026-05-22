@@ -70,3 +70,12 @@
     flex-wrap: wrap;
     justify-content: space-between;
 }
+.delete-user-btn {
+    border-radius: var(--radius-round);
+    padding: 0.9rem;
+}
+
+.delete-user-btn:hover {
+    color: white;
+    background-color: var(--color-delete);
+}
