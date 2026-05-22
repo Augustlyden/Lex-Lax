@@ -1,6 +1,8 @@
 import { getCurrentWeek } from "../utils/getCurrentWeek";
 import {useState} from "react"
 import "../styles/createWordList.css"
+import { createList } from "../api/listApi";
+import { createQuestions } from "../api/questionsApi";
 
 function CreateWordList({userId, subjectId}) {
  
@@ -30,26 +32,27 @@ function CreateWordList({userId, subjectId}) {
       console.log("Title:", e.target.value)
   }
 
-  // WORDLIST FORM -> Skickar Array med objekt samt filtrerar ut tomma fält
-  function handleSubmit(e) {
-    e.preventDefault();
-    const filteredWords = questions.filter(
-      (item) =>
-        item.word.trim() !== "" &&
-        item.translation.trim() !== ""
-    );
-    const wordListData = {
-      title,
-      target_language: languageTo,
-      user_id: userId,
-      subject_id: subjectId,
-      words: filteredWords,
-    };
+async function handleSubmit(e) {
+  e.preventDefault();
 
-    //TILL SENARE: Skicka in handleSubmit data till lists & questions i databasen.
+  const filteredQuestions = questions.filter(
+    (item) =>
+      item.question.trim() !== "" &&
+      item.answer.trim() !== ""
+  );
 
-    console.log(wordListData);
+  try {
+
+    // 1. skapa listan
+    const createdList = await createList({title: title, targetLanguage: languageTo, userId: 1, subjectId: 1});
+
+    // 2. skapa questions
+    await createQuestions(createdList.id, filteredQuestions);
+    console.log("Allt sparat!");
+  } catch (error) {
+    console.error(error);
   }
+}
 
     return (
           <div className="word-list-wrapper">
@@ -114,7 +117,7 @@ function CreateWordList({userId, subjectId}) {
           placeholder="Översättning"
           className="word-input"
           onChange={(e) => handleWordChange(index, "answer", e.target.value)}
-          value={item.translation}
+          value={item.answer}
         />
       </div>
     </div>

@@ -19,6 +19,10 @@ export const createQuestion = async (questionText, listId) => {
   const response = await apiClient.post('/questions/', { questionText, listId });
   return response.data.data;
 }
+export const createQuestions = async (listId, questions) => {
+const response = await apiClient.post("/questions", {listId, questions,});
+return response.data.data;
+}
 
 export const updateQuestion = async (id, questionText) => {
   const response = await apiClient.put(`/questions/${id}`, { questionText });

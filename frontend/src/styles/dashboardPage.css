@@ -69,10 +69,10 @@
     align-items: center;
     justify-content: center;
 }
-.maths {
+.math {
      background-color: var(--subject-2);
 }
-.glosor {
+.vocabulary {
      background-color: var(---subject-1);
 }
 .watch {
@@ -84,7 +84,7 @@
 .border-math {
     border-color: var(--subject-2);
 }
-.border-glosor {
+.border-vocabulary{
     border-color: var(--subject-1);
 }
 .border-watch {

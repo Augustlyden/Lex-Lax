@@ -37,15 +37,16 @@ padding: 0.2rem;
 }
 .listTitle {
  flex: 1;
-  min-width: 150px;
-  
-}
+min-width: 150px;
+  }
 .listActions {
- flex: 1;
-  gap: 0.5rem;
-
+display: flex;
+flex-wrap: wrap;
+gap: 0.5rem;
 }
-
+.listActions button {
+  min-width: 0;
+}
 .secondary-btn.delete-list {
-    background: var(--color-delete);
+background: var(--color-delete);
 }
