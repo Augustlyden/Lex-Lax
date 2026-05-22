@@ -1,10 +1,8 @@
-import express from 'express';
-import {
-  getAllAvatars,
-} from '../controllers/avatarController.js';
+import express from "express";
+import { getAvatars } from "../controllers/avatarController.js";
 
 const router = express.Router();
 
-router.get('/', getAllAvatars);
+router.get("/", getAvatars);
 
 export default router;
