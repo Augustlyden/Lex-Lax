@@ -1,9 +1,8 @@
 
-.word-list-wrapper h2,
-.word-list-wrapper p {
+.create-word-list-header-container h2
+ {
   color: var(--text-color-btn);
-  margin-bottom: 0;
-  padding: 0;
+ 
   line-height: 1.5;
 }
 
@@ -71,12 +70,11 @@ padding: 1rem;
     flex-direction: column;
     gap: 0.5rem;
     border-radius: 16px;
-    height: 250px;
+    height: 200px;
     overflow-y: auto;
     margin-bottom: 1rem;
     padding-top: 1rem;
-   
-}
+   }
 .words-scroll-container::-webkit-scrollbar {
     width: 8px;
 }

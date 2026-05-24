@@ -13,10 +13,12 @@ function Subjects({subject}) {
         borderName = "border-math";
         iconName = mathIcon;
         path = `/math/${subject.id}`
-        } else if (subject.subject_name === "Språk") {
+        
+      } else if (subject.subject_name === "Språk") {
          borderName = "border-vocabulary";
          path = `/vocabulary/${subject.id}`;
           iconName = languageIcon;
+        
         } else if (subject.subject_name === "Svenska") {
          borderName = "border-swedish";
          iconName = swedishIcon;
@@ -31,8 +33,7 @@ function Subjects({subject}) {
             </div>
         <h2>{subject.subject_name}</h2>
         <p>Du har 5 uppgifter kvar att slutföra.</p>
-         
-     </div>
+      </div>
      </Link>
 
     
