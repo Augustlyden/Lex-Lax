@@ -1,36 +1,50 @@
-.word-list-wrapper h1 {
-    color: var( --subject-1);
+
+.word-list-wrapper h2,
+.word-list-wrapper p {
+  color: var(--text-color-btn);
+  margin-bottom: 0;
+  padding: 0;
+  line-height: 1.5;
 }
 
 .word-list-wrapper {
     display: flex;
     flex-direction: column;
-    padding: 2rem;
+    gap: 2rem;
     width: 100%;
     border-radius: var(--radius-soft);
-    box-shadow: var(--shadow-soft);
-
-}
+    }
 .create-word-list-container {
     display: flex;
     flex-direction: column;
     max-height: 600px;
         width: 100%;
+        border-radius: var(--radius-soft);
+      border: 3px solid var(--subject-1);
+      box-shadow: var(--shadow-soft);
+      padding: 1rem;
  }
 .create-word-list-card {
     display: flex;
     flex-direction: row;
-    padding: 0.2rem;
+    
     justify-content: space-between;
     align-items: center;
     border-radius: 12px;
     gap: 1rem;
 }
 .create-word-list-header-container {
-    display: flex;
-    flex-direction: row;
-    padding: 1rem;
-    border: 1px solid;
+   display: flex;
+flex-direction: row;
+align-items: center;
+width: 100%;
+padding: 1rem;
+  background: var(--subject-1-gradient);
+    border-radius: var(--radius-soft);
+    border-color: var(--subject-2-gradient);
+    box-shadow: var(--box-shadow-glow);
+    margin: 0;
+    flex-wrap: wrap;
    
    }
 .word-left,
@@ -60,7 +74,7 @@
     height: 250px;
     overflow-y: auto;
     margin-bottom: 1rem;
-    padding: 1rem;
+    padding-top: 1rem;
    
 }
 .words-scroll-container::-webkit-scrollbar {

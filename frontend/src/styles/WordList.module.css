@@ -16,6 +16,7 @@ width: 100%;
 .listHeaderContent {
 display: flex;
 flex-direction: row;
+align-items: center;
 width: 100%;
 padding: 1rem;
   background: var(--subject-1-gradient);
@@ -23,14 +24,14 @@ padding: 1rem;
     border-color: var(--subject-2-gradient);
     box-shadow: var(--box-shadow-glow);
     margin: 0;
-
-}
+    flex-wrap: wrap;
+  }
 .listContent {
 display: flex;
 flex-direction: column;
 padding: 1rem;
 border-radius: var(--radius-soft);
-border: 1px solid var(--subject-1);
+border: 3px solid var(--subject-1);
 gap: 0.5rem;
 
 
@@ -63,8 +64,10 @@ gap: 0.5rem;
 .infoContent {
     display: flex;
     flex-direction: column;
-    margin: 0;
+    padding: 0.2rem;
+   
   }
   .addNewListBox {
     margin-top: 1.5rem;
+    margin-bottom: 1rem;
   }

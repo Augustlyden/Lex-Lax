@@ -3,6 +3,7 @@ import {useState} from "react"
 import "../styles/createWordList.css"
 import { createList } from "../api/listApi";
 import { createQuestions } from "../api/questionsApi";
+import {Link} from "react-router-dom"
 
 function CreateWordList({userId, subjectId}) {
  
@@ -52,9 +53,12 @@ async function handleSubmit(e) {
 
     return (
           <div className="word-list-wrapper">
-        
-        <h1>Skriv in veckans glosor!</h1>
-
+         <div className="">
+           <Link to={"/Dashboard"} className="flat-btn">Tillbaka</Link>
+          </div>
+        <div className = "create-word-list-header-container">
+        <h2>Skriv in veckans glosor!</h2>
+</div>
         <form onSubmit={handleSubmit}>
         <div className="create-word-list-container">
 

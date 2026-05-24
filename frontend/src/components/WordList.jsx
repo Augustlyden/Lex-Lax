@@ -51,11 +51,14 @@ if(loading) {
                 <h1>Språk</h1>
                 <p>Här kan du se all din historik, övningar och anpassa dom.</p>
                 <div>
-                  <div className= {styles.addNewListBox}>
+               <div className= {styles.addNewListBox}>
              <Link to={`/vocabulary/${subjectId}/create`} className="flat-btn">Lägg till nya </Link>
              </div>
+            
              </div>
+             
                </div>
+           
           
 
          
