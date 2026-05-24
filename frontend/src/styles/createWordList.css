@@ -1,11 +1,12 @@
 .word-list-wrapper h1 {
-    color:  var( --subject-1);
+    color: var( --subject-1);
 }
 
 .word-list-wrapper {
     display: flex;
     flex-direction: column;
     padding: 2rem;
+    width: 100%;
     border-radius: var(--radius-soft);
     box-shadow: var(--shadow-soft);
 
@@ -14,6 +15,7 @@
     display: flex;
     flex-direction: column;
     max-height: 600px;
+        width: 100%;
  }
 .create-word-list-card {
     display: flex;
@@ -49,9 +51,7 @@
 .word-input:focus {
     border-color: var(--subject-1);
 }
-.translation-box {
 
-}
 .word-list-scroll-container {
     display: flex;
     flex-direction: column;
@@ -72,13 +72,7 @@
 }
 .margin-button {
     margin: 1rem;
-
 }
-.word-list-wrapper {
-    width: 100%;
-    max-width: 80%;
-}
-
 .word-input {
     width: 100%;
     min-width: 0;

@@ -1,4 +1,5 @@
 import "../styles/dashboardPage.css"
+import { useNavigate } from "react-router-dom";
 import stars from "../assets/ui/stars.webp";
 import Subjects from "../components/Subjects"
 import Loading from "../components/UI/Loading"

@@ -42,11 +42,7 @@ async function handleSubmit(e) {
   );
 
   try {
-
-    // 1. skapa listan
     const createdList = await createList({title: title, targetLanguage: languageTo, userId: 1, subjectId: 1});
-
-    // 2. skapa questions
     await createQuestions(createdList.id, filteredQuestions);
     console.log("Allt sparat!");
   } catch (error) {

@@ -1,28 +1,39 @@
 .listContainer {
 display: flex;
 flex-direction: column;
-gap: 1rem;
-width: 85%;
-border-radius: var(--radius-soft);
-box-shadow: var(--box-shadow-glow);
-min-height: 600px;
+gap: 3rem;
+width: 100%;
 }
-.listContainer h1{
-  color: var(--subject-1)
+.listContainer h1,
+.listContainer p {
+  color: var(--text-color-btn);
+  margin-bottom: 0;
+    padding: 0;
+      line-height: 1.5;
 }
+
+
 .listHeaderContent {
 display: flex;
-flex-direction: column;
-width: 50%;
+flex-direction: row;
+width: 100%;
 padding: 1rem;
+  background: var(--subject-1-gradient);
+    border-radius: var(--radius-soft);
+    border-color: var(--subject-2-gradient);
+    box-shadow: var(--box-shadow-glow);
+    margin: 0;
+
 }
 .listContent {
 display: flex;
 flex-direction: column;
 padding: 1rem;
-
+border-radius: var(--radius-soft);
+border: 1px solid var(--subject-1);
 gap: 0.5rem;
-width: 100%;
+
+
 }
 .listCard {
 display: flex;
@@ -43,10 +54,17 @@ min-width: 150px;
 display: flex;
 flex-wrap: wrap;
 gap: 0.5rem;
+
 }
 .listActions button {
   min-width: 0;
 }
-.secondary-btn.delete-list {
-background: var(--color-delete);
-}
+
+.infoContent {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+  }
+  .addNewListBox {
+    margin-top: 1.5rem;
+  }

@@ -1,6 +1,8 @@
 import styles from "../styles/WordList.module.css";
 import { useEffect, useState } from "react";
 import Loading from "../components/UI/Loading"
+import {Link} from "react-router-dom"
+import languageIcon from "../assets/subjects/language-icon.webp";
 
 //Använd senare: `http://localhost:3000/api/lists?subjectId=${subjectId}&userId=${userId}`
 function WordList({userId, subjectId}) {
@@ -35,13 +37,32 @@ if(loading) {
 }
     return (
         <div className = {styles.listContainer}>
+          <div className={styles.backBtnBox}>
+           <Link to={"/Dashboard"} className="flat-btn">Tillbaka </Link>
+          </div>
+
           <div className = {styles.listHeaderContent}>
-            <h1>GLOSOR</h1>
-            <button className = "primary-btn">Lägg till nya</button>
+            <div className = "image-content-left">
+                  <img src={languageIcon} className = "subject-icon" alt="Math icon" />
+                </div>
+            
+
+                 <div className ={styles.infoContent}>
+                <h1>Språk</h1>
+                <p>Här kan du se all din historik, övningar och anpassa dom.</p>
+                <div>
+                  <div className= {styles.addNewListBox}>
+             <Link to={`/vocabulary/${subjectId}/create`} className="flat-btn">Lägg till nya </Link>
+             </div>
+             </div>
+               </div>
+          
+
+         
           </div>
 
           <div className = {styles.listContent}>
-            <h2>Mina glosor</h2>
+            <h2>Historik</h2>
             
            {lists.map((list) => (
   <div className={styles.listCard} key={list.id}>
@@ -58,9 +79,7 @@ if(loading) {
     <div className={styles.listActions}>
       <button className="primary-btn">Träna!</button>
       <button className="secondary-btn">Redigera</button>
-      <button className="secondary-btn delete-list">
-        Ta bort
-      </button>
+      <button className="secondary-btn delete-list">Ta bort</button>
     </div>
 
   </div>
