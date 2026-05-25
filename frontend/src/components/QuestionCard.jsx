@@ -35,7 +35,7 @@ const QuestionCard = ({
                 <span className="progress-text">Fråga {currentCount} / {totalCount}</span>
                 
                 {/* ÄNDRA SÖKVÄG PÅ KNAPPEN SENARE */}
-                <button type="button" className="flat-btn" onClick={() => window.location.href = '/questions'}>
+                <button type="button" className="flat-btn" onClick={() => window.location.href = '/amne'}>
                     Avsluta test
                 </button>
                 {/* ÄNDRA SÖKVÄG PÅ KNAPPEN SENARE */}
