@@ -1,13 +1,14 @@
-import React from 'react';
 import { useAppContext } from '../provider/ContextProvider.jsx';
 import { getAllStats } from '../api/statisticApi.js';
-import { useState } from 'react';
-import { useEffect } from 'react';
-import { Loading } from '../components/UI/Loading.jsx'
+import { getAllSubjects } from '../api/subjectApi.js';
+import { useState, useEffect } from 'react';
+import Loading from '../components/UI/Loading.jsx'
+import StatsTabs from '../components/Statistics/StatisticTabs.jsx';
 
 const StatisticPage = () => {
   const { currentUser, error: userError } = useAppContext();
-  const [allStat, setAllStats] = useState([]);
+  const [allStats, setAllStats] = useState([]);
+  const [subjects, setSubjects] = useState([]);
   const [selectedListId, setSelectedListId] = useState(null);
   const [loading, setLoading] = useState(false);
   const [statsError, setStatsError] = useState(null);
@@ -16,8 +17,12 @@ const StatisticPage = () => {
     setLoading(true);
     setStatsError(null);
     try {
-      const data = await getAllStats(userId);
-      setAllStats(data);
+      const [statsData, subjectData] = await Promise.all([
+        getAllStats(userId),
+        getAllSubjects()
+      ]);
+      setAllStats(statsData);
+      setSubjects(subjectData);
     } catch (error) {
       setStatsError(
         error?.error ||
@@ -48,7 +53,7 @@ const StatisticPage = () => {
 
   return (
     <div>
-      
+      <StatsTabs allStats={allStats} onSelectList={setSelectedListId} subjects={subjects}/>
     </div>
   )
 }
