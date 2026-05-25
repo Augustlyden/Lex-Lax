@@ -1,15 +1,13 @@
 import { useNavigate } from "react-router-dom";
-import { FaTrash } from "react-icons/fa";
 import EditProfileButton from "../UI/EditProfileButton";
+import DeleteUserButton from "../UI/DeleteUserButton";
 
 function ConfirmationStep({
   name,
   avatars,
   selectedAvatar,
   createdUser,
-  setStep,
   handleAddAnotherUser,
-  handleDeleteUser,
   isEditMode,
 }) {
   const navigate = useNavigate();
@@ -22,12 +20,7 @@ function ConfirmationStep({
     <div className="step">
       <h2>{isEditMode ? "Användare uppdaterad!" : "Användare skapad!"}</h2>
 
-      <button
-        className="flat-btn delete-user-btn"
-        onClick={handleDeleteUser}
-      >
-        <FaTrash />
-      </button>
+      <DeleteUserButton user={createdUser} redirectTo="/login" />
 
       <img
         src={avatar}
@@ -38,7 +31,9 @@ function ConfirmationStep({
       <h2 className="User-name">{name}</h2>
 
       <div className="button-group">
-        <EditProfileButton onClick={() => setStep(1)} />
+        <EditProfileButton
+  onClick={() => navigate(`/edit-user/${createdUser.id}`)}
+/>
 
         {!isEditMode && (
           <button
