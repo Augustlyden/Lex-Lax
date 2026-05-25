@@ -4,6 +4,7 @@ import './styles/buttons.css'
 import Footer from './components/Footer'
 import Navbar from './components/Navbar'
 
+import AddUser from './pages/AddUser'
 import LoginPage from "./pages/LoginPage"
 import DashboardPage from "./pages/DashboardPage"
 import VocabularyPage from './pages/VocabularyPage'
