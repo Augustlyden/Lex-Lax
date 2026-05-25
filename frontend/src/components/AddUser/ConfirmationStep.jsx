@@ -1,28 +1,63 @@
+import { useNavigate } from "react-router-dom";
 import { FaTrash } from "react-icons/fa";
+import EditProfileButton from "../UI/EditProfileButton";
 
-function ConfirmationStep({ name, avatars, selectedAvatar, setStep, handleAddAnotherUser, handleDeleteUser }) {
-            const avatar = avatars.find((avatar) => avatar.id === selectedAvatar)?.image_url;
-            return (
-                <div className="step">
-                    <h2>Användare skapad!</h2>
-                    <button className="flat-btn delete-user-btn" onClick={handleDeleteUser}>
-                        <FaTrash />
-                    </button>
-                    <img src={avatar} alt="Vald avatar" className="created-avatar" />
-                    <h2 className="User-name">{name}</h2>
-                    <div className="button-group">
-                        <button className="flat-btn" onClick={() => setStep(1)}>
-                            Redigera
-                        </button>
-                        <button className="secondary-btn" onClick={handleAddAnotherUser}>
-                            Skapa en till användare
-                        </button>
-                        <button className="primary-btn" onClick={() => console.log("Gå till startsidan")}>
-                            {name}s startsida
-                        </button>
-                    </div>
-                </div>
-            );
-        }
+function ConfirmationStep({
+  name,
+  avatars,
+  selectedAvatar,
+  createdUser,
+  setStep,
+  handleAddAnotherUser,
+  handleDeleteUser,
+  isEditMode,
+}) {
+  const navigate = useNavigate();
 
-        export default ConfirmationStep;
+  const avatar = avatars.find(
+    (avatar) => String(avatar.id) === String(selectedAvatar)
+  )?.image_url;
+
+  return (
+    <div className="step">
+      <h2>{isEditMode ? "Användare uppdaterad!" : "Användare skapad!"}</h2>
+
+      <button
+        className="flat-btn delete-user-btn"
+        onClick={handleDeleteUser}
+      >
+        <FaTrash />
+      </button>
+
+      <img
+        src={avatar}
+        alt="Vald avatar"
+        className="created-avatar"
+      />
+
+      <h2 className="User-name">{name}</h2>
+
+      <div className="button-group">
+        <EditProfileButton onClick={() => setStep(1)} />
+
+        {!isEditMode && (
+          <button
+            className="secondary-btn"
+            onClick={handleAddAnotherUser}
+          >
+            Skapa en till användare
+          </button>
+        )}
+
+        <button
+          className="primary-btn"
+          onClick={() => navigate(`/dashboard/${createdUser.id}`)}
+        >
+          {name}s startsida
+        </button>
+      </div>
+    </div>
+  );
+}
+
+export default ConfirmationStep;
