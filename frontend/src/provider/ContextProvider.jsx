@@ -52,6 +52,7 @@ export const ContextProvider = ({ children }) => {
       setUsers((prevUsers) => [...prevUsers, data]);
       console.log('Användare skapad:', data);
       setLoading(false);
+      return data;
     } catch (error) {
       errorHandler(error);
     }
@@ -68,6 +69,7 @@ export const ContextProvider = ({ children }) => {
       );
       console.log('Användare uppdaterad:', data);
       setLoading(false);
+      return data;
     } catch (error) {
       errorHandler(error);
     }
