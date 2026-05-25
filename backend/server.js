@@ -4,6 +4,7 @@ import cors from 'cors';
 import userRoutes from './routes/userRoutes.js';
 import subjectRoutes from './routes/subjectRoutes.js';
 import listRoutes from './routes/listRoutes.js';
+import avatarRoutes from './routes/avatarRoutes.js';
 import questionRoutes from './routes/questionRoutes.js';
 import statisticRoutes from './routes/statisticRoutes.js';
 
@@ -19,6 +20,7 @@ app.use(express.json());
 app.use('/api/users', userRoutes);
 app.use('/api/subjects', subjectRoutes);
 app.use('/api/lists', listRoutes);
+app.use('/api/avatars', avatarRoutes);
 app.use('/api/questions', questionRoutes);
 app.use('/api/statistics', statisticRoutes);
 

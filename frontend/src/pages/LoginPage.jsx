@@ -35,7 +35,7 @@ const users = [
                     <UserCard key={user.id} user={user} />
                 ))}
               </div>
-              <button className = "primary-button">Hantera Profiler</button>
+              <button className = "primary-btn">Hantera Profiler</button>
                   </div>
             </div>
 

@@ -52,6 +52,7 @@ export const ContextProvider = ({ children }) => {
       setUsers((prevUsers) => [...prevUsers, data]);
       console.log('Användare skapad:', data);
       setLoading(false);
+      return data;
     } catch (error) {
       errorHandler(error);
     }
@@ -68,6 +69,7 @@ export const ContextProvider = ({ children }) => {
       );
       console.log('Användare uppdaterad:', data);
       setLoading(false);
+      return data;
     } catch (error) {
       errorHandler(error);
     }
@@ -77,7 +79,7 @@ export const ContextProvider = ({ children }) => {
     errorHandler(null);
     setLoading(true);
     try {
-      const data = await deleteApiUser(id);
+      await deleteApiUser(id);
       if (currentUser?.id === id) {
         setCurrentUser(null);
       }
@@ -90,8 +92,7 @@ export const ContextProvider = ({ children }) => {
 
   useEffect(() => {
     fetchUsers();
-    // TILLFÄLLIGT HÅRDKODAT ID 
-    fetchUsersById(8);
+    fetchUsersById();
   }, []);
 
   return (
