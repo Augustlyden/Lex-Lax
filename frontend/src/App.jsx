@@ -5,24 +5,39 @@ import Footer from './components/Footer'
 import Navbar from './components/Navbar'
 
 import LoginPage from "./pages/LoginPage"
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import QuestionPage from './pages/QuestionPage'
+// import DashboardPage from './pages/DashboardPage'
 import DashboardPage from "./pages/DashboardPage"
 import VocabularyPage from './pages/VocabularyPage'
 
 function App() {
 
-  
-
   return (
-  <>
-    <Navbar />
+    <>
 
+
+      <BrowserRouter>
+        <Navbar />
+
+        <main>
+        <Routes>
+          <Route path="/" element={<LoginPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/questions" element={<QuestionPage />} />
+          {/* <Route path="/dashboard" element={<DashboardPage />} /> */}
+
+        </Routes>
+
+        </main>
     <main>
     < LoginPage/>
    
     </main>
 
-    <Footer />
-  </>
+        <Footer />
+      </BrowserRouter>
+    </>
   )
 }
 
