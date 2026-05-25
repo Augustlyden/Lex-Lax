@@ -1,14 +1,14 @@
 import './styles/global.css'
+import './App.css'
 import './styles/buttons.css'
 import Footer from './components/Footer'
 import Navbar from './components/Navbar'
-import './App.css'
+
 import LoginPage from "./pages/LoginPage"
 import DashboardPage from "./pages/DashboardPage"
+import VocabularyPage from './pages/VocabularyPage'
 
-import AddUser from "./pages/AddUser"
-
-/* function App() {
+function App() {
 
   
 
@@ -17,26 +17,12 @@ import AddUser from "./pages/AddUser"
     <Navbar />
 
     <main>
-    <LoginPage />
+    < LoginPage/>
    
     </main>
 
     <Footer />
   </>
-  )
-}
-
-export default App */
-
-function App() {
-
-  return (
-    <>
-      <main>
-        <AddUser />
-      </main>
-      <Footer />
-    </>
   )
 }
 
