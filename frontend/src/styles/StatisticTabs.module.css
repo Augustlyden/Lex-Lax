@@ -35,9 +35,15 @@
 }
 
 .title {
-  margin: 5px 0 15px 0;
+  margin: 5px 0px;
   font-size: 1.25rem;
   color: var(--text-color-dark);
+}
+
+.lastPracticed {
+  font-size: 0.85rem;
+  color: var(--text-color-light);
+  margin-bottom: 15px;
 }
 
 .scoreRow {

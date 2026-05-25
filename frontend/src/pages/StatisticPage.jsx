@@ -3,7 +3,8 @@ import { getAllStats } from '../api/statisticApi.js';
 import { getAllSubjects } from '../api/subjectApi.js';
 import { useState, useEffect } from 'react';
 import Loading from '../components/UI/Loading.jsx'
-import StatsTabs from '../components/Statistics/StatisticTabs.jsx';
+import StatisticTabs from '../components/Statistics/StatisticTabs.jsx';
+import StatisticDetails from '../components/Statistics/StatisticDetails.jsx';
 
 const StatisticPage = () => {
   const { currentUser, error: userError } = useAppContext();
@@ -53,7 +54,16 @@ const StatisticPage = () => {
 
   return (
     <div>
-      <StatsTabs allStats={allStats} onSelectList={setSelectedListId} subjects={subjects}/>
+      <StatisticTabs 
+        allStats={allStats} 
+        onSelectList={setSelectedListId} 
+        subjects={subjects}/>
+      {selectedListId && (
+        <StatisticDetails 
+         userId={currentUser.id}
+         listId={selectedListId}
+         onClose={() => setSelectedListId(null)}/>
+      )}
     </div>
   )
 }

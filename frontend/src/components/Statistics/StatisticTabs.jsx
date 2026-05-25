@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import styles from '../../styles/StatisticTabs.module.css';
+import { formatDate } from '../../utils/formatDate';
 
-const StatsTabs = ({ allStats, onSelectList, subjects }) => {
+const StatisticTabs = ({ allStats, onSelectList, subjects }) => {
   const [activeTab, setActiveTab] = useState('Alla');
 
   const filteredStats = activeTab === 'Alla'
@@ -49,6 +50,10 @@ const StatsTabs = ({ allStats, onSelectList, subjects }) => {
                   </span>
                   <h3 className={styles.title}>{list.title}</h3>
 
+                  <p className={styles.lastPracticed}>
+                    Senast övad: <strong>{formatDate(list.last_practiced)}</strong>
+                  </p>
+
                   <div className={styles.scoreRow}>
                     <span className={styles.correct}>Antal rätt: {list.correct_answers}</span>
                     <span className={styles.wrong}>Antal fel: {list.wrong_answers}</span>
@@ -62,7 +67,7 @@ const StatsTabs = ({ allStats, onSelectList, subjects }) => {
                 </div>
 
                 <button
-                  onClick={() => onSelectList(list.id)}
+                  onClick={() => onSelectList(list.list_id)}
                   className={styles.detailButton}>
                     Visa historik
                 </button>
@@ -75,4 +80,4 @@ const StatsTabs = ({ allStats, onSelectList, subjects }) => {
   )
 }
 
-export default StatsTabs
+export default StatisticTabs
