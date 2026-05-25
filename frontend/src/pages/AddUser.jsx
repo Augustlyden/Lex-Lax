@@ -20,20 +20,19 @@ function AddUser() {
     const [createdUser, setCreatedUser] = useState(null);
     const { createUser, updateUser, deleteUser} = useAppContext();
 
+    const handleDeleteUser = async () => {
+        const confirmDelete = window.confirm("Är du säker på att du vill ta bort den skapade användaren?  Allt på din profil kommer att raderas.");
+       
+if (!confirmDelete) return;
+
+    await deleteUser(createdUser.id);
+    setCreatedUser(null);
+    window.alert("Användaren har tagits bort.");
+    window.location.href = "/login";
+        
+    };
 
     useEffect(() => {
-        const handleDeleteUser = async () => {
-            const confirmDelete = window.confirm("Är du säker på att du vill ta bort den skapade användaren?  Allt på din profil kommer att raderas.");
-           
-            if (!confirmDelete) {
-                return;
-         
-                await deleteUser(createdUser.id);
-                setCreatedUser(null);
-                window.alert("Användaren har tagits bort.");
-                window.location.href = "/login";
-            }
-        };
 
         const fetchAvatars = async () => {
             const avatarData = await getAvatars();
@@ -77,10 +76,15 @@ const handleCreateUser = async () => {
       selectedAvatar,
     });
   } else {
+
     const newUser = await createUser(formattedName, selectedAvatar);
 
-    setCreatedUser(newUser);
-  }
+    setCreatedUser(newUser || {
+        id: Date.now(),
+        name: formattedName,
+        selectedAvatar,
+     }
+    );}
 
   setStep(3);
 };
@@ -117,12 +121,13 @@ return (
 
     {step === 3 && (
        <ConfirmationStep
-          name={formatName(name)}
-          avatars={avatars}
-          selectedAvatar={selectedAvatar}
-          setStep={setStep}
-          handleAddAnotherUser={handleAddAnotherUser}
-          handleDeleteUser={handleDeleteUser}
+        name={formatName(name)}
+        avatars={avatars}
+        selectedAvatar={selectedAvatar}
+        createdUser={createdUser}
+        setStep={setStep}
+        handleAddAnotherUser={handleAddAnotherUser}
+        handleDeleteUser={handleDeleteUser}
         />
     )}
 
