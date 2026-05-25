@@ -1,91 +1,90 @@
 
 .create-word-list-header-container h2
- {
-  color: var(--text-color-btn);
- 
-  line-height: 1.5;
+{
+color: var(--text-color-btn);
+line-height: 1.5;
 }
 
-.word-list-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    width: 100%;
-    border-radius: var(--radius-soft);
-    }
+.create-word-list-wrapper {
+display: flex;
+flex-direction: column;
+gap: 2rem;
+width: 100%;
+border-radius: var(--radius-soft);
+}
 .create-word-list-container {
-    display: flex;
-    flex-direction: column;
-    max-height: 600px;
-        width: 100%;
-        border-radius: var(--radius-soft);
-      border: 3px solid var(--subject-1);
-      box-shadow: var(--shadow-soft);
-      padding: 1rem;
- }
+display: flex;
+flex-direction: column;
+max-height: 600px;
+width: 100%;
+border-radius: var(--radius-soft);
+border: 3px solid var(--subject-1);
+box-shadow: var(--shadow-soft);
+padding: 1rem;
+}
 .create-word-list-card {
-    display: flex;
-    flex-direction: row;
-    
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 12px;
-    gap: 1rem;
+display: flex;
+flex-direction: row;
+
+justify-content: space-between;
+align-items: center;
+border-radius: 12px;
+gap: 1rem;
 }
 .create-word-list-header-container {
-   display: flex;
+display: flex;
 flex-direction: row;
 align-items: center;
 width: 100%;
 padding: 1rem;
-  background: var(--subject-1-gradient);
-    border-radius: var(--radius-soft);
-    border-color: var(--subject-2-gradient);
-    box-shadow: var(--box-shadow-glow);
-    margin: 0;
-    flex-wrap: wrap;
-   
-   }
+background: var(--subject-1-gradient);
+border-radius: var(--radius-soft);
+border-color: var(--subject-2-gradient);
+box-shadow: var(--box-shadow-glow);
+margin: 0;
+flex-wrap: wrap;
+
+}
 .word-left,
 .word-right {
-    flex: 1;
+flex: 1;
 }
- .word-input {
-  padding: 8px 12px;
+.word-input {
+padding: 8px 12px;
 }
- .word-from-to-card {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 0.5rem;
-    border-radius: var(--radius-soft);
-    gap: 1rem;
+.word-from-to-card {
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0.5rem;
+border-radius: var(--radius-soft);
+gap: 1rem;
 }
 .word-input:focus {
-    border-color: var(--subject-1);
+border-color: var(--subject-1);
 }
 
 .word-list-scroll-container {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    border-radius: 16px;
-    height: 200px;
-    overflow-y: auto;
-    margin-bottom: 1rem;
-    padding-top: 1rem;
-   }
+display: flex;
+flex-direction: column;
+gap: 0.5rem;
+border-radius: 16px;
+height: 200px;
+overflow-y: auto;
+margin-bottom: 1rem;
+padding-top: 1rem;
+}
 .words-scroll-container::-webkit-scrollbar {
-    width: 8px;
+width: 8px;
 }
 .words-scroll-container::-webkit-scrollbar-thumb {
-    background-color: var(--subject-1);
-    border-radius: var(--radius-soft);
+background-color: var(--subject-1);
+border-radius: var(--radius-soft);
 }
 .margin-button {
-    margin: 1rem;
+margin: 1rem;
 }
 .word-input {
-    width: 100%;
-    min-width: 0;
+width: 100%;
+min-width: 0;
 }

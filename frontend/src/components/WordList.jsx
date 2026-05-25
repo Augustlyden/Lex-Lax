@@ -95,7 +95,9 @@ if(loading) {
 
     <div className={styles.listActions}>
       <button className="primary-btn">Träna!</button>
-      <button className="secondary-btn">Redigera</button>
+    
+      <Link className = "secondary-Btn" to={`/vocabulary/${subjectId}/edit/${list.id}`}>Redigera</Link>
+
       <button className="primary-btn delete-btn" 
               onClick={() => handleDelete(list.id)}>
       Radera

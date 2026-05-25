@@ -16,7 +16,7 @@ border-color: var(--subject-2-gradient);
 box-shadow: var(--box-shadow-glow);
 margin: 0;
 flex-wrap: wrap;
-  }
+}
 .listHeaderContent h1,
 .listHeaderContent p {
 color: var(--text-color-btn);
@@ -41,10 +41,10 @@ flex-wrap: wrap;
 border-radius: var(--radius-soft);
 box-shadow: var(--shadow-soft);
 padding: 0.2rem;
-    
+  
 }
 .listTitle {
- flex: 1;
+flex: 1;
 min-width: 150px;
 }
 .listActions {
@@ -66,9 +66,9 @@ margin-bottom: 1rem;
 }
 
 .deleteBtn {
-  background: var(--color-delete);
-  color: var(--text-color-btn);
-  box-shadow:
-    var(--box-shadow-glow),
-    0 4px 0 #a3002c;
+background: var(--color-delete);
+color: var(--text-color-btn);
+box-shadow:
+  var(--box-shadow-glow),
+  0 4px 0 #a3002c;
 }
