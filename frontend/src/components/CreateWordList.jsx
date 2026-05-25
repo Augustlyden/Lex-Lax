@@ -3,9 +3,13 @@ import {useState} from "react"
 import "../styles/createWordList.css"
 import { createList } from "../api/listApi";
 import { createQuestions } from "../api/questionsApi";
-import {Link} from "react-router-dom"
+import {Link, useParams} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
-function CreateWordList({userId, subjectId}) {
+function CreateWordList({userId}) {
+  
+  const { subjectId } = useParams();
+  const navigate = useNavigate();
  
   const [questions, setQuestions] = useState([{ question: "", answer: "" }]);
   const [languageTo, setLanguageTo] = useState("Engelska");
@@ -24,7 +28,7 @@ function CreateWordList({userId, subjectId}) {
       const selectedLanguage = e.target.value;
       setLanguageTo(selectedLanguage);
       setTitle(
-      `${selectedLanguage} - ${getCurrentWeek()}`
+      `${selectedLanguage} ${getCurrentWeek()}`
     );
     console.log("Language changed to:", e.target.value)
   }
@@ -36,11 +40,7 @@ function CreateWordList({userId, subjectId}) {
 async function handleSubmit(e) {
   e.preventDefault();
 
-  const filteredQuestions = questions.filter(
-    (item) =>
-      item.question.trim() !== "" &&
-      item.answer.trim() !== ""
-  );
+  const filteredQuestions = questions.filter((item) => item.question.trim() !== "" && item.answer.trim() !== "");
 
   try {
     const createdList = await createList({title: title, targetLanguage: languageTo, userId: 1, subjectId: 1});
@@ -49,12 +49,13 @@ async function handleSubmit(e) {
   } catch (error) {
     console.error(error);
   }
+  navigate(`/vocabulary/${subjectId}`);
 }
 
     return (
           <div className="word-list-wrapper">
          <div className="">
-           <Link to={"/Dashboard"} className="flat-btn">Tillbaka</Link>
+           <Link to={`/vocabulary/${subjectId}`} className="flat-btn">Tillbaka</Link>
           </div>
         <div className = "create-word-list-header-container">
         <h2>Skriv in veckans glosor!</h2>
