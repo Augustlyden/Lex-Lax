@@ -1,19 +1,12 @@
 import apiClient from "./axiosConfig";
 
-// OBS INGET TESTAT ÄNNU
-
-export const testQuestions = async () => {
-    console.log('hej vi kör')
-    const response = await apiClient.get('/questions/test');
-    return response;
-}
-
 export const getQuestions = async (listId) => {
-    console.log(listId)
-    console.log('get qeustions kör');
   const response = await apiClient.get(`/questions?listId=${listId}`);
-  return response.data; 
+  return response.data.data; 
 };
+
+
+// ALLT HÄR UNDER ÄR OTESTAT - BARA FÖRSLAG PÅ API-FUNKTIONER
 
 export const createQuestion = async (questionText, listId) => {
   const response = await apiClient.post('/questions/', { questionText, listId });
