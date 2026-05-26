@@ -42,7 +42,7 @@ const QuestionCard = ({
 
 
                 <button type="submit" className='primary-btn'>
-                    {currentCount === totalCount ? 'Avsluta test' : 'Nästa fråga'}
+                    {currentCount === totalCount ? 'Se resultat' : 'Nästa fråga'}
                 </button>
             </form>
         </div>
