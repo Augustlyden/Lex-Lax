@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { getQuestions } from '../api/questionsApi';
 import QuestionCard from '../components/QuestionCard';
 import Loading from '../components/UI/Loading';
+import { useParams } from 'react-router-dom';
 
 const QuestionPage = () => {
     const [questions, setQuestions] = useState([]);
@@ -12,6 +13,8 @@ const QuestionPage = () => {
     const [currentAnswer, setCurrentAnswer] = useState('');
     const [loading, setLoading] = useState(true);
     const [userAnswers, setUserAnswers] = useState([]);
+
+    const { listId } = useParams();
 
     useEffect(() => {
         const fetchListById = async (listId) => {
@@ -24,11 +27,7 @@ const QuestionPage = () => {
                 console.error('Failed to fetch questions:', error);
             }
         };
-
-        // OBS HÅRDKODAT LIST-ID FÖR TESTNING
-        fetchListById(12);
-        // OBS HÅRDKODAT LIST-ID FÖR TESTNING
-
+        fetchListById(listId);
     }, []);
 
     const nextQuestion = () => {

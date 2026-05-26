@@ -29,7 +29,7 @@ function App() {
           <Route path="/" element={<DashboardPage />} />
           <Route path="/logga-in" element={<LoginPage />} />
           <Route path="/skapa-profil" element={<AddUser />} />
-          <Route path="/test" element={<QuestionPage />} />
+          <Route path="/test/:listId" element={<QuestionPage />} />
           <Route path="/amne" element={<VocabularyPage />} />
 
           <Route path="/vocabulary/:subjectId" element={<VocabularyPage />}/>

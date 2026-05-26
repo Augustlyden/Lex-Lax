@@ -92,7 +92,6 @@ export const ContextProvider = ({ children }) => {
 
   useEffect(() => {
     fetchUsers();
-    fetchUsersById();
   }, []);
 
   return (
@@ -103,7 +102,8 @@ export const ContextProvider = ({ children }) => {
       error,
       createUser,
       updateUser,
-      deleteUser
+      deleteUser,
+      fetchUsersById
     }}>
       {children}
     </Context.Provider>
