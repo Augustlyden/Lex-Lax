@@ -11,7 +11,6 @@ import VocabularyPage from './pages/VocabularyPage'
 import AddUser from './pages/AddUser'
 import { PureComponent } from 'react'
 import CreateWordList from './components/CreateWordList'
-import { Route, Routes } from 'react-router-dom'
 import EditWordList from "./components/EditWordList"
 import MathPage from "./pages/MathPage"
 
