@@ -4,28 +4,33 @@ import {Link, useParams} from "react-router-dom"
 import { getQuestions } from "../api/questionsApi";
 import {useState, useEffect} from "react"
 
-
 function EditWordList() {
 
   const { subjectId, listId } = useParams();
   const [existingList, setExistingList] = useState(null);
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
    
     async function fetchListData() {
      try {
+      setLoading(true)
         const list = await getListById(listId);
         const questions = await getQuestions(listId);
+        console.log(questions);
        
         setExistingList({
           title: list.title,
           languageTo: list.target_language,
-          questions: questions.data
+          questions: questions
         });
 
       } catch (error) {
         console.error(error);
+      }finally {
+        setLoading(false)
       }
+
     }
 
     fetchListData();
@@ -57,23 +62,27 @@ function EditWordList() {
     }
   }
    
-    return (
 
-     <div className="create-word-list-wrapper">
-         <div className="">
-         <Link to={"/vocabulary/" + subjectId} className="flat-btn">Tillbaka</Link>
-          </div>
-        <div className = "create-word-list-header-container">
-        <h2>Redigera</h2>
-        </div>
-        <WordListForm 
-        onSubmit={handleSubmit}
-        initialData={existingList}
-      
-        />
-        </div>
-        
-    )
+    return (
+    
+      <div className="create-word-list-wrapper">
+     
+        <div className="">
+        <Link to={"/vocabulary/" + subjectId} className="flat-btn">Tillbaka</Link>
+      </div>
+      <div className = "create-word-list-header-container">
+      <h2>Redigera</h2>
+      </div>
+
+      {loading ? (
+      <p>Hämtar lista...</p>
+      ) : (
+      <WordListForm 
+      onSubmit={handleSubmit}
+      initialData={existingList}/>
+      )}
+      </div>
+     )
 }
 
 export default EditWordList
