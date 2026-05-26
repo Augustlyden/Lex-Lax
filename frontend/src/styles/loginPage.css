@@ -1,52 +1,24 @@
-.login-page-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 70vh;
-}
-.login-content-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-    }
-.login-user-content {
-    display: flex;
-    gap: 2rem;
-}
-.login-user-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    cursor: pointer;
-    transition: 0.2s ease;
-}
-.login-user-card:hover {
-    transform: scale(1.05);
-}
-.login-user-image {
-    width: 140px;
-    height: 140px;
-    background-color: var(--secondary-color);
-    border-radius: var(--radius-soft);
-    background-size: cover;
-    background-position: center;
-}
-.login-user-image img {
-    width: 140px;
-    height: 140px;
-    object-fit: cover;
-    border-radius: 12px;
-}
-.login-user-card h2 {
-    margin-top: 1rem;
-    font-size: 1rem;
-}
 .login-text-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: var(--text-color-light);
-    padding: 1rem;
+    text-align: center;
+    margin-bottom: 2rem;}
+
+.login-user-content {
+display: flex;
+gap: 20px;
+flex-wrap: wrap;
+justify-content: center;
+    }
+
+.new-user-text {
+        display: flex;
+flex-direction: column;
+align-items: center;
+gap: 10px;
+position: relative;
 }
+
+.open-edit-btn {
+  display: block;
+  margin: 4rem auto 0;
+}
+
