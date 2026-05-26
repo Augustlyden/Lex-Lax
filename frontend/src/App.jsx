@@ -44,6 +44,7 @@ function App() {
           <Route path="/dashboard/:userId" element={<DashboardPage />} />
 
           <Route path="/test" element={<QuestionPage />} />
+          <Route path="/test/:listId" element={<QuestionPage />} />
           <Route path="/amne" element={<VocabularyPage />} />
 
           <Route path="/vocabulary/:subjectId" element={<VocabularyPage />} />

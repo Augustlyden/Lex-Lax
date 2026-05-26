@@ -97,8 +97,7 @@ const updateUser = async (id, username, profileImg) => {
 
   useEffect(() => {
     fetchUsers();
-/*     fetchUsersById();
- */  }, []);
+  }, []);
 
   return (
     <Context.Provider value={{
@@ -108,7 +107,8 @@ const updateUser = async (id, username, profileImg) => {
       error,
       createUser,
       updateUser,
-      deleteUser
+      deleteUser,
+      fetchUsersById
     }}>
       {children}
     </Context.Provider>
