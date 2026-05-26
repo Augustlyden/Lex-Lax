@@ -29,7 +29,7 @@ function WordList({userId, subjectId}) {
     try {
       setLoading(true)
       const response = await fetch(
-        `http://localhost:3000/api/lists?subjectId=${1}&userId=${1}`
+        `http://localhost:3000/api/lists?subjectId=${1}&userId=${19}`
       );
       const data = await response.json();
       if (data.success) {
