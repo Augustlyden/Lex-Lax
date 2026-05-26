@@ -23,11 +23,10 @@ function App() {
 
         <main>
         <Routes>
-          {/* <Route path="/" element={<Home />} /> */}
+          <Route path="/" element={<DashboardPage />} />
           <Route path="/logga-in" element={<LoginPage />} />
           <Route path="/skapa-profil" element={<AddUser />} />
           <Route path="/test" element={<QuestionPage />} />
-          <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/amne" element={<VocabularyPage />} />
 
         </Routes>
