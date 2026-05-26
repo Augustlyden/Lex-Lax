@@ -3,35 +3,56 @@ import './App.css'
 import './styles/buttons.css'
 import Footer from './components/Footer'
 import Navbar from './components/Navbar'
-import { Routes, Route } from "react-router-dom";
-
-
-import AddUser from './pages/AddUser'
 import LoginPage from "./pages/LoginPage"
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import QuestionPage from './pages/QuestionPage'
 import DashboardPage from "./pages/DashboardPage"
 import VocabularyPage from './pages/VocabularyPage'
+import AddUser from './pages/AddUser'
+import { PureComponent } from 'react'
+import CreateWordList from './components/CreateWordList'
+import EditWordList from "./components/EditWordList"
+import MathPage from "./pages/MathPage"
+import StatisticPage from './pages/StatisticPage'
 
 function App() {
 
-  
-
   return (
-  <>
-    <Navbar />
+    <>
 
- <main>
-  <Routes>
-    <Route path="/" element={<LoginPage />} />
-    <Route path="/login" element={<LoginPage />} />
-    <Route path="/add-user" element={<AddUser />} />
-    <Route path="/dashboard/:userId" element={<DashboardPage />} />
-    <Route path="/vocabulary/:userId" element={<VocabularyPage />} />
-    <Route path="/edit-user/:userId" element={<AddUser />} />
-  </Routes>
-</main>
 
-    <Footer />
-  </>
+      <BrowserRouter>
+        <Navbar />
+
+        <main>
+        <Routes>
+          <Route path="/" element={<DashboardPage />} />
+          <Route path="/logga-in" element={<LoginPage />} />
+          <Route path="/skapa-profil" element={<AddUser />} />
+          <Route path="/test" element={<QuestionPage />} />
+          <Route path="/amne" element={<VocabularyPage />} />
+
+          <Route path="/vocabulary/:subjectId" element={<VocabularyPage />}/>
+          <Route path="/math/:subjectId" element={<MathPage />}/>
+          <Route path="/vocabulary/:subjectId/create" element={<CreateWordList />}/>
+          <Route path="/vocabulary/:subjectId/edit/:listId" element={<EditWordList />}/>
+
+          <Route path='/statistik' element={<StatisticPage />}></Route>
+
+        </Routes>
+
+        </main>
+    <main>
+       < LoginPage/>
+ 
+  </main>
+
+    
+
+
+        <Footer />
+      </BrowserRouter>
+    </>
   )
 }
 

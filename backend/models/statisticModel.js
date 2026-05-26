@@ -8,6 +8,7 @@ class Statistic {
         us.correct_answers,
         us.wrong_answers,
         us.last_practiced,
+        lists.id AS list_id,
         lists.title AS title,
         lists.target_language AS language,
         lists.subject_id AS subject_id,

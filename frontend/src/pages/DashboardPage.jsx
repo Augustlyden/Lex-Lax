@@ -1,13 +1,40 @@
 import "../styles/dashboardPage.css"
-import { MdCalculate } from "react-icons/md";
-import { FaBook } from "react-icons/fa";
-import { IoTime } from "react-icons/io5";
-
-import languageIcon from "../assets/subjects/language-icon.webp";
-import mathIcon from "../assets/subjects/math-icon.webp";
-import swedishIcon from "../assets/subjects/swedish-icon.webp";
+import { useNavigate } from "react-router-dom";
 import stars from "../assets/ui/stars.webp";
+import Subjects from "../components/Subjects"
+import Loading from "../components/UI/Loading"
+import { useState, useEffect } from "react";
+
 function DashboardPage() {
+
+  const [loading, setLoading] = useState(false);
+  const [subjects, setSubjects] = useState([]);
+
+
+  useEffect(() => {
+  async function fetchSubjects() {
+    try {
+      setLoading(true)
+      const response = await fetch("http://localhost:3000/api/subjects");
+      const data = await response.json();
+      if (data.success) {
+        setSubjects(data.data);
+      }
+
+    } catch (error) {
+      console.error("Failed to fetch lists:", error);
+    }finally {
+      setLoading(false)
+    }
+  }
+
+  fetchSubjects();
+}, []);
+
+
+if(loading) {
+    return <Loading />
+}
  
     return (
         <div className="dashboard-page-container">
@@ -27,38 +54,15 @@ function DashboardPage() {
                </div>
             </div>
            </div>
-                <div className = "subject-container">
-                    
-                        
-                   <div className = "subject-card border-math">
-                    <div className="subject-icon-wrapper maths">
-                      <img src={mathIcon} className = "subject-icon" alt="Math icon" />
-                         </div>
-                        <h2>MATEMATIK</h2>
-                        <p>Du har 5 uppgifter kvar att slutföra.</p>
-                    </div>
-                       <div className = "subject-card border-glosor">
-                    <div className="subject-icon-wrapper glosor">
-                        <img src={languageIcon} className = "subject-icon" alt="Language icon" />
-                         </div>
-                        <h2>GLOSOR</h2>
-                        <p>Du har 5 uppgifter kvar att slutföra.</p>
-                    </div>
-                       <div className = "subject-card border-watch">
-                    <div className="subject-icon-wrapper watch">
-                        <IoTime className="subject-icon" />
-                         </div>
-                        <h2>KLOCKAN</h2>
-                        <p>Du har 5 uppgifter kvar att slutföra.</p>
-                    </div>
-                       <div className = "subject-card border-swedish">
-                    <div className="subject-icon-wrapper swedish">
-                          <img src={swedishIcon} className = "subject-icon" alt="Language icon" />
-                         </div>
-                        <h2>SVENSKA</h2>
-                        <p>Du har 5 uppgifter kvar att slutföra.</p>
-                    </div>
-                </div>
+
+           <div className = "subject-container">
+       {subjects.map(subject => (
+       <Subjects
+       key={subject.id}
+       subject={subject}
+  />
+))}
+</div>
                          </div>
                                </div>
 
