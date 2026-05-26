@@ -1,0 +1,114 @@
+.question-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 20px;
+}
+
+.question-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  background-image: var(--subject-1-gradient);
+  border-radius: var(--radius-soft);
+  padding: 20px;
+  margin: 20px;
+  place-self: center;
+  box-shadow: var(--shadow-soft);
+  color: var(--text-color-btn);
+
+  width: clamp(350px, 80%, 500px);
+  z-index: 9999;
+
+}
+
+.question-page .page-title {
+  text-align: center;
+}
+
+.question-card form {
+  display: grid;
+  grid-template-columns: 2fr 3fr 3fr;
+  gap: 1rem;
+  width: 100%;
+}
+
+.question-card input {
+  grid-column: 1 / -1;
+}
+
+
+/* RESULTAT */
+.end-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.summary-container {
+  margin: 20px 0;
+  text-align: left;
+  max-width: 500px;
+  width: 100%;
+  padding: 20px;
+}
+
+.summary-container h4 {
+  margin-bottom: 15px;
+  color: var(--text-color-dark);
+}
+
+.summary-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.summary-item {
+  display: flex;
+  gap: 15px;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: var(--radius-soft);
+  border-left: 5px solid transparent;
+}
+
+/* Grön markering för rätt */
+.summary-item.correct-row {
+  background-color: #e6f4ea;
+  border-left-color: var(--color-reward);
+}
+
+/* Röd markering för fel */
+.summary-item.wrong-row {
+  background-color: #fce8e6;
+  border-left-color: var(--color-delete);
+}
+
+.summary-status {
+  display: flex;
+  align-items: center;
+  /* Centrerar bocken/krysset vertikalt */
+  justify-content: center;
+  white-space: nowrap;
+  min-width: 24px;
+}
+
+.summary-details p {
+  margin: 2px 0;
+  font-size: 0.95rem;
+  padding-left: 10px;
+}
+
+.correct-ans {
+  font-weight: bold;
+}
+
+.end-buttons {
+  display: flex;
+  padding: 0px 20px;
+
+  gap: 20px;
+}
