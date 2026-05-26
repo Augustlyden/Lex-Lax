@@ -39,6 +39,15 @@
     var(--btn-depth);
 }
 
+.delete-btn {
+  background: var(--color-delete);
+  color: var(--text-color-btn);
+  box-shadow:
+  var(--box-shadow-glow),
+   0 4px 0 #a3002c;
+}
+
+
 .primary-btn:hover,
 .secondary-btn:hover {
   transform: translateY(-2px);

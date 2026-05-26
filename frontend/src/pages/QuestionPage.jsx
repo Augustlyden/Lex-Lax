@@ -1,120 +1,3 @@
-// import '../styles/questionCard.css';
-// import { useEffect, useState } from 'react';
-// import { getQuestions } from '../api/questionsApi';
-// import QuestionCard from '../components/QuestionCard';
-// import Loading from '../components/UI/Loading';
-
-// const QuestionPage = () => {
-//     const [questions, setQuestions] = useState([]);
-//     const [currentIndex, setCurrentIndex] = useState(0);
-//     const [gameFinished, setGameFinished] = useState(false);
-//     const [score, setScore] = useState(0);
-//     const [currentAnswer, setCurrentAnswer] = useState('');
-//     const [loading, setLoading] = useState(true);
-
-//     useEffect(() => {
-//         const fetchListById = async (listId) => {
-//             try {
-//                 const data = await getQuestions(listId);
-//                 setLoading(false);
-
-//                 // Slumpa listans frågor
-//                 const randomizedData = [...data].sort(() => Math.random() - 0.5);
-
-//                 setQuestions(randomizedData);
-//             } catch (error) {
-//                 console.error('Failed to fetch questions:', error);
-//             }
-//         };
-//         // HÅRDKODAT LIST-ID FÖR TESTNING - KAN ÄNDRA SENARE
-//         // HÅRDKODAT LIST-ID FÖR TESTNING - KAN ÄNDRA SENARE
-//         fetchListById(9);
-//         // HÅRDKODAT LIST-ID FÖR TESTNING - KAN ÄNDRA SENARE
-//         // HÅRDKODAT LIST-ID FÖR TESTNING - KAN ÄNDRA SENARE
-//     }, []);
-
-//     const nextQuestion = () => {
-//         const wasCorrect = validateQuestion(currentAnswer);
-//         const updatedScore = wasCorrect ? score + 1 : score;
-
-//         if (currentIndex < questions.length - 1) {
-//             setCurrentIndex(prevIndex => prevIndex + 1);
-//             setCurrentAnswer('');
-//         } else {
-//             const amountOfQuestions = questions.length;
-//             console.log(`du fick ${updatedScore} av ${amountOfQuestions} rätt!`);
-
-//             setGameFinished(true);
-//         }
-//     };
-
-//     const restartGame = () => {
-//         const randomizedData = [...questions].sort(() => Math.random() - 0.5);
-//         setQuestions(randomizedData);
-//         setCurrentIndex(0);
-//         setGameFinished(false);
-//         setScore(0);
-//         setCurrentAnswer('');
-//     };
-
-//     // Hämta ut det aktuella kortet baserat på vårt index
-//     const currentQuestion = questions[currentIndex];
-
-
-//     const validateQuestion = (answer) => {
-//         const userAnswerCleaned = answer.trim().toLowerCase();
-//         const correctAnswerCleaned = currentQuestion.answer.trim().toLowerCase();
-
-//         const isCorrect = userAnswerCleaned === correctAnswerCleaned;
-
-//         if (isCorrect) {
-//             setScore(prevScore => prevScore + 1);
-//             return true;
-//         } else {
-//             return false;
-//         }
-//     };
-
-//     // const validateGame = () => {
-//     //     const amountOfQuestions = questions.length;
-//     //     console.log(`du fick ${score} av ${amountOfQuestions} rätt!`);
-//     // }
-
-//     return (
-//         <div className="question-page">
-//             {/* TITEL */}
-//             <h1 className='page-title'>{questions[0]?.title}</h1>
-
-//             {/* LOADING */}
-//             {loading && <Loading />}
-
-//             {/* SPEL-LOGIK */}
-//             {questions.length === 0 ? (
-//                 <p>Laddar frågor...</p>
-//             ) : gameFinished ? (
-//                 <div className="end-screen">
-//                     <h3>{`Du fick ${score} av ${questions.length} rätt!`}</h3>
-//                     <button className="primary-btn" onClick={restartGame}>
-//                         Spela igen
-//                     </button>
-//                 </div>
-//             ) : (
-//                 <QuestionCard
-//                     key={currentQuestion.id}
-//                     questionObj={currentQuestion}
-//                     nextQuestion={nextQuestion}
-//                     currentAnswer={currentAnswer}
-//                     setCurrentAnswer={setCurrentAnswer}
-//                     currentCount={currentIndex + 1}
-//                     totalCount={questions.length}
-//                 />
-//             )}
-//         </div>
-//     );
-// };
-
-// export default QuestionPage;
-
 import '../styles/questionCard.css';
 import { useEffect, useState } from 'react';
 import { getQuestions } from '../api/questionsApi';
@@ -143,7 +26,7 @@ const QuestionPage = () => {
         };
 
         // OBS HÅRDKODAT LIST-ID FÖR TESTNING
-        fetchListById(3);
+        fetchListById(12);
         // OBS HÅRDKODAT LIST-ID FÖR TESTNING
 
     }, []);
@@ -183,7 +66,7 @@ const QuestionPage = () => {
         setGameFinished(false);
         setScore(0);
         setCurrentAnswer('');
-        setUserAnswers([]); // 🌟 Nollställ historiken vid omstart
+        setUserAnswers([]); 
     };
 
     const currentQuestion = questions[currentIndex];
@@ -203,15 +86,11 @@ const QuestionPage = () => {
 
     return (
         <div className="question-page">
-            {/* TITEL */}
             <h1 className='page-title'>{questions[0]?.title}</h1>
-
-            {/* LOADING */}
-            {loading && <Loading />}
 
             {/* SPEL-LOGIK */}
             {questions.length === 0 ? (
-                <p>Laddar frågor...</p>
+                (loading ? <Loading /> : <p>Inga frågor hittades...</p>)
             ) : gameFinished ? (
                 <div className="end-screen">
                     <h3>{`Du fick ${score} av ${questions.length} rätt`}</h3>
