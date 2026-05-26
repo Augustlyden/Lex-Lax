@@ -12,10 +12,9 @@ function LoginPage() {
     const [manageProfiles, setManageProfiles] = useState(false);
 
  return (
-  <div>
-
+  <div className="login-container">
       <div className = "login-text-content">
-        <h1>Vem ska plugga?</h1>
+        <h1>Lex Läx</h1>
         <p>Välj din profil eller skapa en ny för att komma igång!</p>
       </div>
                 

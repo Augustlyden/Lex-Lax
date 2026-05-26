@@ -5,7 +5,7 @@ import "./styles/buttons.css";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 
 import LoginPage from "./pages/LoginPage";
 import QuestionPage from "./pages/QuestionPage";
@@ -17,10 +17,18 @@ import EditWordList from "./components/EditWordList";
 import MathPage from "./pages/MathPage";
 import StatisticPage from "./pages/StatisticPage";
 
+
 function App() {
+  const location = useLocation();
+
+  const hideNavbar =
+    location.pathname === "/" ||
+    location.pathname === "/login" ||
+    location.pathname === "/logga-in";
+
   return (
     <>
-      <Navbar />
+      {!hideNavbar && <Navbar />}
 
       <main>
         <Routes>
