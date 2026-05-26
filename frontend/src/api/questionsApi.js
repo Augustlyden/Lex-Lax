@@ -22,6 +22,15 @@ export const updateQuestion = async (id, questionText) => {
   return response.data.data;
 }
 
+export const updateQuestions = async (id, question, answer) => {
+  const response = await apiClient.put(`/questions/${id}`, {
+    question,
+    answer
+  });
+
+  return response.data.data;
+}
+
 export const deleteQuestion = async (id) => {
   const response = await apiClient.delete(`/questions/${id}`);
   return response.data.data;

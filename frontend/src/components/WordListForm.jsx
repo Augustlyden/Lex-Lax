@@ -50,42 +50,41 @@ function WordListForm({onSubmit, initialData}) {
   });
 }
 
-
-    return (
- <form onSubmit={handleSubmit}>
-        <div className="create-word-list-container">
+  return (
+    <form onSubmit={handleSubmit}>
+      <div className="create-word-list-container">
 
         <h2>Titel</h2>
-              <input
-                type="text"
-                value={title}
-                onChange = {handleTitle}
-                className="word-input"
-              />
+        <input
+          type="text"
+          value={title}
+          onChange = {handleTitle}
+          className="word-input"
+        />
 
-              <div className = "word-from-to-card">
-              
-                <div className="translation-box">
-                <p className="text1">Språk från:</p>
-              <select  
-              className="word-input"
-              value={languageTo}
-              onChange={handleTranslateTo}>
-              <option value="Engelska">Engelska</option>
-              <option value="Spanska">Spanska</option>
-              <option value="Franska">Franska</option>
-              </select>
-              </div>
-              
-              <span className="arrow"></span>
-
-              <div className="translation-box">
-              <p className="text1">Språk till:</p>
-              <select className="word-input" disabled>
-              <option value="Svenska">Svenska</option>
-              </select>
-              </div>
+          <div className = "word-from-to-card">
+          
+            <div className="translation-box">
+            <p className="text1">Språk från:</p>
+            <select  
+            className="word-input"
+            value={languageTo}
+            onChange={handleTranslateTo}>
+            <option value="Engelska">Engelska</option>
+            <option value="Spanska">Spanska</option>
+            <option value="Franska">Franska</option>
+            </select>
           </div>
+              
+          <span className="arrow"></span>
+
+          <div className="translation-box">
+          <p className="text1">Språk till:</p>
+          <select className="word-input" disabled>
+          <option value="Svenska">Svenska</option>
+          </select>
+        </div>
+      </div>
       <div className = "word-list-scroll-container">
 
     {/* Map function to display word/translated dynamically*/} 
