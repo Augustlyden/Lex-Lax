@@ -2,7 +2,8 @@ import { getListById, updateList } from "../api/listApi";
 import WordListForm from "../components/WordListForm"
 import {Link, useParams} from "react-router-dom"
 import { getQuestions, updateQuestions } from "../api/questionsApi";
-import {useState, useEffect, use} from "react"
+import {useState, useEffect} from "react"
+import { useAppContext } from "../provider/ContextProvider";
 
 function EditWordList() {
 

@@ -4,9 +4,13 @@ import Loading from "../components/UI/Loading"
 import {Link} from "react-router-dom"
 import languageIcon from "../assets/subjects/language-icon.webp";
 import { deleteList } from "../api/listApi";
+import { useAppContext } from "../provider/ContextProvider";
+
 
 //Använd senare: `http://localhost:3000/api/lists?subjectId=${subjectId}&userId=${userId}`
-function WordList({userId, subjectId}) {
+function WordList({subjectId}) {
+
+  const { currentUser } = useAppContext();
 
   const [lists, setLists] = useState([]);
   const [loading, setLoading] = useState(false)
@@ -29,7 +33,7 @@ function WordList({userId, subjectId}) {
     try {
       setLoading(true)
       const response = await fetch(
-        `http://localhost:3000/api/lists?subjectId=${1}&userId=${19}`
+        `http://localhost:3000/api/lists?subjectId=${subjectId}&userId=${currentUser?.id}`
       );
       const data = await response.json();
       if (data.success) {
@@ -44,7 +48,7 @@ function WordList({userId, subjectId}) {
   }
 
   fetchLists();
-}, [subjectId, userId]);
+}, [subjectId, currentUser.id]);
 
 if(loading) {
   return < Loading />

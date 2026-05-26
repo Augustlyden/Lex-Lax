@@ -92,7 +92,7 @@ export const ContextProvider = ({ children }) => {
 
   useEffect(() => {
     fetchUsers();
-    fetchUsersById();
+    fetchUsersById(19);
   }, []);
 
   return (

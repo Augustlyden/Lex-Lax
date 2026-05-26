@@ -12,7 +12,6 @@ const { subjectId } = useParams();
 return (
   <div className="vocabulary-page-container">
     <WordList
-    userId={1}
     subjectId={subjectId}
     />
     
