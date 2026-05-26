@@ -94,8 +94,10 @@ if(loading) {
            </div>
 
     <div className={styles.listActions}>
-      <button className="primary-btn">Träna!</button>
-    
+      <Link className="primary-btn" to={`/test/${list.id}`}>
+        Träna!
+      </Link>
+
       <Link className = "secondary-btn" to={`/vocabulary/${subjectId}/edit/${list.id}`}>Redigera</Link>
 
       <button className="primary-btn delete-btn" 
