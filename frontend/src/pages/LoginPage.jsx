@@ -15,7 +15,7 @@ function LoginPage() {
   <div>
 
       <div className = "login-text-content">
-        <h1>Vem ska plugga?</h1>
+        <h1>Lex Läx</h1>
         <p>Välj din profil eller skapa en ny för att komma igång!</p>
       </div>
                 
