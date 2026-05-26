@@ -1,0 +1,123 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(31, 41, 55, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background-color: var(--text-color-btn);
+  padding: 2.5rem;
+  border-radius: var(--radius-soft);
+  box-shadow: var(--shadow-soft);
+  width: 90%;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.modalTitle {
+  font-family: var(--font-display);
+  margin-bottom: 0.2rem;
+}
+
+.closeButton {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  margin-bottom: 0.2rem;
+}
+
+.modalSub {
+  color: var(--text-color-light);
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: relative;
+} 
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 125px;
+  top: 10px;
+  bottom: 10px;
+  width: 2px;
+  background-color: var(--color-neutral-light-hover);
+}
+
+.timelineItem {
+  display: flex;
+  align-items: center;
+}
+
+.dateSide {
+  width: 110px;
+  text-align: right;
+  font-size: 0.85rem;
+  color: var(--text-color-light);
+  font-weight: 600;
+}
+
+.lineSide {
+  width: 32px;
+  display: flex;
+  justify-content: center;
+  z-index: 2;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: var(--radius-round);
+  background-color: var(--action-primary-color);
+  border: 3px solid var(--text-color-btn);
+  box-shadow: 0 0 0 2px var(--action-primary-color);
+}
+
+.contentSide {
+  flex: 1;
+  background-color: var(--color-neutral-light);
+  padding: 0.8rem 1.2rem;
+  border-radius: var(--radius-soft);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.scoreRow {
+  display: flex;
+  gap: 12px;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.correct { color: var(--action-secondary-color); }
+.wrong { color: var(--color-delete); }
+
+.percentBadge {
+  font-size: 0.8rem;
+  background-color: var(--text-color-btn);
+  padding: 4px 8px;
+  border-radius: var(--radius-round);
+  font-weight: 700;
+  color: var(--text-color-dark);
+}
+
+.errorText {
+  color: var(--color-delete);
+  font-weight: bold;
+}

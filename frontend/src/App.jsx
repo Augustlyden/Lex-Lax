@@ -13,6 +13,7 @@ import { PureComponent } from 'react'
 import CreateWordList from './components/CreateWordList'
 import EditWordList from "./components/EditWordList"
 import MathPage from "./pages/MathPage"
+import StatisticPage from './pages/StatisticPage'
 
 function App() {
 
@@ -35,6 +36,8 @@ function App() {
           <Route path="/math/:subjectId" element={<MathPage />}/>
           <Route path="/vocabulary/:subjectId/create" element={<CreateWordList />}/>
           <Route path="/vocabulary/:subjectId/edit/:listId" element={<EditWordList />}/>
+
+          <Route path='/statistik' element={<StatisticPage />}></Route>
 
         </Routes>
 
