@@ -6,6 +6,20 @@ function UserCard({ user, onClick, manageProfiles, onEdit }) {
   return (
     
     <div className="login-user-card" onClick={onClick}>
+        {manageProfiles && (
+        <div className="profile-actions-start">
+          
+          <DeleteUserButton user={user} redirectTo="/login" />
+          <EditProfileButton
+            onClick={(e) => {
+              e.stopPropagation();
+              onEdit?.();
+            }}
+          />
+      
+      
+        </div>
+      )}
       <div className="login-user-image">
         <img
           src={user.image_url}
@@ -16,20 +30,6 @@ function UserCard({ user, onClick, manageProfiles, onEdit }) {
       <div className="login-user-name">
       <h2>{user.username}</h2>
  
-  {manageProfiles && (
-  <div className="profile-actions">
-    
-    <EditProfileButton
-      onClick={(e) => {
-        e.stopPropagation();
-        onEdit?.();
-      }}
-    />
-
-   <DeleteUserButton user={user} redirectTo="/login" />
-
-  </div>
-)}
     </div>
 
     </div>

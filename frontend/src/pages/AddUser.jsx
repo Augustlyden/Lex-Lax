@@ -10,6 +10,7 @@ import AvatarStep from "../components/AddUser/AvatarStep";
 import ConfirmationStep from "../components/AddUser/ConfirmationStep";
 
 import "../styles/addUser.css";
+import { FaArrowLeft } from "react-icons/fa";
 
 function AddUser() {
   const { userId } = useParams();
@@ -20,6 +21,14 @@ function AddUser() {
     updateUser,
     deleteUser,
   } = useAppContext();
+
+  const handleBack = () => {
+  if (step === 2) {
+    setStep(step - 1);
+  } else {
+    navigate("/login");
+  }
+};
 
  const existingUser = users.find(
   (user) => String(user.id) === String(userId)
@@ -158,6 +167,13 @@ function AddUser() {
 
   return (
     <div className="add-user-container">
+      <button
+  type="button"
+  className="flat-btn back-btn"
+  onClick={handleBack}
+>
+  <FaArrowLeft /> {step === 2 ? "Tillbaka" : "Till inloggning"}
+</button>
       <h1>
         {isEditMode
           ? "Redigera profil"

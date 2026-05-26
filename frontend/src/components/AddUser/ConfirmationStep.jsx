@@ -19,10 +19,11 @@ function ConfirmationStep({
   return (
     <div className="step">
       <h2>{isEditMode ? "Användare uppdaterad!" : "Användare skapad!"}</h2>
-
+<div className="profile-actions">
+      <EditProfileButton onClick={() => navigate(`/edit-user/${createdUser.id}`)}/>
       <DeleteUserButton user={createdUser} redirectTo="/login" />
-
-      <img
+</div>
+      <img  
         src={avatar}
         alt="Vald avatar"
         className="created-avatar"
@@ -31,9 +32,6 @@ function ConfirmationStep({
       <h2 className="User-name">{name}</h2>
 
       <div className="button-group">
-        <EditProfileButton
-  onClick={() => navigate(`/edit-user/${createdUser.id}`)}
-/>
 
         {!isEditMode && (
           <button
