@@ -27,15 +27,15 @@ function LoginPage() {
     onClick={() => {
       setCurrentUser(user);
       navigate(`/dashboard/${user.id}`)}}
-    onEdit={() => navigate(`/edit-user/${user.id}`)}
+    onEdit={() => navigate(`/redigera-profil/${user.id}`)}
     onDelete={() => {
       deleteUser(user.id);
-      navigate("/login");
+      navigate("/logga-in");
     }}
     />  
         ))}
         <div className="new-user-text">
-      <button type="button" className="flat-btn add-btn" onClick={() => navigate("/add-user")}>+</button>
+      <button type="button" className="flat-btn add-btn" onClick={() => navigate("/skapa-profil")}>+</button>
       <h2> Ny användare</h2>
       </div>
       </div>

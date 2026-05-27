@@ -4,7 +4,7 @@ import { useAppContext } from "../../hooks/useAppContext";
 import "../../styles/buttons.css";
 
 
-function DeleteUserButton({ user, redirectTo = "/login" }) {
+function DeleteUserButton({ user, redirectTo = "/logga-in" }) {
   const navigate = useNavigate();
   const { deleteUser } = useAppContext();
 

@@ -26,7 +26,7 @@ function AddUser() {
   if (step === 2) {
     setStep(step - 1);
   } else {
-    navigate("/login");
+    navigate("/logga-in");
   }
 };
 
@@ -150,7 +150,7 @@ function AddUser() {
       "Användaren har tagits bort."
     );
 
-    navigate("/login");
+    navigate("/logga-in");
   };
 
   const handleAddAnotherUser = () => {

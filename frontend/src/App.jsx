@@ -23,8 +23,9 @@ function App() {
 
   const hideNavbar =
     location.pathname === "/" ||
-    location.pathname === "/login" ||
-    location.pathname === "/logga-in";
+    location.pathname === "/logga-in" ||
+    location.pathname === "/skapa-profil" ||
+    location.pathname.startsWith("/redigera-profil/");
 
   return (
     <>
