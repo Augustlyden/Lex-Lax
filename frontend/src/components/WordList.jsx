@@ -4,10 +4,8 @@ import Loading from "../components/UI/Loading"
 import {Link} from "react-router-dom"
 import languageIcon from "../assets/subjects/language-icon.webp";
 import { deleteList } from "../api/listApi";
-import { useAppContext } from "../provider/ContextProvider";
+import { useAppContext } from "../hooks/useAppContext";
 
-
-//Använd senare: `http://localhost:3000/api/lists?subjectId=${subjectId}&userId=${userId}`
 function WordList({subjectId}) {
 
   const { currentUser } = useAppContext();
@@ -26,6 +24,7 @@ function WordList({subjectId}) {
   }
 };
   
+//HÄMTAR LISTAN VIA URL MED SUBJECT ID + USER ID
   useEffect(() => {
   async function fetchLists() {
     try {
@@ -53,7 +52,7 @@ if(loading) {
     return (
         <div className = {styles.listContainer}>
           <div className={styles.backBtnBox}>
-           <Link to={"/"} className="flat-btn">Tillbaka </Link>
+           <Link to={"/dashboard/" + currentUser?.id} className="flat-btn">Tillbaka </Link>
           </div>
 
           <div className = {styles.listHeaderContent}>
@@ -66,7 +65,7 @@ if(loading) {
                 <p>Här kan du se all din historik, övningar och anpassa dom.</p>
                 <div>
                <div className= {styles.addNewListBox}>
-             <Link to={`/vocabulary/${subjectId}/create`} className="flat-btn">Lägg till nya </Link>
+             <Link to={`/sprak/${subjectId}/skapa`} className="flat-btn">Lägg till nya </Link>
              </div>
             
             </div>
@@ -98,7 +97,7 @@ if(loading) {
         Träna!
       </Link>
 
-      <Link className = "secondary-btn" to={`/vocabulary/${subjectId}/edit/${list.id}`}>Redigera</Link>
+      <Link className = "secondary-btn" to={`/sprak/${subjectId}/edit/${list.id}`}>Redigera</Link>
 
       <button className="primary-btn delete-btn" 
               onClick={() => handleDelete(list.id)}>

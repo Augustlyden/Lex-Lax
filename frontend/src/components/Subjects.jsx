@@ -14,11 +14,11 @@ function Subjects({subject}) {
   if (subject.subject_name === "Matematik") {
     borderName = "border-math";
     iconName = mathIcon;
-    path = `/math/${subject.id}`
+    path = `/matematik/${subject.id}`
   
   } else if (subject.subject_name === "Språk") {
     borderName = "border-vocabulary";
-    path = `/vocabulary/${subject.id}`;
+    path = `/sprak/${subject.id}`;
       iconName = languageIcon;
     
   } else if (subject.subject_name === "Svenska") {
@@ -34,7 +34,10 @@ return (
         <img src={iconName} className = "subject-icon" alt="ÄMNE" />
         </div>
     <h2>{subject.subject_name}</h2>
+
+     {/*Hårdkodad info. Ändra senare.*/}
     <p>Du har 5 uppgifter kvar att slutföra.</p>
+
   </div>
 </Link>
 

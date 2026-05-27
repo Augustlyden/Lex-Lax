@@ -3,7 +3,7 @@ import WordListForm from "../components/WordListForm"
 import {Link, useNavigate, useParams} from "react-router-dom"
 import { getQuestions, updateQuestions } from "../api/questionsApi";
 import {useState, useEffect} from "react"
-import { useAppContext } from "../provider/ContextProvider";
+
 
 function EditWordList() {
 
@@ -66,7 +66,7 @@ function EditWordList() {
       console.log(filteredQuestions);
       console.log("Lista uppdaterad!");
 
-     navigate(`/vocabulary/${subjectId}`);
+     navigate(`/sprak/${subjectId}`);
 
     } catch (error) {
       console.error(error);
@@ -77,7 +77,7 @@ function EditWordList() {
       <div className="create-word-list-wrapper">
      
         <div className="">
-        <Link to={"/vocabulary/" + subjectId} className="flat-btn">Tillbaka</Link>
+        <Link to={"/sprak/" + subjectId} className="flat-btn">Tillbaka</Link>
       </div>
       <div className = "create-word-list-header-container">
       <h2>Redigera</h2>
