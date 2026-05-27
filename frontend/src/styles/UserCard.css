@@ -1,0 +1,46 @@
+.round-image {
+    max-width: 60vw;
+    width: 200px;
+    height: auto;
+    border-radius: var(--radius-round);
+    box-shadow: var(--box-shadow-glow), var(--shadow-soft);
+    margin: 20px auto;
+}
+.round-image:hover {
+    box-shadow:
+    var(--shadow-soft),
+    var(--btn-focus-ring);
+    transform: scale(1.01);
+}
+
+.login-user-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+}
+
+ .profile-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.profile-actions-start {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 20px;
+
+}
+
+.profile-actions-start .flat-btn {
+box-shadow: var(--box-shadow-glow);
+}

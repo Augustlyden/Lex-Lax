@@ -1,8 +1,14 @@
 import db from '../config/database.js'
 
 class User {
-  static async findAll() {
-    const result = await db.query('SELECT * FROM users;');
+  static async findAll() {const result = await db.query(`
+  SELECT 
+    users.*,
+    avatars.image_url
+  FROM users
+  LEFT JOIN avatars
+  ON users.profile_img = avatars.id;
+`);
     return result.rows;
   }
 
