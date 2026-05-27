@@ -106,6 +106,7 @@ const updateUser = async (id, username, profileImg) => {
       loading,
       error,
       createUser,
+      setCurrentUser,
       updateUser,
       deleteUser,
       fetchUsersById

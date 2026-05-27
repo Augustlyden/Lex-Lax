@@ -9,6 +9,7 @@ function WordListForm({onSubmit, initialData}) {
 
   useEffect(() => {
 
+    //OM KOMPONENTENS PARENT HAR LAGT IN INTIIALDATA -> SÄTT IN VÄRDENA DIREKT I FORMULÄRET.
   if (initialData) {
     setTitle(initialData.title);
     setLanguageTo(initialData.languageTo);
@@ -17,23 +18,31 @@ function WordListForm({onSubmit, initialData}) {
 
 }, [initialData]);
    
+
+  // SPREAD OPERATOR FÖR ATT LÄGGA TILL NYA FRÅGOR
   function addWord() {
   setQuestions([ ...questions, { question: "", answer: "" } 
   ]);
   }
+
+  // LYSSNARE SOM ANVÄNDS FÖR QUESTION & ANSWER. KOLLAR VILKEN RAD OCH SÄTTER VÄRDE.
   function handleWordChange(index, field, value) {
     const updatedQuestions = [...questions];
     updatedQuestions[index][field] = value;
     setQuestions(updatedQuestions);
   }
+
+
   function handleTranslateTo(e) {
-      const selectedLanguage = e.target.value;
-      setLanguageTo(selectedLanguage);
-      setTitle(
-      `${selectedLanguage} ${getCurrentWeek()}`
-    );
+    const selectedLanguage = e.target.value;
+    setLanguageTo(selectedLanguage);
+
+    //SÄTTER TITEL PÅ LISTS. IMPORTERAD JS FUNKTION HÄMTAR VECKA, DATUM & TID.
+    setTitle(`${selectedLanguage} ${getCurrentWeek()}`);
     console.log("Language changed to:", e.target.value)
   }
+
+  
   function handleTitle(e) {
       setTitle(e.target.value);
       console.log("Title:", e.target.value)
@@ -87,11 +96,9 @@ function WordListForm({onSubmit, initialData}) {
       </div>
       <div className = "word-list-scroll-container">
 
-    {/* Map function to display word/translated dynamically*/} 
       {questions.map((item, index) => (
-    <div className="create-word-list-card" key={index}>
-
-      <div className="word-left">
+       <div className="create-word-list-card" key={index}>
+        <div className="word-left">
         <input
           type="text"
           placeholder="Ord"

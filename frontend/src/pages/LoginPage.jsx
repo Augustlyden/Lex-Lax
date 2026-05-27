@@ -8,7 +8,7 @@ import { useState } from "react";
 
 function LoginPage() {
     const navigate = useNavigate();
-    const { users, deleteUser } = useAppContext();
+    const { users, deleteUser, setCurrentUser } = useAppContext();
     const [manageProfiles, setManageProfiles] = useState(false);
 
  return (
@@ -24,8 +24,9 @@ function LoginPage() {
   key={user.id}
   user={user}
   manageProfiles={manageProfiles}
-  onClick={() => navigate(`/dashboard/${user.id}`)}
-  
+    onClick={() => {
+      setCurrentUser(user);
+      navigate(`/dashboard/${user.id}`)}}
     onEdit={() => navigate(`/edit-user/${user.id}`)}
     onDelete={() => {
       deleteUser(user.id);

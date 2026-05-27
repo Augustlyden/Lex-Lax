@@ -1,20 +1,21 @@
 import { getListById, updateList } from "../api/listApi";
 import WordListForm from "../components/WordListForm"
-import {Link, useParams} from "react-router-dom"
+import {Link, useNavigate, useParams} from "react-router-dom"
 import { getQuestions, updateQuestions } from "../api/questionsApi";
 import {useState, useEffect} from "react"
 import { useAppContext } from "../provider/ContextProvider";
 
 function EditWordList() {
 
-  const { subjectId, listId } = useParams();
+  const navigate = useNavigate();
+
+  const {subjectId,listId} = useParams();
   const [existingList, setExistingList] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [successMessage, setSuccessMessage] = useState("");
 
   useEffect(() => {
    
-    //HÄMTA WORDLIST FÖR VISNING INUTI FORMULÄRET
+    //HÄMTA LISTA SAMT QUESTIONS FÖR UI-VISNING INUTI FORMULÄRET (WordListForm.jsx)
     async function fetchListData() {
      try {
       setLoading(true)
@@ -33,32 +34,28 @@ function EditWordList() {
       }finally {
         setLoading(false)
       }
-
     }
-
-    fetchListData();
-
-  }, [listId]);
+ fetchListData();
+ }, [listId]);
 
 
-  //SKICKA UPPDATERAD DATA TILL LISTS & QUESTIONS
+  //SUBMIT FUNKTIONEN SKICKAR UPPDATERADAD DATA TILL TABELLERNA LISTS & QUESTIONS
   async function handleSubmit(formData) {
 
     //FILTRERAR BORT TOMMA RUTOR
     const filteredQuestions =
       formData.questions.filter(
-        (item) =>
-          item.question.trim() !== "" &&
-          item.answer.trim() !== ""
-      );
-    
-
+        (item) => item.question.trim() !== "" && item.answer.trim() !== "");
+      
     try {
+
+      //UPPDATERA LISTA
       await updateList(listId, {
         title: formData.title,
         targetLanguage: formData.languageTo
       });
 
+      //KÖR LOOP FÖR VARJE QUESTION FÖR ATT UPPDATERA FRÅGORNA MED DATABASEN KOPPLAD TLL LISTA
      for (const item of filteredQuestions) {
       await updateQuestions(
       item.id,
@@ -69,7 +66,7 @@ function EditWordList() {
       console.log(filteredQuestions);
       console.log("Lista uppdaterad!");
 
-     // navigate(`/vocabulary/${subjectId}`);
+     navigate(`/vocabulary/${subjectId}`);
 
     } catch (error) {
       console.error(error);
