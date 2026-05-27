@@ -1,10 +1,12 @@
 import "../styles/navbar.css"
+import { useAppContext } from "../provider/ContextProvider";
 import {useState} from "react"
 
 export default function Navbar() {
 
  
     const [menuOpen, setMenuOpen] = useState(false)
+    const { currentUser } = useAppContext();
 
     return (
     <header>
@@ -27,8 +29,17 @@ export default function Navbar() {
             
      
 
-           <div className = "nav-profile">
-             <a href="/profile">🧒🏻</a>
+            {currentUser && (
+  <button type="button" className="active-user-btn">
+    <img
+      src={currentUser.image_url}
+      alt={currentUser.username}
+      className="active-user-avatar"
+    />
+  </button>
+)}
+            <div className = "nav-profile">
+           
            </div>
                   <div
             className="hamburger"

@@ -85,6 +85,21 @@ transform: translateX(-50%);
     color: var(--secondary-color);
 }
 
+.active-user-btn {
+    margin-left: auto;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.active-user-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
 /* MOBILE LAYOUT */
 @media (max-width: 768px) {
 
@@ -109,9 +124,5 @@ transform: translateX(-50%);
 
     .hamburger {
         display: block;
-    }
-
-    .nav-profile {
-        margin-left: auto;
     }
 }
