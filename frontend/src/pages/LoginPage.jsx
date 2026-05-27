@@ -2,7 +2,7 @@ import "../styles/loginPage.css"
 import UserCard from "../components/UserCard"
   
 import { useNavigate } from "react-router-dom";
-import { useAppContext } from "../provider/ContextProvider";
+import { useAppContext } from "../hooks/useAppContext";
 import { useState } from "react";
 
 

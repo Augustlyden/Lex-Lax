@@ -1,6 +1,6 @@
 import { FaTrash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { useAppContext } from "../../provider/ContextProvider";
+import { useAppContext } from "../../hooks/useAppContext";
 import "../../styles/buttons.css";
 
 
