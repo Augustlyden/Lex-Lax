@@ -34,11 +34,12 @@ Make sure you have [Node.js](https://nodejs.org) installed.
    ```
 
 3. **Set up environment variables:**
-   Create a `.env` file in the backend folder and add your local port and Supabase connection pool string:
+   Create a `.env` file in the root of the backend folder and add your local port and PostgreSQL connection string:
    ```env
    PORT=3000
-   DATABASE_URL=your_supabase_transaction_pool_connection_string
+   DATABASE_URL=your_postgresql_connection_string
    ```
+  *(Note: The application features automatic database initialization. As long as you provide a valid PostgreSQL connection string, all necessary tables will be created automatically upon the first server startup.)*
 
 4. **Run the application:**
    You can start both the Express backend server and the React frontend development server with a single command using our integrated `concurrently` script:
