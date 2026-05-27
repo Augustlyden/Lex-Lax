@@ -97,9 +97,6 @@ const updateUser = async (id, username, profileImg) => {
     }
   };
 
-  useEffect(() => {
-    fetchUsers();
-  }, []);
 
   return (
     <Context.Provider value={{
