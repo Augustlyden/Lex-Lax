@@ -97,7 +97,7 @@ if(loading) {
         Träna!
       </Link>
 
-      <Link className = "secondary-btn" to={`/sprak/${subjectId}/edit/${list.id}`}>Redigera</Link>
+      <Link className = "secondary-btn" to={`/sprak/${subjectId}/redigera/${list.id}`}>Redigera</Link>
 
       <button className="primary-btn delete-btn" 
               onClick={() => handleDelete(list.id)}>

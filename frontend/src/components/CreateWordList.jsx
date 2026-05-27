@@ -36,13 +36,13 @@ function CreateWordList() {
   } catch (error) {
     console.error(error);
   }
-  navigate(`/vocabulary/${subjectId}`);
+  navigate(`/sprak/${subjectId}`);
 }
 
     return (
       <div className="create-word-list-wrapper">
         <div className="">
-          <Link to={`/vocabulary/${subjectId}`} className="flat-btn">Tillbaka</Link>
+          <Link to={`/sprak/${subjectId}`} className="flat-btn">Tillbaka</Link>
       </div>
         <div className = "create-word-list-header-container">
         <h2>Skriv in veckans glosor!</h2>
