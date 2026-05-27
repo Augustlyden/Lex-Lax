@@ -4,6 +4,8 @@ import { getQuestions } from '../api/questionsApi';
 import QuestionCard from '../components/QuestionCard';
 import Loading from '../components/UI/Loading';
 import { useParams } from 'react-router-dom';
+import { useAppContext } from '../hooks/useAppContext';
+import { updateAndCreateStats } from '../api/statisticApi';
 
 const QuestionPage = () => {
     const [questions, setQuestions] = useState([]);
@@ -15,6 +17,7 @@ const QuestionPage = () => {
     const [userAnswers, setUserAnswers] = useState([]);
 
     const { listId } = useParams();
+    const { currentUser } = useAppContext();
 
     useEffect(() => {
         const fetchListById = async (listId) => {
@@ -30,7 +33,7 @@ const QuestionPage = () => {
         fetchListById(listId);
     }, []);
 
-    const nextQuestion = () => {
+    const nextQuestion = async () => {
         // 1. Kolla om svaret var rätt
         const wasCorrect = validateQuestion(currentAnswer);
         const updatedScore = wasCorrect ? score + 1 : score;
@@ -53,6 +56,22 @@ const QuestionPage = () => {
             setCurrentAnswer('');
         } else {
             const amountOfQuestions = questions.length;
+            const wrongAnswersCount = amountOfQuestions - updatedScore;
+
+            if (currentUser && currentUser.id) {
+                try {
+                    await updateAndCreateStats(
+                        Number(currentUser.id),
+                        Number(listId),
+                        updatedScore,
+                        wrongAnswersCount
+                    );
+                } catch (error) {
+                    console.error('Misslyckades att spara statistik:', error.message);
+                }
+            } else {
+                console.warn('No active user found. Statistics could not be saved.');
+            }
             console.log(`du fick ${updatedScore} av ${amountOfQuestions} rätt!`);
             setGameFinished(true);
         }
