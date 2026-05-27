@@ -1,7 +1,7 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { getUsers, getUserById, createApiUser, updateApiUser, deleteApiUser } from "../api/userApi";
 
-const Context = createContext();
+export const Context = createContext();
 
 export const ContextProvider = ({ children }) => {
   const [users, setUsers] = useState([]);
@@ -19,17 +19,6 @@ export const ContextProvider = ({ children }) => {
   };
 
   //   USERS
-  // const fetchUsers = async () => {
-  //   errorHandler(null);
-  //   setLoading(true);
-  //   try {
-  //     const data = await getUsers();
-  //     setUsers(data);
-  //     setLoading(false);
-  //   } catch (error) {
-  //     errorHandler(error);
-  //   }
-  // };
     useEffect(() => {
     (async () => {
       errorHandler(null);
@@ -124,8 +113,4 @@ const updateUser = async (id, username, profileImg) => {
       {children}
     </Context.Provider>
   );
-};
-
-export const useAppContext = () => {
-  return useContext(Context);
 };
