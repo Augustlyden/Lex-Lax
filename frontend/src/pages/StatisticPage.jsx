@@ -1,4 +1,4 @@
-import { useAppContext } from '../provider/ContextProvider.jsx';
+import { useAppContext } from '../hooks/useAppContext.js';
 import { getAllStats } from '../api/statisticApi.js';
 import { getAllSubjects } from '../api/subjectApi.js';
 import { useState, useEffect } from 'react';

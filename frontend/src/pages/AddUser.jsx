@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 import { getAvatars } from "../api/avatarApi";
-import { useAppContext } from "../provider/ContextProvider";
+import { useAppContext } from "../hooks/useAppContext";
 
 import Loading from "../components/UI/Loading";
 import NameStep from "../components/AddUser/NameStep";
