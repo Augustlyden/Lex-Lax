@@ -27,25 +27,28 @@ function App() {
         <main>
         <Routes>
           <Route path="/" element={<DashboardPage />} />
+
+           {/* INLOGGNING */}
           <Route path="/logga-in" element={<LoginPage />} />
           <Route path="/skapa-profil" element={<AddUser />} />
-          <Route path="/test" element={<QuestionPage />} />
+         
           <Route path="/amne" element={<VocabularyPage />} />
 
+          {/*SPRÅK SIDA */}
           <Route path="/vocabulary/:subjectId" element={<VocabularyPage />}/>
-          <Route path="/math/:subjectId" element={<MathPage />}/>
           <Route path="/vocabulary/:subjectId/create" element={<CreateWordList />}/>
           <Route path="/vocabulary/:subjectId/edit/:listId" element={<EditWordList />}/>
+           <Route path="/test" element={<QuestionPage />} />
+
+          {/*MATEMATIK SIDA */}
+          <Route path="/math/:subjectId" element={<MathPage />}/>
 
           <Route path='/statistik' element={<StatisticPage />}></Route>
 
         </Routes>
 
         </main>
-    <main>
-       < LoginPage/>
- 
-  </main>
+
 
     
 

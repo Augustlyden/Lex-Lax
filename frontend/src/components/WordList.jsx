@@ -18,9 +18,7 @@ function WordList({subjectId}) {
   async function handleDelete(id) {
   try {
     await deleteList(id);
-
-    setLists((prevLists) =>
-      prevLists.filter((list) => list.id !== id)
+    setLists((prevLists) => prevLists.filter((list) => list.id !== id)
     );
 
   } catch (error) {
@@ -39,8 +37,7 @@ function WordList({subjectId}) {
       if (data.success) {
         setLists(data.data);
       }
-
-    } catch (error) {
+   } catch (error) {
       console.error("Failed to fetch lists:", error);
     }finally {
       setLoading(false)
@@ -56,7 +53,7 @@ if(loading) {
     return (
         <div className = {styles.listContainer}>
           <div className={styles.backBtnBox}>
-           <Link to={"/Dashboard"} className="flat-btn">Tillbaka </Link>
+           <Link to={"/"} className="flat-btn">Tillbaka </Link>
           </div>
 
           <div className = {styles.listHeaderContent}>
@@ -79,10 +76,9 @@ if(loading) {
           <div className = {styles.listContent}>
           
             <h2>Historik</h2>
-
+            
             {lists.length === 0 ? (
-              
-             <p>Du har inga tillagda glosor ännu.</p>
+            <p>Du har inga tillagda glosor ännu.</p>
 
               ) : (
 
@@ -110,11 +106,8 @@ if(loading) {
 
   </div>
 )))}
-
-
-          </div>
-
-        </div>
-    )
+ </div>
+</div>
+  )
 }
 export default WordList;
