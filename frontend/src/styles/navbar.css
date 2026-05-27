@@ -126,3 +126,6 @@ transform: translateX(-50%);
         display: block;
     }
 }
+.nav-links .active-link::after {
+  width: 100%;
+}
