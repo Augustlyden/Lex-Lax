@@ -33,24 +33,19 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<LoginPage />} />
-
-          <Route path="/login" element={<LoginPage />} />
           <Route path="/logga-in" element={<LoginPage />} />
 
-          <Route path="/add-user" element={<AddUser />} />
           <Route path="/skapa-profil" element={<AddUser />} />
-          <Route path="/edit-user/:userId" element={<AddUser />} />
+          <Route path="/redigera-profil/:userId" element={<AddUser />} />
 
           <Route path="/dashboard/:userId" element={<DashboardPage />} />
 
-          <Route path="/test" element={<QuestionPage />} />
           <Route path="/test/:listId" element={<QuestionPage />} />
-          <Route path="/amne" element={<VocabularyPage />} />
 
-          <Route path="/vocabulary/:subjectId" element={<VocabularyPage />} />
-          <Route path="/math/:subjectId" element={<MathPage />} />
-          <Route path="/vocabulary/:subjectId/create" element={<CreateWordList />} />
-          <Route path="/vocabulary/:subjectId/edit/:listId" element={<EditWordList />} />
+          <Route path="/sprak/:subjectId" element={<VocabularyPage />} />
+          <Route path="/sprak/:subjectId/skapa" element={<CreateWordList />} />
+          <Route path="/sprak/:subjectId/redigera/:listId" element={<EditWordList />} />
+          <Route path="/matematik/:subjectId" element={<MathPage />} />
 
           <Route path="/statistik" element={<StatisticPage />} />
         </Routes>
