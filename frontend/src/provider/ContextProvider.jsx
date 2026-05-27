@@ -19,17 +19,30 @@ export const ContextProvider = ({ children }) => {
   };
 
   //   USERS
-  const fetchUsers = async () => {
-    errorHandler(null);
-    setLoading(true);
-    try {
-      const data = await getUsers();
-      setUsers(data);
-      setLoading(false);
-    } catch (error) {
-      errorHandler(error);
-    }
-  };
+  // const fetchUsers = async () => {
+  //   errorHandler(null);
+  //   setLoading(true);
+  //   try {
+  //     const data = await getUsers();
+  //     setUsers(data);
+  //     setLoading(false);
+  //   } catch (error) {
+  //     errorHandler(error);
+  //   }
+  // };
+    useEffect(() => {
+    (async () => {
+      errorHandler(null);
+      setLoading(true);
+      try {
+        const data = await getUsers();
+        setUsers(data);
+        setLoading(false);
+      } catch (error) {
+        errorHandler(error);
+      }
+    })();
+  }, []);
 
   const fetchUsersById = async (id) => {
     errorHandler(null);
@@ -95,9 +108,6 @@ const updateUser = async (id, username, profileImg) => {
     }
   };
 
-  useEffect(() => {
-    fetchUsers();
-  }, []);
 
   return (
     <Context.Provider value={{
