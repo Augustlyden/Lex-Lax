@@ -67,6 +67,10 @@
 
 .button-group {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    align-self: end;
+    gap: 1rem;
 }
+
+
+/*   behövs kanske inte i btn grupp  flex-wrap: wrap;
+    justify-content: space-between; */
