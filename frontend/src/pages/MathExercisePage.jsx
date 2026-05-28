@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import TestCard from '../components/TestCard';
+import TestResult from '../components/TestResult';
 
 // Generate a random math question object (factors between 1 and 10)
 const generateNewQuestion = () => {
@@ -26,16 +27,6 @@ const MathExercisePage = () => {
     const [gameFinished, setGameFinished] = useState(false);
     const [userAnswers, setUserAnswers] = useState([]);
 
-    // Generates a new math question and updates the component state
-    const generateQuestion = () => {
-        const num1 = Math.floor(Math.random() * 10) + 1;
-        const num2 = Math.floor(Math.random() * 10) + 1;
-        setCurrentQuestion({
-            question: `${num1} × ${num2}`,
-            answer: String(num1 * num2) 
-        });
-    };
-
     // --- Game Logic ---
     // Evaluates the current answer and advances the game state
     const nextQuestion = () => {
@@ -55,7 +46,7 @@ const MathExercisePage = () => {
         if (currentIndex < TOTAL_QUESTIONS - 1) {
             setCurrentIndex(prev => prev + 1);
             setCurrentAnswer('');
-            generateQuestion(); 
+            setCurrentQuestion(generateNewQuestion());
         } else {
             setGameFinished(true);
         }
@@ -68,52 +59,25 @@ const MathExercisePage = () => {
         setCurrentAnswer('');
         setUserAnswers([]);
         setGameFinished(false);
-
-        const num1 = Math.floor(Math.random() * 10) + 1;
-        const num2 = Math.floor(Math.random() * 10) + 1;
-        setCurrentQuestion({
-            question: `${num1} × ${num2}`,
-            answer: String(num1 * num2)
-        });
+        setCurrentQuestion(generateNewQuestion());
     };
 
     return (
         <div className="question-page">
             <h1 className='page-title'>Multiplikationstabellen</h1>
 
-            {/* --- Game View Conditional Rendering --- */}
             {gameFinished ? (
-                <div className="end-screen">
-                    <h3>{`Du fick ${score} av ${TOTAL_QUESTIONS} rätt!`}</h3>
-
-                    <div className="summary-container">
-                        <h4>Dina svar:</h4>
-                        <ul className="summary-list">
-                            {userAnswers.map((item, index) => (
-                                <li key={index} className={`summary-item ${item.isCorrect ? 'correct-row' : 'wrong-row'}`}>
-                                    <div className="summary-status">
-                                        {item.isCorrect ? (
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 12L10 17L20 7" stroke="#15F1B5" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                                        ) : (
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6L18 18" stroke="#D8003B" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                                        )}
-                                    </div>
-                                    <div className="summary-details">
-                                        <p><strong>Fråga:</strong> {item.question}</p>
-                                        <p><strong>Ditt svar:</strong> {item.userAnswer}</p>
-                                        {!item.isCorrect && <p><strong>Rätt svar:</strong> <span className="correct-ans">{item.correctAnswer}</span></p>}
-                                    </div>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                    <div className="end-buttons">
-                        <button className="primary-btn" onClick={restartGame}>Spela igen</button>
-                        <button className="secondary-btn" onClick={() => window.location.href = '/matematik/:subjectId'}>
-                            Välj annat test
-                        </button>                    
-                    </div>
-                </div>
+                /* 🌟 Reusing the same result layout with dynamic math buttons */
+                <TestResult
+                    score={score}
+                    totalQuestions={TOTAL_QUESTIONS}
+                    userAnswers={userAnswers}
+                    onRestart={restartGame}
+                >
+                    <button className="secondary-btn" onClick={() => window.location.href = '/matematik/2'}>
+                        Välj annat test
+                    </button>                    
+                </TestResult>
             ) : (
                 <TestCard
                     key={currentIndex} 

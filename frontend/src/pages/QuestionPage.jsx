@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getQuestions } from '../api/questionsApi';
 import TestCard from '../components/TestCard';
+import TestResult from '../components/TestResult';
 import Loading from '../components/UI/Loading';
 import { useParams } from 'react-router-dom';
 
@@ -96,58 +97,23 @@ const QuestionPage = () => {
         <div className="question-page">
             <h1 className='page-title'>{questions[0]?.title}</h1>
 
-            {/* --- Game View Conditional Rendering --- */}
             {questions.length === 0 ? (
                 (loading ? <Loading /> : <p>Inga frågor hittades...</p>)
             ) : gameFinished ? (
-                <div className="end-screen">
-                    <h3>{`Du fick ${score} av ${questions.length} rätt`}</h3>
-
-                    <div className="summary-container">
-                        <h4>Resultat:</h4>
-                        <ul className="summary-list">
-                            {userAnswers.map((item, index) => (
-                                <li
-                                    key={item.id || index}
-                                    className={`summary-item ${item.isCorrect ? 'correct-row' : 'wrong-row'}`}
-                                >
-                                    <div className="summary-status">
-                                        {item.isCorrect ? (
-                                            // Checkmark Icon
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M5 12L10 17L20 7" stroke="#15F1B5" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-                                            </svg>
-                                        ) : (
-                                            // Cross Icon
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M18 6L6 18M6 6L18 18" stroke="#D8003B" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-                                            </svg>
-                                        )}
-                                    </div>
-                                    <div className="summary-details">
-                                        <p><strong>Fråga:</strong> {item.question}</p>
-                                        <p><strong>Ditt svar:</strong> <span>{item.userAnswer || <i>Inget svar</i>}</span></p>
-                                        {!item.isCorrect && (
-                                            <p><strong>Rätt svar:</strong> <span className="correct-ans">{item.correctAnswer}</span></p>
-                                        )}
-                                    </div>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-
-                    <div className="end-buttons">
-                        <button className="primary-btn" onClick={restartGame}>
-                            Spela igen
-                        </button>
-                        <button className="secondary-btn" onClick={() => window.location.href = '/sprak/:subjectId/skapa'}>
-                            Skapa nytt test
-                        </button>
-                        <button className="secondary-btn" onClick={() => window.location.href = '/sprak/:subjectId'}>
-                            Välj annat test
-                        </button>
-                    </div>
-                </div>
+                /* 🌟 Use the dynamic results component with custom navigation buttons injected as children */
+                <TestResult
+                    score={score}
+                    totalQuestions={questions.length}
+                    userAnswers={userAnswers}
+                    onRestart={restartGame}
+                >
+                    <button className="secondary-btn" onClick={() => window.location.href = `/sprak/${subjectId}/skapa`}>
+                        Skapa nytt test
+                    </button>
+                    <button className="secondary-btn" onClick={() => window.location.href = `/sprak/${subjectId}`}>
+                        Välj annat test
+                    </button>
+                </TestResult>
             ) : (
                 <TestCard
                     key={currentQuestion.id}
