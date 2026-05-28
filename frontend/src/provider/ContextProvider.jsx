@@ -7,7 +7,11 @@ export const Context = createContext();
 export const ContextProvider = ({ children }) => {
   // --- Global State ---
   const [users, setUsers] = useState([]);
-  const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState(() => {
+  const savedUser = localStorage.getItem("currentUser");
+  return savedUser ? JSON.parse(savedUser) : null;
+});
+
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -113,6 +117,16 @@ export const ContextProvider = ({ children }) => {
     }
   };
 
+  useEffect(() => {
+  if (currentUser) {
+    localStorage.setItem(
+      "currentUser",
+      JSON.stringify(currentUser)
+    );
+  } else {
+    localStorage.removeItem("currentUser");
+  }
+}, [currentUser]);
 
   return (
     <Context.Provider value={{
