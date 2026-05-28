@@ -6,6 +6,7 @@ import Loading from '../components/UI/Loading';
 import { useParams } from 'react-router-dom';
 import { useAppContext } from '../hooks/useAppContext';
 import { updateAndCreateStats } from '../api/statisticApi';
+import {Link} from "react-router-dom"
 
 const QuestionPage = () => {
     // --- State Management ---
@@ -122,12 +123,9 @@ const QuestionPage = () => {
                     userAnswers={userAnswers}
                     onRestart={restartGame}
                 >
-                    <button className="secondary-btn" onClick={() => window.location.href = `/sprak/${subjectId}/skapa`}>
-                        Skapa nytt test
-                    </button>
-                    <button className="secondary-btn" onClick={() => window.location.href = `/sprak/${subjectId}`}>
-                        Välj annat test
-                    </button>
+                    <Link className="secondary-btn" to={`/sprak/${subjectId}/skapa`}> Skapa nytt test </Link>
+
+                   <Link className="secondary-btn" to={`/sprak/${subjectId}`}> Välj annat test </Link>
                 </TestResult>
             ) : (
                 <TestCard

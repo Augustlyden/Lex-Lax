@@ -55,7 +55,7 @@ if(loading) {
            <Link to={"/dashboard/" + currentUser?.id} className="flat-btn">Tillbaka </Link>
           </div>
 
-          <div className = {styles.listHeaderContent}>
+            <div className={`${styles.listHeaderContent} ${styles.vocabularyTheme}`}>
             <div className = "image-content-left">
                   <img src={languageIcon} className = "subject-icon" alt="Math icon" />
                 </div>
@@ -72,8 +72,7 @@ if(loading) {
           </div>
         </div>
 
-          <div className = {styles.listContent}>
-          
+            <div className = {`${styles.listContent} ${styles.vocabularyBorder}`}>
             <h2>Historik</h2>
             
             {lists.length === 0 ? (
@@ -93,7 +92,8 @@ if(loading) {
            </div>
 
     <div className={styles.listActions}>
-      <Link className="primary-btn" to={`/test/${list.id}`}>
+      <Link className="primary-btn" to={`/sprak/1/test/${list.id}`}>
+     
         Träna!
       </Link>
 

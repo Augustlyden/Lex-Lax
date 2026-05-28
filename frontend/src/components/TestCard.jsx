@@ -1,4 +1,5 @@
 import '../styles/testCard.css';
+import {Link} from "react-router-dom";
 
 const TestCard = ({
     questionText,
@@ -42,9 +43,7 @@ const TestCard = ({
                 <span className="progress-text">Fråga {currentCount} / {totalCount}</span>
                 
                 {/* Redirects the user back to the correct category view using the provided URL string */}
-                <button type="button" className="flat-btn" onClick={() => window.location.href = backUrl}>
-                    Avsluta test
-                </button>
+               <Link to={backUrl} className="flat-btn"> Avsluta test </Link>
 
                 <button type="submit" className='primary-btn'>
                     {currentCount === totalCount ? 'Se resultat' : 'Nästa fråga'}

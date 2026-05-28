@@ -74,9 +74,9 @@ const MathExercisePage = () => {
                     userAnswers={userAnswers}
                     onRestart={restartGame}
                 >
-                    <button className="secondary-btn" onClick={() => window.location.href = '/matematik/2'}>
-                        Välj annat test
-                    </button>                    
+                   <Link to="/matematik/2" className="secondary-btn">
+                    Välj annat test
+                   </Link>         
                 </TestResult>
             ) : (
                 <TestCard

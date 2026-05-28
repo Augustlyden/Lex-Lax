@@ -4,18 +4,25 @@ flex-direction: column;
 gap: 3rem;
 width: 100%;
 }
+
 .listHeaderContent {
 display: flex;
 flex-direction: row;
 align-items: center;
 width: 100%;
 padding: 1rem;
-background: var(--subject-1-gradient);
 border-radius: var(--radius-soft);
-border-color: var(--subject-2-gradient);
 box-shadow: var(--box-shadow-glow);
 margin: 0;
 flex-wrap: wrap;
+}
+.vocabularyTheme {
+  background: var(--subject-1-gradient);
+  border-color: var(--subject-1-gradient);
+}
+.mathTheme {
+  background: var(--subject-2-gradient);
+  border-color: var(--subject-2-gradient);
 }
 .listHeaderContent h1,
 .listHeaderContent p {
@@ -29,8 +36,13 @@ display: flex;
 flex-direction: column;
 padding: 1rem;
 border-radius: var(--radius-soft);
-border: 3px solid var(--subject-1);
 gap: 0.5rem;
+}
+.mathBorder {
+  border: 3px solid var(--subject-2);
+}
+.vocabularyBorder {
+  border: 3px solid var(--subject-1);
 }
 .listCard {
 display: flex;
