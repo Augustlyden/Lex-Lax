@@ -1,7 +1,5 @@
 # Lex Läx
 
-# Homework Trainer (Läroapp för skoluppgifter)
-
 An interactive learning application designed for children to help them practice and master their schoolwork. The app allows children to input their own assignments, such as weekly vocabulary lists for languages like English or Spanish, or math problems. By creating personalized study lists, children can practice their specific school material through engaging, interactive exercises.
 
 
