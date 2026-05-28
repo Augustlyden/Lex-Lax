@@ -1,5 +1,8 @@
 import apiClient from "./axiosConfig";
 
+// Note on response: Axios wraps the server response in a "data" property.
+// The second ".data" is the actual payload returned by our custom backend API wrapper.
+
 export const getUsers = async () => {
   const response = await apiClient.get('/users/');
   return response.data.data; 

@@ -1,14 +1,18 @@
 import { createContext, useEffect, useState } from "react";
 import { getUsers, getUserById, createApiUser, updateApiUser, deleteApiUser } from "../api/userApi";
 
+// Create the global context instance to be shared across components
 export const Context = createContext();
 
 export const ContextProvider = ({ children }) => {
+  // --- Global State ---
   const [users, setUsers] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // --- Centralized Error Handling ---
+  // Formats and applies error messages to the state, with a fallback for network issues
   const errorHandler = (err) => {
     setLoading(false);
     if (!err) {
@@ -18,8 +22,11 @@ export const ContextProvider = ({ children }) => {
     }
   };
 
-  //   USERS
-    useEffect(() => {
+  // --- API Actions ---
+
+  // Automatically fetch all users from the database on initial mount
+  useEffect(() => {
+    // Uses an Immediately Invoked Function Expression (IIFE) because useEffect callbacks cannot be async
     (async () => {
       errorHandler(null);
       setLoading(true);
@@ -33,6 +40,7 @@ export const ContextProvider = ({ children }) => {
     })();
   }, []);
 
+  // Fetch a specific user profile by ID and set it as the active currentUser
   const fetchUsersById = async (id) => {
     errorHandler(null);
     setLoading(true);
@@ -45,13 +53,14 @@ export const ContextProvider = ({ children }) => {
     }
   };
 
+  // Create a new user profile, select it, and append it to the global users list
   const createUser = async (username, profileImg) => {
     errorHandler(null);
     setLoading(true);
     try {
       const data = await createApiUser(username, profileImg);
       setCurrentUser(data);
-      setUsers((prevUsers) => [...prevUsers, data]);
+      setUsers((prevUsers) => [...prevUsers, data]); // Append the newly created user to local state
       console.log('Användare skapad:', data);
       setLoading(false);
       return data;
@@ -60,36 +69,43 @@ export const ContextProvider = ({ children }) => {
     }
   };
 
-const updateUser = async (id, username, profileImg) => {
-  errorHandler(null);
-  setLoading(true);
+  // Update user credentials and sync changes across both the currentUser and the users collection
+  const updateUser = async (id, username, profileImg) => {
+    errorHandler(null);
+    setLoading(true);
 
-  try {
-    const data = await updateApiUser(id, username, profileImg);
+    try {
+      const data = await updateApiUser(id, username, profileImg);
+      setCurrentUser(data);
 
-    setCurrentUser(data);
+      // Map through users and swap out the old profile object with the updated data
+      // IDs are cast to Strings to prevent type mismatches
+      setUsers((prevUsers) =>
+        prevUsers.map((user) =>
+          String(user.id) === String(id) ? data : user
+        )
+      );
 
-    setUsers((prevUsers) =>
-      prevUsers.map((user) =>
-        String(user.id) === String(id) ? data : user
-      )
-    );
+      setLoading(false);
+      return data;
+    } catch (error) {
+      errorHandler(error);
+    }
+  };
 
-    setLoading(false);
-    return data;
-  } catch (error) {
-    errorHandler(error);
-  }
-};
-
+  // Remove a user from the database and clean up local component
   const deleteUser = async (id) => {
     errorHandler(null);
     setLoading(true);
     try {
       await deleteApiUser(id);
-    if (String(currentUser?.id) === String(id)) {
-  setCurrentUser(null);
-}
+      
+      // If the deleted user happens to be the currently active profile, deselect it
+      if (String(currentUser?.id) === String(id)) {
+        setCurrentUser(null);
+      }
+      
+      // Filter out the deleted user profile from the global list
       setUsers((prevUsers) => prevUsers.filter(user => String(user.id) !== String(id)));
       setLoading(false);
     } catch (error) {
@@ -114,3 +130,5 @@ const updateUser = async (id, username, profileImg) => {
     </Context.Provider>
   );
 };
+
+export default ContextProvider;

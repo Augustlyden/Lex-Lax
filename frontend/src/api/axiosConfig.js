@@ -8,7 +8,7 @@ const apiClient = axios.create({
   timeout: 10000,
 });
 
-// Request interceptor - körs före varje request
+// Request interceptor - before every request
 apiClient.interceptors.request.use(
   (config) => {
     console.log(`API Request: ${config.method.toUpperCase()} ${config.url}`);
@@ -20,7 +20,7 @@ apiClient.interceptors.request.use(
   }
 );
 
-// Response interceptor - körs efter varje response
+// Response interceptor - after every response
 apiClient.interceptors.response.use(
   (response) => {
     console.log(`✅ API Response: ${response.status} ${response.config.url}`);
