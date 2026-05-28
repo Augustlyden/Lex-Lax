@@ -13,6 +13,7 @@ function LoginPage() {
     const [manageProfiles, setManageProfiles] = useState(false);
 
  return (
+
   <div className="login-container">
       <div className = "login-text-content">
         <img src={logo} alt="Lex Lax" className="h1-logo" />

@@ -9,16 +9,21 @@ a {
   font-size: 22px;
 }
 
+header {
+height: 80px;
+background: white;
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
 .nav-container {
     display: flex;
     align-items: center;
     justify-content: center;
-  
-    height: 80px;
-    background: white;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    
+
+    max-width: 1000px;
+    margin: 0 auto;   
 } 
+
 .nav-content {
     display: flex;
     flex-direction: row;
