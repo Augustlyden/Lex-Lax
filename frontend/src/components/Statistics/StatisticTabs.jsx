@@ -5,6 +5,7 @@ import { formatDate } from '../../utils/formatDate';
 const StatisticTabs = ({ allStats, onSelectList, subjects }) => {
   const [activeTab, setActiveTab] = useState('Alla');
 
+  // Filter stats based on the selected tab
   const filteredStats = activeTab === 'Alla'
     ? allStats
     : allStats.filter(item => item.subject_id === activeTab);
@@ -37,6 +38,7 @@ const StatisticTabs = ({ allStats, onSelectList, subjects }) => {
       ) : (
         <div className={styles.grid}>
           {filteredStats.map((list) => {
+            // Calculate accuracy percentage, default to 0 if no attempts
             const totalAnswers = list.correct_answers + list.wrong_answers;
             const successRate = totalAnswers > 0
               ? Math.round((list.correct_answers / totalAnswers) * 100)
