@@ -11,7 +11,6 @@
   flex-direction: column;
   align-items: center;
   gap: 2rem;
-  background-image: var(--subject-1-gradient);
   border-radius: var(--radius-soft);
   padding: 25px;
   margin: 20px;
@@ -25,6 +24,13 @@
   animation: flipCard 0.6s ease-in-out;
 }
 
+.background-1 {
+  background-image: var(--subject-1-gradient);
+}
+
+.background-2 {
+  background-image: var(--subject-2-gradient);
+}
 
 .question-page .page-title {
   text-align: center;
@@ -41,6 +47,25 @@
   grid-column: 1 / -1;
 }
 
+/* För Chrome, Safari, Edge och Opera */
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* För Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.language-background {
+  background-image: var(--subject-1-gradient);
+}
+.math-background {
+  background-image: var(--subject-2-gradient);
+}
 
 /* RESULTAT */
 .end-screen {
