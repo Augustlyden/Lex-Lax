@@ -71,6 +71,7 @@ function AddUser() {
         existingUser.profile_img || null
       );
       setCreatedUser(existingUser);
+      setStep(1);
     }
   }, [existingUser]);
 

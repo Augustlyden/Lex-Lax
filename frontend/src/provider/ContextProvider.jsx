@@ -58,44 +58,53 @@ export const ContextProvider = ({ children }) => {
   };
 
   // Create a new user profile, select it, and append it to the global users list
-  const createUser = async (username, profileImg) => {
-    errorHandler(null);
-    setLoading(true);
-    try {
-      const data = await createApiUser(username, profileImg);
-      setCurrentUser(data);
-      setUsers((prevUsers) => [...prevUsers, data]); // Append the newly created user to local state
-      console.log('Användare skapad:', data);
-      setLoading(false);
-      return data;
-    } catch (error) {
-      errorHandler(error);
-    }
-  };
+const createUser = async (username, profileImg) => {
+  errorHandler(null);
+  setLoading(true);
+
+  try {
+    const data = await createApiUser(username, profileImg);
+
+    const refreshedUsers = await getUsers();
+    setUsers(refreshedUsers);  // Append the newly created user to local state
+
+    const createdUserWithImage = refreshedUsers.find(
+      (user) => String(user.id) === String(data.id)
+    );
+
+    setCurrentUser(createdUserWithImage || data);
+
+    setLoading(false);
+    return createdUserWithImage || data;
+  } catch (error) {
+    errorHandler(error);
+  }
+};
 
   // Update user credentials and sync changes across both the currentUser and the users collection
-  const updateUser = async (id, username, profileImg) => {
-    errorHandler(null);
-    setLoading(true);
+const updateUser = async (id, username, profileImg) => {
+  errorHandler(null);
+  setLoading(true);
 
-    try {
-      const data = await updateApiUser(id, username, profileImg);
-      setCurrentUser(data);
+  try {
+    const data = await updateApiUser(id, username, profileImg);
 
-      // Map through users and swap out the old profile object with the updated data
-      // IDs are cast to Strings to prevent type mismatches
-      setUsers((prevUsers) =>
-        prevUsers.map((user) =>
-          String(user.id) === String(id) ? data : user
-        )
-      );
+    const refreshedUsers = await getUsers();
+    setUsers(refreshedUsers);
 
-      setLoading(false);
-      return data;
-    } catch (error) {
-      errorHandler(error);
-    }
-  };
+    const updatedUserWithImage = refreshedUsers.find(
+      (user) => String(user.id) === String(id)
+    );
+
+    setCurrentUser(updatedUserWithImage || data);
+
+    setLoading(false);
+    return updatedUserWithImage || data;
+  } catch (error) {
+    errorHandler(error);
+  }
+};
+
 
   // Remove a user from the database and clean up local component
   const deleteUser = async (id) => {
