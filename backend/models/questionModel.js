@@ -24,8 +24,10 @@ class Question {
     const valuePlaceholder = [];
     let counter = 1;
 
+    // Dynamically build a single parameterized bulk INSERT query
     for (const item of questions) {
       values.push(item.question, item.answer, listId);
+      // Creates placeholders, e.g., ($1, $2, $3), ($4, $5, $6)
       valuePlaceholder.push(`($${counter}, $${counter + 1}, $${counter + 2})`);
       counter += 3;
     }

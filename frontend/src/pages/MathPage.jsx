@@ -1,21 +1,44 @@
-import { Link } from "react-router-dom";
-import "../styles/MathPage.css"
+import styles from "../styles/WordList.module.css";
+import {Link} from "react-router-dom"
 import { useAppContext } from "../hooks/useAppContext";
+import mathIcon from "../assets/subjects/math-icon.webp";
 
-function MathPage() {
+function MathPage({subjectId}) {
 
-   const { currentUser } = useAppContext();
+  const { currentUser } = useAppContext();
+
+
 
     return (
-        <div className = "math-page-container">
-         <div className="">
-           <Link to={"/Dashboard/" + currentUser?.id} className="flat-btn">Tillbaka </Link>
+        <div className = {styles.listContainer}>
+          <div className={styles.backBtnBox}>
+           <Link to={"/dashboard/" + currentUser?.id} className="flat-btn">Tillbaka</Link>
           </div>
 
-          <div className = "math-header-content">
-            <h1>Under Konstruktion</h1>
+         <div className={`${styles.listHeaderContent} ${styles.mathTheme}`}>
+            <div className = "image-content-left">
+                  <img src={mathIcon} className = "subject-icon" alt="Math icon" />
+                </div>
+            
+                <div className ={styles.infoContent}>
+                <h1>Matematik</h1>
+                <p>Här övar du dina kunskaper inom matematik!</p>
+                <div>
+               <div className= {styles.addNewListBox}>
+            
+             </div>
+            
+            </div>
           </div>
         </div>
-    )
+
+          <div className = {`${styles.listContent}`}>
+        
+         <div className = "math-play-btn-box">
+      <Link to={`/matematik/${subjectId}/test`} className="primary-btn">ÖVA HÄR!</Link>
+    </div>
+ </div>
+</div>
+  )
 }
-export default MathPage
+export default MathPage;

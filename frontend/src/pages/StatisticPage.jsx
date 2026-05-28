@@ -7,6 +7,7 @@ import StatisticTabs from '../components/Statistics/StatisticTabs.jsx';
 import StatisticDetails from '../components/Statistics/StatisticDetails.jsx';
 
 const StatisticPage = () => {
+  // Global and local states
   const { currentUser, error: userError } = useAppContext();
   const [allStats, setAllStats] = useState([]);
   const [subjects, setSubjects] = useState([]);
@@ -18,6 +19,7 @@ const StatisticPage = () => {
     setLoading(true);
     setStatsError(null);
     try {
+      // Fetch both statistics and subjects in parallel
       const [statsData, subjectData] = await Promise.all([
         getAllStats(userId),
         getAllSubjects()
@@ -34,12 +36,14 @@ const StatisticPage = () => {
     }
   }
 
+  // Fetch data automatically when current user is available
   useEffect(() => {
     if (currentUser?.id) {
       fetchStats(currentUser.id);
     }
   }, [currentUser]);
 
+  // Handle separate error states (user API error takes precedence)
   if (userError) {
     return <div>{userError}</div>
   }

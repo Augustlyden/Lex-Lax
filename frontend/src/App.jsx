@@ -17,6 +17,7 @@ import EditWordList from "./components/EditWordList";
 import MathPage from "./pages/MathPage";
 import StatisticPage from "./pages/StatisticPage";
 
+import MathExercisePage from "./pages/MathExercisePage";
 
 function App() {
   const location = useLocation();
@@ -41,7 +42,9 @@ function App() {
 
           <Route path="/dashboard/:userId" element={<DashboardPage />} />
 
-          <Route path="/test/:listId" element={<QuestionPage />} />
+          <Route path="/sprak/:subjectId/test/:listId" element={<QuestionPage />} />
+          <Route path="/matematik/:subjectId/test" element={<MathExercisePage />} />
+
 
           <Route path="/sprak/:subjectId" element={<VocabularyPage />} />
           <Route path="/sprak/:subjectId/skapa" element={<CreateWordList />} />
