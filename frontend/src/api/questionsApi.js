@@ -1,12 +1,12 @@
 import apiClient from "./axiosConfig";
 
+// Note on response: Axios wraps the server response in a "data" property.
+// The second ".data" is the actual payload returned by our custom backend API wrapper.
+
 export const getQuestions = async (listId) => {
-  const response = await apiClient.get(`/questions?listId=${listId}`);
-  return response.data.data; 
+    const response = await apiClient.get(`/questions?listId=${listId}`);
+    return response.data.data; 
 };
-
-
-// ALLT HÄR UNDER ÄR OTESTAT - BARA FÖRSLAG PÅ API-FUNKTIONER
 
 export const createQuestion = async (questionText, listId) => {
   const response = await apiClient.post('/questions/', { questionText, listId });
