@@ -7,6 +7,8 @@ import listRoutes from './routes/listRoutes.js';
 import avatarRoutes from './routes/avatarRoutes.js';
 import questionRoutes from './routes/questionRoutes.js';
 import statisticRoutes from './routes/statisticRoutes.js';
+import { initializeDatabase } from './dbInit.js';
+import pool from './config/database.js';
 
 dotenv.config();
 
@@ -28,6 +30,7 @@ app.get('/api/health', (req, res) => {
   res.json({ success: true, message: 'Server is running' });
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
   console.log(`Server is running on PORT:${PORT}`);
+  await initializeDatabase(pool);
 });

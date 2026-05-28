@@ -1,12 +1,15 @@
 import { Link } from "react-router-dom";
 import "../styles/MathPage.css"
+import { useAppContext } from "../hooks/useAppContext";
 
 function MathPage() {
+
+   const { currentUser } = useAppContext();
 
     return (
         <div className = "math-page-container">
          <div className="">
-           <Link to={"/Dashboard"} className="flat-btn">Tillbaka </Link>
+           <Link to={"/Dashboard/" + currentUser?.id} className="flat-btn">Tillbaka </Link>
           </div>
 
           <div className = "math-header-content">

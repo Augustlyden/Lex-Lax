@@ -4,6 +4,8 @@ import TestCard from '../components/TestCard';
 import TestResult from '../components/TestResult';
 import Loading from '../components/UI/Loading';
 import { useParams } from 'react-router-dom';
+import { useAppContext } from '../hooks/useAppContext';
+import { updateAndCreateStats } from '../api/statisticApi';
 
 const QuestionPage = () => {
     // --- State Management ---
@@ -15,8 +17,8 @@ const QuestionPage = () => {
     const [loading, setLoading] = useState(true);
     const [userAnswers, setUserAnswers] = useState([]);
 
-    // Extract route parameters to know which quiz list and subject to load
-    const { subjectId, listId } = useParams();
+    const { listId } = useParams();
+    const { currentUser } = useAppContext();
 
     // --- Side Effects ---
     // Fetch quiz questions from the API whenever the listId changes
@@ -36,9 +38,8 @@ const QuestionPage = () => {
         fetchListById();
     }, [listId]);
 
-    // --- Game Logic ---
-    // Handles transition to the next question or triggers the end game screen
-    const nextQuestion = () => {
+    const nextQuestion = async () => {
+        // 1. Kolla om svaret var rätt
         const wasCorrect = validateQuestion(currentAnswer);
         const updatedScore = wasCorrect ? score + 1 : score;
 
@@ -60,6 +61,22 @@ const QuestionPage = () => {
             setCurrentAnswer('');
         } else {
             const amountOfQuestions = questions.length;
+            const wrongAnswersCount = amountOfQuestions - updatedScore;
+
+            if (currentUser && currentUser.id) {
+                try {
+                    await updateAndCreateStats(
+                        Number(currentUser.id),
+                        Number(listId),
+                        updatedScore,
+                        wrongAnswersCount
+                    );
+                } catch (error) {
+                    console.error('Misslyckades att spara statistik:', error.message);
+                }
+            } else {
+                console.warn('No active user found. Statistics could not be saved.');
+            }
             console.log(`du fick ${updatedScore} av ${amountOfQuestions} rätt!`);
             setGameFinished(true);
         }
