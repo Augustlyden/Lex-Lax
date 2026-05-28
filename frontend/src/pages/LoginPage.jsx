@@ -11,7 +11,7 @@ function LoginPage() {
     const navigate = useNavigate();
     const { users, deleteUser, setCurrentUser } = useAppContext();
     const [manageProfiles, setManageProfiles] = useState(false);
-
+/*  */
  return (
 
   <div className="login-container">
