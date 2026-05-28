@@ -1,4 +1,5 @@
-import '../styles/testCard.css'; // Reuse existing styles for the end screen
+import '../styles/testResult.css';
+import { Link } from 'react-router-dom';
 
 const TestResult = ({ 
     score, 
@@ -49,6 +50,10 @@ const TestResult = ({
                 <button className="primary-btn" onClick={onRestart}>
                     Spela igen
                 </button>
+                <Link className="secondary-btn" to={`/statistik`}>
+                Se all statistik
+                </Link>
+
                 {children}
             </div>
         </div>
