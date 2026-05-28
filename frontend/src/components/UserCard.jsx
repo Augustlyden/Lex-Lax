@@ -9,7 +9,7 @@ function UserCard({ user, onClick, manageProfiles, onEdit }) {
         {manageProfiles && (
         <div className="profile-actions-start">
           
-          <DeleteUserButton user={user} redirectTo="/login" />
+          <DeleteUserButton user={user} redirectTo="/logga-in" />
           <EditProfileButton
             onClick={(e) => {
               e.stopPropagation();
