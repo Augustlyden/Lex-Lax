@@ -16,8 +16,7 @@ const QuestionPage = () => {
     const [currentAnswer, setCurrentAnswer] = useState('');
     const [loading, setLoading] = useState(true);
     const [userAnswers, setUserAnswers] = useState([]);
-
-    const { listId } = useParams();
+    const { subjectId, listId } = useParams();
     const { currentUser } = useAppContext();
 
     // --- Side Effects ---
@@ -39,11 +38,11 @@ const QuestionPage = () => {
     }, [listId]);
 
     const nextQuestion = async () => {
-        // 1. Kolla om svaret var rätt
+        // Was the answer correct?
         const wasCorrect = validateQuestion(currentAnswer);
         const updatedScore = wasCorrect ? score + 1 : score;
 
-        // Save the user's answer details to display in the final summary
+        // Save the user's answer to display in the final summary
         setUserAnswers(prevAnswers => [
             ...prevAnswers,
             {
@@ -117,7 +116,6 @@ const QuestionPage = () => {
             {questions.length === 0 ? (
                 (loading ? <Loading /> : <p>Inga frågor hittades...</p>)
             ) : gameFinished ? (
-                /* 🌟 Use the dynamic results component with custom navigation buttons injected as children */
                 <TestResult
                     score={score}
                     totalQuestions={questions.length}
