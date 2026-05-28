@@ -4,7 +4,6 @@
 color: var(--text-color-btn);
 line-height: 1.5;
 }
-
 .create-word-list-wrapper {
 display: flex;
 flex-direction: column;
@@ -25,7 +24,6 @@ padding: 1rem;
 .create-word-list-card {
 display: flex;
 flex-direction: row;
-
 justify-content: space-between;
 align-items: center;
 border-radius: 12px;
@@ -43,7 +41,6 @@ border-color: var(--subject-2-gradient);
 box-shadow: var(--box-shadow-glow);
 margin: 0;
 flex-wrap: wrap;
-
 }
 .word-left,
 .word-right {
@@ -63,7 +60,6 @@ gap: 1rem;
 .word-input:focus {
 border-color: var(--subject-1);
 }
-
 .word-list-scroll-container {
 display: flex;
 flex-direction: column;

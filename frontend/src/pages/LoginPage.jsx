@@ -1,5 +1,6 @@
 import "../styles/loginPage.css"
 import UserCard from "../components/UserCard"
+import logo from "../assets/logos/logo.png";
   
 import { useNavigate } from "react-router-dom";
 import { useAppContext } from "../hooks/useAppContext";
@@ -14,7 +15,7 @@ function LoginPage() {
  return (
   <div className="login-container">
       <div className = "login-text-content">
-        <h1>Lex Läx</h1>
+        <img src={logo} alt="Lex Lax" className="h1-logo" />
         <p>Välj din profil eller skapa en ny för att komma igång!</p>
       </div>
                 
