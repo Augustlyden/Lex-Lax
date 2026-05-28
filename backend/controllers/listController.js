@@ -2,6 +2,7 @@ import List from '../models/listModel.js';
 
 export const getAllLists = async (req, res) => {
   try {
+    // Extract filters from query parameters
     const { subjectId, userId } = req.query;
 
     if (!subjectId || !userId) {
@@ -19,6 +20,7 @@ export const getAllLists = async (req, res) => {
 export const getListById = async (req, res) => {
   try {
     const list = await List.findById(req.params.id);
+    // Handle case where the list ID does not exist
     if (!list) {
       return res.status(404).json({ success: false, error: 'Listan hittades ej' });
     }
@@ -33,10 +35,12 @@ export const createList = async (req, res) => {
   try {
     const { title, targetLanguage, userId, subjectId } = req.body;
 
+    // Validate required fields
     if (!title || !targetLanguage) {
       return res.status(400).json({ success: false, error: 'Titel och språk behövs' });
     }
 
+    // Ensure the new title is unique within the subject
     const existingTitle = await List.findByTitle(title, userId, subjectId);
     if (existingTitle) {
       return res.status(409).json({ success: false, error: 'Titeln finns redan'});
@@ -54,15 +58,18 @@ export const updateList = async (req, res) => {
   try {
     const { title, targetLanguage } = req.body;
 
+    // Validate required fields
     if (!title || !targetLanguage) {
       return res.status(400).json({ success: false, error: 'Titel och språk behövs' });
     } 
 
+    // Fetch the current list to get its user and subject details
     const currentList = await List.findById(req.params.id);
     if (!currentList) {
       return res.status(404).json({ success: false, error: 'Listan hittades ej'});
     }
 
+    // Ensure the new title is unique within the subject, ignoring the current list
     const existingTitle = await List.findByTitle(title, currentList.user_id, currentList.subject_id);
     if (existingTitle && existingTitle.id !== req.params.id) {
       return res.status(409).json({ success: false, error: 'Titeln finns redan i detta ämne' });

@@ -2,6 +2,7 @@ import Statistic from "../models/statisticModel.js";
 
 export const getStats = async (req, res) => {
   try {
+    // Extract filters from query parameters
     const { userId } = req.query;
 
     if (!userId) {
@@ -23,6 +24,7 @@ export const upsertStats = async (req, res) => {
   try {
     const { userId, listId, correctCount, wrongCount } = req.body;
 
+    // Validate required fields and data types
     if (!userId || !listId || typeof correctCount !== 'number' || typeof wrongCount !== 'number') {
       return res.status(400).json({ 
         success: false, 
@@ -30,8 +32,10 @@ export const upsertStats = async (req, res) => {
       });
     }
 
+    // Log this specific run in history before updating overall statistics
     await Statistic.createHistory(userId, listId, correctCount, wrongCount);
 
+    // Update existing stats or insert a new entery if it's the first attempt
     const updatedStats = await Statistic.upsert(userId, listId, correctCount, wrongCount);
     res.status(200).json({ success: true, data: updatedStats });
   } catch (error) {
@@ -42,6 +46,7 @@ export const upsertStats = async (req, res) => {
 
 export const getHistoryByListId = async (req, res) => {
   try {
+    // Extract filters from query parameters
     const { userId, listId } = req.query;
 
     if (!userId || !listId) {

@@ -30,6 +30,7 @@ class Statistic {
       VALUES ($1, $2, $3, $4, NOW())
       ON CONFLICT (user_id, list_id)
       DO UPDATE SET
+        -- Accumulate scores and update timestamp if entry already exists
         correct_answers = user_statistics.correct_answers + EXCLUDED.correct_answers,
         wrong_answers = user_statistics.wrong_answers + EXCLUDED.wrong_answers,
         last_practiced = NOW()

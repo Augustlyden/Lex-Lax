@@ -15,7 +15,6 @@ const StatisticDetails = ({ userId, listId, onClose }) => {
       setError(null);
       try {
         const data = await getHistory(userId, listId);
-        console.log(data)
         setHistory(data);
       } catch (error) {
         setError(
@@ -34,6 +33,7 @@ const StatisticDetails = ({ userId, listId, onClose }) => {
 
   return (
     <div className={styles.backdrop} onClick={onClose}>
+      {/* Prevent modal clicks from triggering the backdrop's onClose event */}
       <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
 
         <button className={`flat-btn ${styles.closeButton}`} onClick={onClose}>X</button>
@@ -46,6 +46,7 @@ const StatisticDetails = ({ userId, listId, onClose }) => {
         {!loading && !error && (
           <div className={styles.timeline}>
             {history.map((run, index) => {
+              // Calculate accuracy percentage, default to 0 if no attempts
               const total = run.correct_answers + run.wrong_answers;
               const percent = total > 0 ? Math.round((run.correct_answers / total) * 100) : 0;
 
