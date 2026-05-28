@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import TestCard from '../components/TestCard';
 import TestResult from '../components/TestResult';
+import { Link } from 'react-router-dom';
 
 // Generate a random math question object (factors between 1 and 10)
 const generateNewQuestion = () => {
@@ -67,7 +68,6 @@ const MathExercisePage = () => {
             <h1 className='page-title'>Multiplikationstabellen</h1>
 
             {gameFinished ? (
-                /* 🌟 Reusing the same result layout with dynamic math buttons */
                 <TestResult
                     score={score}
                     totalQuestions={TOTAL_QUESTIONS}
