@@ -28,10 +28,12 @@ export const createUser = async (req, res) => {
   try {
     const { username, profileImg } = req.body;
 
+    // Validate required fields 
     if (!username || !profileImg) {
       return res.status(400).json({ success: false, error: 'Användarnamn och profilbild behövs' });
     }
 
+    // Ensure the username is unique
     const existingUser = await User.findByUsername(username);
     if (existingUser) {
       return res.status(409).json({ success: false, error: 'Användarnamnet är upptaget' });
@@ -49,16 +51,19 @@ export const updateUser = async (req, res) => {
   try {
     const { username, profileImg } = req.body;
 
+    // Validate required fields
     if (!username || !profileImg) {
       return res.status(400).json({ success: false, error: 'Användarnamn och profilbild behövs' })
     }
 
+    // Ensure the new username is unique, ignoring the current user
     const existingUser = await User.findByUsername(username);
     if (existingUser && existingUser.id !== req.params.id) {
       return res.status(409).json({ success: false, error: 'Användarnamnet är upptaget' })
     }
 
     const user = await User.update(req.params.id, username, profileImg);
+    // Handle case where the user ID does not exist
     if (!user) {
       return res.status(404).json({ success: false, error: 'Användare hittades ej' });
     }

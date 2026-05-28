@@ -2,9 +2,8 @@ import Question from '../models/questionModel.js';
 
 export const getQuestionsByList = async (req, res) => {
   try {
+    // Extract filters from query parameters
     const { listId } = req.query;
-
-    console.log('Received listId:', listId);
 
     if (!listId) {
       return res.status(400).json({ 
@@ -25,6 +24,7 @@ export const createQuestions = async (req, res) => {
   try {
     const { listId, questions } = req.body;
 
+    // Validate payload and ensure questions is a non empty array
     if (!listId || !questions || !Array.isArray(questions) || questions.length === 0) {
       return res.status(400).json({ 
         success: false, 
@@ -44,12 +44,14 @@ export const updateQuestion = async (req, res) => {
   try {
     const { question, answer } = req.body;
 
+    // Validate required fields
     if (!question || !answer) {
       return res.status(400).json({ success: false, error: 'Både fråga och svar behövs' });
     }
 
     const updatedQuestion = await Question.update(question, answer, req.params.id);
 
+    // Handle case where the question ID does not exist
     if (!updatedQuestion) {
       return res.status(404).json({ success: false, error: 'Frågan/ordet hittades ej' });
     }

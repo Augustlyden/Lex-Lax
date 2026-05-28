@@ -15,6 +15,7 @@ dotenv.config();
 const app = express()
 const PORT = process.env.PORT || 5000;
 
+// Accept requests from local frontend (Vite/React default port)
 app.use(cors({ origin: 'http://localhost:5173' }));
 
 app.use(express.json());
@@ -26,6 +27,7 @@ app.use('/api/avatars', avatarRoutes);
 app.use('/api/questions', questionRoutes);
 app.use('/api/statistics', statisticRoutes);
 
+// Simple health check endpoint for monitoring server status
 app.get('/api/health', (req, res) => {
   res.json({ success: true, message: 'Server is running' });
 });
