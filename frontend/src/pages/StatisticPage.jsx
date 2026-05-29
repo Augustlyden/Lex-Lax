@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import Loading from '../components/UI/Loading.jsx'
 import StatisticTabs from '../components/Statistics/StatisticTabs.jsx';
 import StatisticDetails from '../components/Statistics/StatisticDetails.jsx';
+import {Link} from "react-router-dom"
 
 const StatisticPage = () => {
   // Global and local states
@@ -57,8 +58,10 @@ const StatisticPage = () => {
   }
 
   return (
-    <div>
-      <StatisticTabs 
+    <>
+      <Link to={"/dashboard/" + currentUser?.id} className="flat-btn statistic-back-btn-box">Tillbaka</Link>
+    <div className = "statistic-page">
+       <StatisticTabs 
         allStats={allStats} 
         onSelectList={setSelectedListId} 
         subjects={subjects}/>
@@ -69,6 +72,7 @@ const StatisticPage = () => {
          onClose={() => setSelectedListId(null)}/>
       )}
     </div>
+    </>
   )
 }
 

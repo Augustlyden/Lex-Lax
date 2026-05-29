@@ -3,6 +3,7 @@ import stars from "../assets/ui/stars.webp";
 import Subjects from "../components/Subjects"
 import Loading from "../components/UI/Loading"
 import { useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
 
 function DashboardPage() {
 
@@ -48,9 +49,9 @@ if(loading) {
                 <div className = "info-content-right">
                 <h2>Välkommen till din Dashboard!</h2>
                 <p>Här kan du se din studiehistorik, kommande uppgifter och anpassa dina inställningar.</p>
-                <div className="progress-bar">
-               <div className="progress-fill"></div>
+                <div className="info-content-line">
                </div>
+                <Link to ="/statistik" className="flat-btn dashboard-btn-size">Min statistik</Link>
             </div>
            </div>
 
