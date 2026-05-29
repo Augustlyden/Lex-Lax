@@ -74,3 +74,4 @@ This application was developed as a collaborative school project. Below is the b
 * **All Members**
   * Integrated API endpoints using Axios.
   * Managed UI styling and UX design.
+  * Mockups, Component tree, Data Flow Diagram: https://www.figma.com/design/bYeWsc8Bgdx4rPmVRy1fnp/LEX-L%C3%84X?node-id=0-1&t=K0oK09WUx5fJx9d9-1
