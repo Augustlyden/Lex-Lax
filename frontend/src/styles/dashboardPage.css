@@ -36,7 +36,9 @@ object-fit: cover;
 border-radius: var(--radius-soft);
 }
 .info-content-right {
-flex: 1
+display: flex;
+flex-direction: column;
+flex: 1;
 }
 
 .subject-container {
@@ -48,7 +50,7 @@ border-radius: var(--radius-soft);
 flex-wrap: wrap;
 }
 .subject-card {
-    all: unset;
+all: unset;
 display: flex;
 flex-direction: column;
 align-items: center;
@@ -74,16 +76,16 @@ align-items: center;
 justify-content: center;
 }
 .math {
-    background-color: var(--subject-2);
+background-color: var(--subject-2);
 }
 .vocabulary {
-    background-color: var(---subject-1);
+background-color: var(---subject-1);
 }
 .watch {
-    background-color: var(--subject-3);
+background-color: var(--subject-3);
 }
 .swedish {
-    background-color: var(--subject-4);
+background-color: var(--subject-4);
 }
 .border-math {
 border-color: var(--subject-2);
@@ -117,14 +119,29 @@ background-color: var(--color-neutral-light-active);
 border-radius: 999px;
 overflow: hidden;
 margin-top: 3rem;
-
 }
-
 .progress-fill {
 width: 65%;
 height: 100%;
 background-color: var(--color-reward);
 border-radius: 999px;
+}
+
+.info-content-line {
+margin-top: 10px;
+width: 100%;
+height: 2px;
+
+background-color: var(--color-neutral-light-active)
+}
+.dashboard-btn-size {
+margin-top: 1rem;
+max-width: 160px;
+
+}
+.dashboard-btn-size:hover{
+
+background-color: var(--color-reward);
 }
 
 .subject-link {

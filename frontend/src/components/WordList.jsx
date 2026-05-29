@@ -24,7 +24,7 @@ function WordList({subjectId}) {
   }
 };
   
-//HÄMTAR LISTAN VIA URL MED SUBJECT ID + USER ID
+//FETCH LIST THROUGH SUBJECT.ID + USER.ID
   useEffect(() => {
   async function fetchLists() {
     try {

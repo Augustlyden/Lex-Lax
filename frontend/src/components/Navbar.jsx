@@ -45,7 +45,7 @@ export default function Navbar() {
           <NavLink className="nav-logo" to={`/dashboard/${currentUser?.id}`}>
           <img src={logo} alt="Lex Lax" />
           </NavLink>
-
+          {/*
   <div className={`nav-links ${menuOpen ? "active" : ""}`}>
            
           <NavLink to={`/dashboard/${currentUser?.id}`}
@@ -66,6 +66,7 @@ export default function Navbar() {
           Profil
           </NavLink>
           </div>
+          */ }
 
 
 {/* Profile Menu */}        

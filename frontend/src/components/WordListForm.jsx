@@ -7,9 +7,9 @@ function WordListForm({onSubmit, initialData}) {
   const [languageTo, setLanguageTo] = useState("Engelska");
   const [title, setTitle] = useState( `${languageTo} - ${getCurrentWeek()}`);
 
+ 
+  // FYLL FORMULÄRET MED initialData VID REDIGERING.
   useEffect(() => {
-
-    //OM KOMPONENTENS PARENT HAR LAGT IN INTIIALDATA -> SÄTT IN VÄRDENA DIREKT I FORMULÄRET.
   if (initialData) {
     setTitle(initialData.title);
     setLanguageTo(initialData.languageTo);
@@ -19,34 +19,32 @@ function WordListForm({onSubmit, initialData}) {
 }, [initialData]);
    
 
-  // SPREAD OPERATOR FÖR ATT LÄGGA TILL NYA FRÅGOR
+  // LÄGG TILL EN NY TOM FRÅGERAD
   function addWord() {
   setQuestions([ ...questions, { question: "", answer: "" } 
   ]);
   }
 
-  // LYSSNARE SOM ANVÄNDS FÖR QUESTION & ANSWER. KOLLAR VILKEN RAD OCH SÄTTER VÄRDE.
+  // UPPDATERA QUESTION/ANSWER FÖR EN SPECIFIK RAD VIA INDEX.
   function handleWordChange(index, field, value) {
     const updatedQuestions = [...questions];
     updatedQuestions[index][field] = value;
     setQuestions(updatedQuestions);
   }
-
-
+ 
+   // UPPDATERA SPRÅK OCH GENERERA AUTOMATISK TITEL VIA IMPORTERAD FUNKTION
   function handleTranslateTo(e) {
     const selectedLanguage = e.target.value;
     setLanguageTo(selectedLanguage);
-
-    //SÄTTER TITEL PÅ LISTS. IMPORTERAD JS FUNKTION HÄMTAR VECKA, DATUM & TID.
     setTitle(`${selectedLanguage} ${getCurrentWeek()}`);
     console.log("Language changed to:", e.target.value)
   }
 
-  
   function handleTitle(e) {
       setTitle(e.target.value);
       console.log("Title:", e.target.value)
   }
+  
   function handleSubmit(e) {
   e.preventDefault();
 

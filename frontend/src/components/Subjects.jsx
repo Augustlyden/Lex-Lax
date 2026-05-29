@@ -6,40 +6,41 @@ import {Link} from "react-router-dom";
 function Subjects({subject}) {
      
 
-  // IF/ELSE SATS FÖR ATT SÄTTA OLIKA TEMAN & BILDER BEROENDE PÅ SUBJEKT.
+  // IF/ELSE FOR SETTING DIFFERENT THEMES/TEXTS DEPENDNG ON SUBJECT.ID
   let borderName = "";
   let iconName = "";
   let path = "";
+  let description = "";
   
   if (subject.subject_name === "Matematik") {
     borderName = "border-math";
     iconName = mathIcon;
     path = `/matematik/${subject.id}`
+    description = "Träna multiplikationstabellen och huvudräkning.";
   
   } else if (subject.subject_name === "Språk") {
     borderName = "border-vocabulary";
     path = `/sprak/${subject.id}`;
-      iconName = languageIcon;
+    iconName = languageIcon;
+    description = "Öva glosor och bygg upp ditt ordförråd.";
     
   } else if (subject.subject_name === "Svenska") {
     borderName = "border-swedish";
     iconName = swedishIcon;
+    description = "";
   }
 
 return (
-        
-        <Link to={path} className="subject-link">
-          <div className={`subject-card ${borderName}`}>
-          <div className="subject-icon-wrapper">
+          
+  <Link to={path} className="subject-link">
+    <div className={`subject-card ${borderName}`}>
+      <div className="subject-icon-wrapper">
         <img src={iconName} className = "subject-icon" alt="ÄMNE" />
-        </div>
-    <h2>{subject.subject_name}</h2>
-
-     {/*Hårdkodad info. Ändra senare.*/}
-    <p>Du har 5 uppgifter kvar att slutföra.</p>
-
-  </div>
-</Link>
+      </div>
+      <h2>{subject.subject_name}</h2>
+      <p>{description}</p>
+    </div>
+  </Link>
 
     
 
