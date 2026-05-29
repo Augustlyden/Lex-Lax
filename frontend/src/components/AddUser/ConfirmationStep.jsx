@@ -24,6 +24,7 @@ function ConfirmationStep({
   )?.image_url;
 
   return (
+    // This component is used for both creating and editing users, so we check if we're in edit mode to adjust the text accordingly.
     <div className="step">
       <h2>
         {isEditMode

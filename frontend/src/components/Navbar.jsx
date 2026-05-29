@@ -40,8 +40,9 @@ export default function Navbar() {
           <img src={logo} alt="Lex Lax" />
           </NavLink>
 
-{/* Profile Menu */}        
+{/* Profile Menu */}    
   {currentUser && (
+      // This section handles the user profile menu, It only appears if there is a current user logged in.
         <div className="active-user-menu">
           <button
             type="button"
@@ -75,7 +76,6 @@ export default function Navbar() {
                   {user.username}
                 </button>
               ))}
-<br />
           <button type="button" onClick={handleLogout}>
             Logga ut  
           </button>

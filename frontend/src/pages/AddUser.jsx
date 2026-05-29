@@ -22,6 +22,7 @@ function AddUser() {
     deleteUser,
   } = useAppContext();
 
+  // Handles navigation when the back button is clicked, goes back to the previous step from step two, else loginpage.
   const handleBack = () => {
   if (step === 2) {
     setStep(step - 1);
@@ -34,6 +35,7 @@ function AddUser() {
   (user) => String(user.id) === String(userId)
 );
 
+  // Determines whether the component is creating or editing a profile
   const isEditMode = Boolean(userId);
 
   const [step, setStep] = useState(1);
@@ -64,6 +66,7 @@ function AddUser() {
     fetchAvatars();
   }, []);
 
+    // Pre-fills the form when editing an existing user
   useEffect(() => {
     if (existingUser) {
       setName(existingUser.username || "");
@@ -82,6 +85,9 @@ function AddUser() {
     );
   };
 
+
+  // Validates that a name has been entered
+  // before moving to avatar selection
   const handleNext = () => {
     if (name.trim() === "") {
       setErrorMessage(
@@ -107,12 +113,15 @@ function AddUser() {
     const formattedName = formatName(name);
 
     if (isEditMode) {
+            // Updates the existing user in the database/context
       await updateUser(
         userId,
         formattedName,
         selectedAvatar
       );
 
+      // Updates local state so the confirmation page
+      // immediately reflects the new data
       setCreatedUser({
         id: userId,
         username: formattedName,

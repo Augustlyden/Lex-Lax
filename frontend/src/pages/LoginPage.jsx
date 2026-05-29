@@ -20,6 +20,7 @@ function LoginPage() {
         <p>Välj din profil eller skapa en ny för att komma igång!</p>
       </div>
                 
+{/* Loops through all saved users and creates one UserCard per user */}
       <div className="login-user-content">
         {users.map((user) => (
       <UserCard
@@ -42,7 +43,7 @@ function LoginPage() {
       </div>
       </div>
       
-
+      {/* Toggles profile management mode on and off */}
       <button onClick={() => setManageProfiles(!manageProfiles)} className="flat-btn open-edit-btn"> {manageProfiles ? "Klar" : "Hantera Profiler"} </button>    
   </div>
  

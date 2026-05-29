@@ -11,6 +11,7 @@
     <div className="step">
       <h2>Välj en avatar till {name}</h2>
 
+    
       <div className="avatar-grid">
         {avatars.map((avatar) => (
           <div className="avatar-card" key={avatar.id}>
