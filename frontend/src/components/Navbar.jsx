@@ -35,39 +35,10 @@ export default function Navbar() {
         
         <div className = "nav-container">
           <div className = "nav-content">
- {/* Hamburger Menu */}
-            
-           {/*  <div
-      className="hamburger"
-      onClick={() => setMenuOpen(!menuOpen)}
-      > ☰
-      </div> */}
+
           <NavLink className="nav-logo" to={`/dashboard/${currentUser?.id}`}>
           <img src={logo} alt="Lex Lax" />
           </NavLink>
-          {/*
-  <div className={`nav-links ${menuOpen ? "active" : ""}`}>
-           
-          <NavLink to={`/dashboard/${currentUser?.id}`}
-          className={({ isActive }) => isActive ? "active-link" : ""}>
-          Hem
-          </NavLink>
-            
-          <NavLink
-          to="/statistik"
-          className={({ isActive }) => isActive ? "active-link" : ""}>
-          Statistik
-          </NavLink>
-
-          <NavLink
-          to={`/redigera-profil/${currentUser?.id}`}
-          className={({ isActive }) => isActive ? "active-link" : ""}
-          >
-          Profil
-          </NavLink>
-          </div>
-          */ }
-
 
 {/* Profile Menu */}        
   {currentUser && (
