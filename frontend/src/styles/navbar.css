@@ -25,6 +25,7 @@ margin: 0 auto;
 } 
 
 .nav-content {
+position: relative;
 display: flex;
 flex-direction: row;
 gap: 1.5rem;
@@ -78,13 +79,12 @@ display: none;
 }
 
 /* User Profile */
+
 .active-user-btn {
-margin-right: 2rem;
-margin-left: auto;
-background: none;
-border: none;
-cursor: pointer;
-padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
 }
 
 .active-user-btn:hover {
@@ -101,7 +101,9 @@ object-fit: cover;
 }
 
 .active-user-menu {
-position: relative;
+ position: absolute;
+   right: 2rem;
+
 }
 
 .profile-menu {

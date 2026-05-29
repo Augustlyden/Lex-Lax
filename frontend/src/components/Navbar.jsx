@@ -37,11 +37,11 @@ export default function Navbar() {
           <div className = "nav-content">
  {/* Hamburger Menu */}
             
-            <div
+           {/*  <div
       className="hamburger"
       onClick={() => setMenuOpen(!menuOpen)}
       > ☰
-      </div>
+      </div> */}
           <NavLink className="nav-logo" to={`/dashboard/${currentUser?.id}`}>
           <img src={logo} alt="Lex Lax" />
           </NavLink>
