@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Comic+Relief:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
 
 * {
   margin: 0;
@@ -6,13 +7,146 @@
   box-sizing: border-box;
 }
 
-body {      
-font-family: "Comic Relief", system-ui;
+:root {
+/*COLORS */
+
+    /* Action colors - används endast på knappar och interaktiva element, tex som border på en klickbar bild eller länk.
+     Observera att det finns färdiga knapp-klasser att referera till när man vill använda dessa färger på knapp (btn-primary och btn-secondary)*/
+    --action-primary-color: #00B4D8;
+    --action-secondary-color: #00829D;
+
+    /* reward and delete colors, används på enstaka element såsom delete-knapp och framstegsindikator*/
+    --color-reward: #15F1B5;
+    --color-delete: #D8003B;
+
+    /* Base colors */
+    --text-color-btn: #FFFFFF;
+    --color-bg: #fefefe;
+    --color-bg-gradient: radial-gradient(circle at top left, rgba(155, 76, 156, 0.18), transparent 35%), radial-gradient(circle at top right, rgba(109, 200, 215, 0.16), transparent 35%), radial-gradient(circle at bottom left, rgba(240, 90, 40, 0.14), transparent 30%), radial-gradient(circle at bottom right, rgba(255, 182, 0, 0.14), transparent 30%), var(--color-bg); 
+    --color-neutral-light: #EFF1F3;
+    --color-neutral-light-hover: #E0E3E4;
+    --color-neutral-light-active: #C4C7C9;
+    --text-color-light: #8E9193;
+    --text-color-dark: #1F2937;
+
+/* Subject colors, för större element rekomenderas det att använda gradienter */
+    --subject-1: #9B4C9C;
+    --subject-1-gradient: linear-gradient(180deg, #C85FD6 0%, #9B4C9C 55%, #7D3F7E 100%);
+    --subject-2: #6DC8D7;
+    --subject-2-gradient: linear-gradient(180deg, #89D9E5 0%, #6DC8D7 55%, #53B4C4 100%);
+    --subject-3: #F05A28;
+    --subject-3-gradient: linear-gradient(180deg, #FF8A5F 0%, #F05A28 55%, #D9481B 100%);
+    --subject-4: #FFB600;
+    --subject-4-gradient: linear-gradient(180deg, #FFD45A 0%,#FFB600 55%, #E5A300 100%);
+
+    /* Navbar colors - används i navbaren, både bakgrund och text */
+    --navbar-bg: var(--text-color-btn);
+    --navbar-text: var(--action-primary-color);
+
+
+/* FONTS */
+
+    /* Regler: font-base används på grundläggande text, font-display används på visuella element/tex. huvudrubriker*/
+    --font-base: 'Mulish', sans-serif;
+    --font-display: 'Comic Relief', cursive;
+
+    
+/* SHADOWS */
+    --box-shadow-glow: inset 0 6px 0 rgba(255,255,255,0.18), inset 0 -6px 0 rgba(0,0,0,0.08), 0 6px 12px rgba(0,0,0,0.18);
+
+    --btn-shadow-light: 0 4px 0 rgba(255,255,255,0.18), 0 2px 4px rgba(0,0,0,0.18);
+    --btn-shadow-dark: 0 4px 0 rgba(255,255,255,0.08),  0 4px 8px rgba(0,0,0,0.36);
+
+    --shadow-soft: 0 10px 28px rgba(31, 41, 51, 0.08);
+
+/* buttons */
+  --btn-depth: 0 4px 0 var(--action-secondary-color);
+  --btn-depth-hover: 0 6px 0 var(--action-secondary-color);
+  --btn-depth-active: 0 2px 0 var(--action-secondary-color);
+
+  --btn-focus-ring: 0 0 0 4px rgba(0, 180, 216, 0.18);
+
+  --btn-font-size: 1rem;
+  --btn-font-weight: 700;
+  --btn-letter-spacing: 0.03rem;
+
+/* RADIUS */
+    --radius-soft: 16px;
+    --radius-round: 9999px;
 }
 
-:root {
-    --primary-color: #F5F7FF;
-    --secondary-color: #FAFAFF;
-    --text-color-dark: #5B5CEB;
-    --text-color-light: #8B8CF8;
+
+header {
+height: 80px;
+background: white;
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
+
+body {
+    font-family: var(--font-base);
+    color: var(--text-color-dark);
+    background: var(--color-bg-gradient);
+    background-attachment: fixed;
+}
+
+main {
+  width: 100%;
+  max-width: 1000px;
+  min-height: 100vh;
+
+  margin: 0 auto;
+  padding: 3rem;
+}
+
+h1 {
+  font-family: var(--font-display);
+}
+
+h1,
+h2,
+h3 {   line-height: 2;}
+
+p {
+  line-height: 1.5;
+  color: var(--text-color-dark);}
+
+a {
+    color: var(--action-secondary-color);
+    text-decoration: none;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  border: none;
+  border-radius: var(--radius-soft);
+
+  padding: 1rem;
+
+  font-family: var(--font-base);
+  font-size: 1rem;
+
+  background: var(--text-color-btn);
+  color: var(--text-color-dark);
+
+  box-shadow: var(--shadow-soft);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  box-shadow:
+    var(--shadow-soft),
+    var(--btn-focus-ring);
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+
+  font-weight: 700;
+  color: var(--text-color-dark);
+}
+

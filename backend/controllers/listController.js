@@ -1,0 +1,100 @@
+import List from '../models/listModel.js';
+
+export const getAllLists = async (req, res) => {
+  try {
+    // Extract filters from query parameters
+    const { subjectId, userId } = req.query;
+
+    if (!subjectId || !userId) {
+      return res.status(400).json({ success: false, error: 'Både ämnes-ID och användar-ID krävs för att hämta listor' })
+    }
+
+    const lists = await List.findAll(subjectId, userId);
+    res.json({ success: true, data: lists });
+  } catch (error) {
+    console.error('getAllLists failed:', error);
+    res.status(500).json({ success: false, error: 'Misslyckades att hämta listor' });
+  }
+}
+
+export const getListById = async (req, res) => {
+  try {
+    const list = await List.findById(req.params.id);
+    // Handle case where the list ID does not exist
+    if (!list) {
+      return res.status(404).json({ success: false, error: 'Listan hittades ej' });
+    }
+    res.json({ success: true, data: list });
+  } catch (error) {
+    console.error('getListByid failed', error);
+    res.status(500).json({ success: false, error: 'Misslyckades att hämta listan' });
+  }
+}
+
+export const createList = async (req, res) => {
+  try {
+    const { title, targetLanguage, userId, subjectId } = req.body;
+
+    // Validate required fields
+    if (!title || !targetLanguage) {
+      return res.status(400).json({ success: false, error: 'Titel och språk behövs' });
+    }
+
+    // Ensure the new title is unique within the subject
+    const existingTitle = await List.findByTitle(title, userId, subjectId);
+    if (existingTitle) {
+      return res.status(409).json({ success: false, error: 'Titeln finns redan'});
+    }
+
+    const newList = await List.create(title, targetLanguage, userId, subjectId);
+    res.status(201).json({ success: true, data: newList });
+  } catch (error) {
+    console.error('createList failed:', error);
+    res.status(500).json({ success: false, error: 'Misslyckades att skapa lista' });
+  }
+}
+
+export const updateList = async (req, res) => {
+  try {
+    const { title, targetLanguage } = req.body;
+
+    // Validate required fields
+    if (!title || !targetLanguage) {
+      return res.status(400).json({ success: false, error: 'Titel och språk behövs' });
+    } 
+
+    // Fetch the current list to get its user and subject details
+    const currentList = await List.findById(req.params.id);
+    if (!currentList) {
+      return res.status(404).json({ success: false, error: 'Listan hittades ej'});
+    }
+
+    // Ensure the new title is unique within the subject, ignoring the current list
+    const existingTitle = await List.findByTitle(title, currentList.user_id, currentList.subject_id);
+    if (existingTitle && existingTitle.id !== req.params.id) {
+      return res.status(409).json({ success: false, error: 'Titeln finns redan i detta ämne' });
+    }
+
+    const list = await List.update(title, targetLanguage, req.params.id);
+
+    res.json({ success: true, data: list });
+  } catch (error) {
+    console.error('updateList failed:', error);
+    res.status(500).json({ success: false, error: 'Misslyckades att uppdatera lista' });
+  }
+}
+
+export const deleteList = async (req, res) => {
+  try {
+    const deleted = await List.delete(req.params.id);
+
+    if (!deleted) {
+      return res.status(404).json({ success: false, error: 'Listan hittades ej' });
+    }
+
+    res.json({ success: true, message: 'Lista raderad' });
+  } catch (error) {
+    console.error('deleteList failed:', error);
+    res.status(500).json({ success: false, error: 'Misslyckades att radera lista' });
+  }
+}

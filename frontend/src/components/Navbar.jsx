@@ -1,33 +1,94 @@
 import "../styles/navbar.css"
+import { useAppContext } from "../hooks/useAppContext";
+import {useState} from "react"
+import { useNavigate } from "react-router-dom";
+import {NavLink} from "react-router-dom"
+import logo from "../assets/logos/logo.png";
+
 
 export default function Navbar() {
 
+    const [menuOpen, setMenuOpen] = useState(false)
+    const [profileMenuOpen, setProfileMenuOpen] = useState(false)
+    const navigate = useNavigate();
+    const { users, currentUser, setCurrentUser } = useAppContext();
+
+    const handleSwitchUser = (user) => {
+      setCurrentUser(user);
+        setProfileMenuOpen(false);
+      navigate(`/dashboard/${user.id}`);
+    }
+
+    const handleEditProfile = () => {
+      setProfileMenuOpen(false);
+      navigate(`/redigera-profil/${currentUser.id}`);
+    }
+    const handleLogout = () => {
+      setCurrentUser(null);
+      navigate("/");
+      setProfileMenuOpen(false);
+    };
+
     return (
-    <header>
+     <header>
       <nav>
         
         <div className = "nav-container">
           <div className = "nav-content">
 
-            <div className = "nav-logo">
-              <h1>LEX LÄX</h1>
-            </div>
+          <NavLink className="nav-logo" to={`/dashboard/${currentUser?.id}`}>
+          <img src={logo} alt="Lex Lax" />
+          </NavLink>
 
-            <div className = "nav-links">
-              <a href="/">Home</a>
-              <a href="/">Support</a>
-              <a href="/">Contact</a>
-            </div>
+{/* Profile Menu */}    
+  {currentUser && (
+      // This section handles the user profile menu, It only appears if there is a current user logged in.
+        <div className="active-user-menu">
+          <button
+            type="button"
+            className="active-user-btn"
+            onClick={() => setProfileMenuOpen(!profileMenuOpen)}
+          >
+            <img
+              src={currentUser.image_url}
+              alt={currentUser.username}
+              className="active-user-avatar"
+            />
+          </button>
 
-            <div className = "nav-profile">
-              <a href="/"> ⭐️</a>
-              <a href="/profile">👤</a>
-            </div>
+          {profileMenuOpen && (
+            <div className="profile-menu">
+              <h2>{currentUser.username}</h2>
 
-          </div>
+              <button type="button" onClick={handleEditProfile}>
+                Redigera profil
+              </button>
+
+              <h4>Byt användare</h4>
+
+              {users.map((user) => (
+                <button
+                  key={user.id}
+                  type="button"
+                  className="profile-menu-user"
+                  onClick={() => handleSwitchUser(user)}
+                >
+                  {user.username}
+                </button>
+              ))}
+          <button type="button" onClick={handleLogout}>
+            Logga ut  
+          </button>
         </div>
-        
-      </nav>
+      )}
+    </div>
+  )}
+
+       
+     </div>
+
+   </div>
+     </nav>
     </header>
-    )
-}
+    
+)}

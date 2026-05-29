@@ -1,0 +1,73 @@
+.question-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 20px;
+}
+
+.question-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  border-radius: var(--radius-soft);
+  padding: 25px;
+  margin: 20px;
+  place-self: center;
+  box-shadow: var(--shadow-soft);
+  color: var(--text-color-btn);
+
+  width: clamp(350px, 80%, 500px);
+  z-index: 9999;
+
+  animation: flipCard 0.6s ease-in-out;
+}
+
+.question-page .page-title {
+  text-align: center;
+}
+
+.question-card form {
+  display: grid;
+  grid-template-columns: 2fr 3fr 3fr;
+  gap: 1rem;
+  width: 100%;
+}
+
+.question-card input {
+  grid-column: 1 / -1;
+}
+
+/* För Chrome, Safari, Edge och Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* För Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+@keyframes flipCard {
+  0% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  50% {
+    transform: scale(1.02);
+    filter: brightness(0.9);
+  }
+  100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+}
+
+ @media (max-width: 540px) {
+   .page-title {
+    font-size: 24px;
+   }
+}

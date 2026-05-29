@@ -1,0 +1,86 @@
+.listContainer {
+display: flex;
+flex-direction: column;
+gap: 3rem;
+width: 100%;
+}
+
+.listHeaderContent {
+display: flex;
+flex-direction: row;
+align-items: center;
+width: 100%;
+padding: 1rem;
+border-radius: var(--radius-soft);
+box-shadow: var(--box-shadow-glow);
+margin: 0;
+flex-wrap: wrap;
+}
+.vocabularyTheme {
+  background: var(--subject-1-gradient);
+  border-color: var(--subject-1-gradient);
+}
+.mathTheme {
+  background: var(--subject-2-gradient);
+  border-color: var(--subject-2-gradient);
+}
+.listHeaderContent h1,
+.listHeaderContent p {
+color: var(--text-color-btn);
+margin-bottom: 0;
+padding: 0;
+line-height: 1.5;
+}
+.listContent {
+display: flex;
+flex-direction: column;
+padding: 1rem;
+border-radius: var(--radius-soft);
+gap: 0.5rem;
+}
+.mathBorder {
+  border: 3px solid var(--subject-2);
+}
+.vocabularyBorder {
+  border: 3px solid var(--subject-1);
+}
+.listCard {
+display: flex;
+align-items: center;
+flex-direction: row;
+gap: 0.2rem;
+flex-wrap: wrap;
+border-radius: var(--radius-soft);
+box-shadow: var(--shadow-soft);
+padding: 0.2rem;
+  
+}
+.listTitle {
+flex: 1;
+min-width: 150px;
+}
+.listActions {
+display: flex;
+flex-wrap: wrap;
+gap: 0.5rem;
+}
+.listActions button {
+min-width: 0;
+}
+.infoContent {
+display: flex;
+flex-direction: column;
+padding: 0.2rem;
+}
+.addNewListBox {
+margin-top: 1.5rem;
+margin-bottom: 1rem;
+}
+
+.deleteBtn {
+background: var(--color-delete);
+color: var(--text-color-btn);
+box-shadow:
+  var(--box-shadow-glow),
+  0 4px 0 #a3002c;
+}

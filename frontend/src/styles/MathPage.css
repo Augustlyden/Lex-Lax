@@ -1,0 +1,25 @@
+.math-page-container {
+  display: flex;
+flex-direction: column;
+gap: 3rem;
+width: 100%;
+}
+.math-header-content h1 {
+color: var(--text-color-btn);
+margin-bottom: 0;
+padding: 0;
+line-height: 1.5;
+}
+.math-header-content {
+display: flex;
+flex-direction: row;
+align-items: center;
+width: 100%;
+padding: 1rem;
+background: var(--subject-2-gradient);
+border-radius: var(--radius-soft);
+border-color: var(--subject-2-gradient);
+box-shadow: var(--box-shadow-glow);
+margin: 0;
+flex-wrap: wrap;
+}

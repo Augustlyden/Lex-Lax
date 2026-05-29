@@ -1,71 +1,110 @@
-h1 {
-    font-size: 40px;
-    color: var(--text-color-dark);
-}
-a {
-  text-decoration: none;
-  color: inherit;
-  font-weight: 600;
-  font-size: 22px;
-      color: var(--text-color-dark);
+.nav-logo img {
+height: 4rem;
+width: auto;
 }
 
 .nav-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--primary-color);
-    min-height: 80px;
-    
-}
+max-width: 1000px;
+margin: 0 auto;   
+
+} 
+
 .nav-content {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-     width: 100%;
-}
-.nav-logo {
-    cursor: default;
-    margin-left: 2rem;
-}
-.nav-links {
-    display: flex;
-    position: absolute;
-left: 50%;
-transform: translateX(-50%);
-   gap: 3rem;
-}
-.nav-profile {
-    display:flex;
-    margin-right: 2rem;
-    gap: 1rem;
-    
-}
-.nav-links a {
-    position: relative;
-  display: inline-block;
-}
-.nav-links a:hover {
-   transform: scale(1.05);
-   transition: transform 0.2s ease;
-}
-.nav-links a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -4px;
-  width: 0%;
-  height: 2px;
-  background-color: #111827;
-  transition: width 0.3s ease;
+position: relative;
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: center;
+width: 100%;
 }
 
-.nav-links a:hover::after {
+.nav-logo {
+cursor: pointer;
+}
+
+/* User Profile */
+.active-user-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.active-user-btn:hover {
+transform: scale(1.1);
+transition: transform 0.2s ease;
+}
+
+
+.active-user-avatar {
+width: 48px;
+height: 48px;
+border-radius: 50%;
+object-fit: cover;
+}
+
+.active-user-menu {
+ position: absolute;
+   right: 2rem;
+
+}
+
+.profile-menu {
+position: absolute;
+top: 110%;
+right: 0;
+z-index: 100;
+display: flex;
+flex-direction: column;
+background: white;
+min-width: 200px;
+}
+
+.profile-menu h2, .profile-menu h4 {
+padding: 1rem;
+text-align: left;
+}
+
+.profile-menu h2 {
+font-size: 1.2rem;
+font-family: var(--font-display);
+}
+.profile-menu button {
+background: none;
+border: none;
+font-size: 1rem;
+padding: 1rem;
+cursor: pointer;
+position: relative;
+display: inline-block;
+}
+
+.profile-menu button::after {
+content: "";
+position: absolute;
+left: 1rem;
+bottom: 10px;
+width: 0%;
+height: 2px;
+background-color: #111827;
+transition: width 0.3s ease;
+}
+
+
+/* MOBILE LAYOUT */
+@media (max-width: 768px) {
+
+.profile-menu {
+position: fixed;
+top: 80px;
+z-index: 100;
+display: flex;
   width: 100%;
 }
-.nav-profile a:hover {
-   transform: scale(1.5);
-   transition: transform 0.2s ease;
+
+.profile-menu h2, .profile-menu h4 {
+  text-align: center;
+}
+
 }
 
